@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
-
 import { TranslationsComponent } from '../../shared/translations/translations.component';
+
+import { LocaleService } from '../../shared/_services/locale.service';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,8 @@ import { TranslationsComponent } from '../../shared/translations/translations.co
 })
 export class HomeComponent extends TranslationsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
-    super();
+  constructor(localeService: LocaleService) {
+    super(localeService);
   }
 
   ngOnInit() {
