@@ -2,12 +2,16 @@
   padding: 0;
 }
 
+#headerActions .chip-button {
+  text-transform: uppercase;
+}
+
 #pageTitle {
   position: relative;
-  height: 400px;
   display: flex;
   align-items: center;
-  background-image: url("/assets/img/page-title.jpg");
+  height: 400px;
+  background-image: url('/assets/img/page-title.jpg');
 }
 
 #pageTitle::before {
@@ -19,5 +23,92 @@
 }
 
 #pageTitleContent {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  z-index: 999999;
+}
 
+#pageTitleContent h1 {
+  font-size: 48px;
+}
+
+#pageTitleContent h2 {
+  font-size: 24px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-container-input {
+  background-color: #fff;
+  height: 45px;
+  padding: 0 18px;
+}
+
+.ltr .search-container-input:first-child {
+  border-radius: 30px 0 0 30px;
+  border-right: 1px solid #cdcdcd;
+}
+
+.rtl .search-container-input:first-child {
+  border-radius: 0 30px 30px 0;
+  border-left: 1px solid #cdcdcd;
+}
+
+.search-container-input > i {
+  color: #008def;
+  font-size: 18px;
+}
+
+.search-container-input > input, .search-container-input > .mat-select {
+  height: 100%;
+  width: 250px;
+  border: none;
+  outline: none;
+}
+
+.search-container-input ::-webkit-input-placeholder, .search-container-input ::ng-deep .mat-select-placeholder {
+  color: #000;
+}
+
+.search-container ::ng-deep .mat-select-trigger {
+  height: 100%;
+}
+
+.search-container-input ::ng-deep .mat-select-value {
+  vertical-align: middle;
+}
+
+.ltr .search-container-input ::ng-deep .mat-select-value {
+  padding-left: 8px;
+  text-align: left;
+}
+
+.rtl .search-container-input ::ng-deep .mat-select-value {
+  padding-right: 8px;
+  text-align: right;
+}
+
+.search-container button {
+  width: 115px;
+  text-transform: uppercase;
+  background-color: #008def;
+  color: #fff;
+  border: none;
+}
+
+.ltr ::ng-deep .search-container button {
+  border-radius: 0 30px 30px 0;
+}
+
+.rtl ::ng-deep .search-container button {
+  border-radius: 30px 0 0 30px;
+}
+
+.content {
+  padding-top: 80px;
+  background-color: #f5f4f5;
 }

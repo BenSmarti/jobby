@@ -13,7 +13,7 @@ import { User } from '../../shared/_models/user.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends TranslationsComponent {
+export class LoginComponent  {
 
   user = new User();
 
@@ -22,9 +22,7 @@ export class LoginComponent extends TranslationsComponent {
   isLoginFailed = false;
   isLoggingIn = false;
 
-  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {
-    super();
-  }
+  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {}
 
   submit(isValid: boolean) {
     if (isValid) {

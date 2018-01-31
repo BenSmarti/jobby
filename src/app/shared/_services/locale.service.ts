@@ -20,6 +20,11 @@ export class LocaleService {
     return this.lang;
   }
 
+  setLang(lang: string): void {
+    this.lang = lang;
+    localStorage.setItem('lang', this.lang);
+  }
+
   getTranslations(): any {
     if (localStorage.getItem('translations')) {
       return JSON.parse(localStorage.getItem('translations'));

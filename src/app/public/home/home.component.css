@@ -1,0 +1,45 @@
+.category {
+  padding: 40px 0;
+  border-left: 1px solid #e6e3e6;
+  border-bottom: 1px solid #e6e3e6;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.category img {
+  filter: grayscale(1);
+  transition: 0.5s;
+}
+
+.category:hover img {
+  filter: grayscale(0);
+}
+
+.category-count {
+  color: #b5b5b5;
+}
+
+#addResumeBanner {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  background: url('/assets/img/home/resume-banner.jpg') no-repeat #fff;
+  background-size: contain;
+}
+
+#addResumeBanner > .h4 {
+  margin: 0 150px;
+}
+
+#addResumeBanner .mat-chip {
+  font-size: 14px;
+}
+
+#highlightJobs ::ng-deep .mat-chip-list-wrapper {
+  justify-content: center;
+}
+
+#highlightJobs ::ng-deep .mat-chip {
+  padding: 4px 20px;
+  font-size: 16px;
+}
