@@ -57,6 +57,10 @@ input[type=file] {
   font-weight: bold;
 }
 
+.btn {
+  cursor: pointer;
+}
+
 /*--- Material ---*/
 
 .mat-input-element {

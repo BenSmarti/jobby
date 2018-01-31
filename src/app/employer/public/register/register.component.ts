@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AppHttpService } from '../../../shared/_services/employer/app-http.service';
+
 import { Employer } from '../../../shared/_models/employer.model';
 
 @Component({
@@ -14,7 +16,7 @@ export class RegisterComponent {
   logo: File;
   logoPreview: string;
 
-  constructor() {}
+  constructor(private appHttp: AppHttpService) {}
 
   setLogo(logo: File): void {
     this.logo = logo;
@@ -31,5 +33,11 @@ export class RegisterComponent {
   removeLogo(): void {
     this.logo = null;
     this.logoPreview = null;
+  }
+
+  submit(isValid: boolean): void {
+    if (isValid) {
+      this.appHttp.register(this.employer);
+    }
   }
 }

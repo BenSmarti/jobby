@@ -22,10 +22,11 @@
         <input matInput type="text" placeholder="כתובת" [(ngModel)]="employer.address" name="businessNumber">
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="כתובת אינטרנט" [(ngModel)]="employer.website" name="website">
+        <input matInput type="text" placeholder="כתובת אתר אינטרנט" [(ngModel)]="employer.website" name="website">
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="password" placeholder="סיסמה" [(ngModel)]="employer.password" name="password">
+        <input matInput type="password" placeholder="סיסמה" [(ngModel)]="employer.password" name="password" #password="ngModel" required>
+        <mat-error *ngIf="password.errors && f.submitted">יש להזין סיסמה.</mat-error>
       </mat-form-field>
     </div>
     <div class="col-lg-6">

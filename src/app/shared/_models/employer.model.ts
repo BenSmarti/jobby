@@ -1,5 +1,6 @@
 export class Employer {
   name: string;
+  username: string;
   businessNumber: string;
   description: string;
   email: string;
