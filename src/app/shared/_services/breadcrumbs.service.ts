@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Breadcrumb } from '../../_generic/breadcrumbs';
+import { Breadcrumb } from '../_generic/breadcrumbs';
 
 @Injectable()
 export class BreadcrumbService {

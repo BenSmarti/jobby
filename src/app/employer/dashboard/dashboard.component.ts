@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BreadcrumbService } from '../../../shared/_services/generic/breadcrumbs.service';
+import { BreadcrumbService } from '../../shared/_services/breadcrumbs.service';
 
 @Component({
   selector: 'app-dashboard',

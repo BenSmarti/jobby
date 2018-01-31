@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserSessionService } from '../../../shared/_services/generic/user-session.service';
-import { AppHttpService } from '../../../shared/_services/employer/app-http.service';
-import {User} from '../../../shared/_models/user.model';
+import { UserSessionService } from '../../shared/_services/user-session.service';
+import { AppHttpService } from '../../shared/_services/http/app-http.service';
+
+import { User } from '../../shared/_models/user.model';
 
 @Component({
   selector: 'app-login',

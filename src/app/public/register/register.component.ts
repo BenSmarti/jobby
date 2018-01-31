@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AppHttpService } from '../../../shared/_services/employer/app-http.service';
+import { AppHttpService } from '../../shared/_services/http/app-http.service';
 
-import { Employer } from '../../../shared/_models/employer.model';
+import { Employer } from '../../shared/_models/employer.model';
 
 @Component({
   selector: 'app-register',

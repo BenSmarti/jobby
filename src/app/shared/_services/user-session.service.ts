@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
-import { User } from '../../_models/user.model';
+import { User } from '../_models/user.model';
 
 @Injectable()
 export class UserSessionService {

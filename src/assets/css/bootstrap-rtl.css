@@ -2,8 +2,9 @@
   float: right;
 }
 
-.rtl .mat-form-field-infix, .mat-option {
-  text-align: right;
+.rtl .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto;
 }
 
 .rtl .mr-1 {
