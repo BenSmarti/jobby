@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { TranslationsComponent } from '../../shared/translations/translations.component';
+
 import { UserSessionService } from '../../shared/_services/user-session.service';
 import { AppHttpService } from '../../shared/_services/http/app-http.service';
 
@@ -11,7 +13,7 @@ import { User } from '../../shared/_models/user.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent extends TranslationsComponent {
 
   user = new User();
 
@@ -20,7 +22,9 @@ export class LoginComponent {
   isLoginFailed = false;
   isLoggingIn = false;
 
-  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {}
+  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {
+    super();
+  }
 
   submit(isValid: boolean) {
     if (isValid) {

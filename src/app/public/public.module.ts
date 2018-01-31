@@ -6,12 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatSelectModule } from '@angular/material';
 
+import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 import { UserSessionService } from '../shared/_services/user-session.service';
 import { AppHttpService } from '../shared/_services/http/app-http.service';
-import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatProgressSpinnerModule
   ],
-  declarations: [RegisterComponent, LoginComponent, HomeComponent],
+  declarations: [HomeComponent, RegisterComponent, LoginComponent],
   providers: [UserSessionService, AppHttpService]
 })
 export class PublicModule {}
