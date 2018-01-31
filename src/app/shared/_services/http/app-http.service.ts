@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BaseHttpService } from '../generic/base-http.service';
+import { BaseHttpService } from './base-http.service';
 
 import { Employer } from '../../_models/employer.model';
 
@@ -13,9 +13,10 @@ export class AppHttpService extends BaseHttpService {
   }
 
   login(username: string, password: string): Promise<string> {
-    return this.http.post(this.apiUrl + '/Account/GenerateTokenEmployer', { UserName: username, Password: password }).toPromise()
-    .then(response => response as string)
-    .catch(response => response.ok);
+    return this.http.post(this.apiUrl + '/Account/GenerateTokenEmployer', { UserName: username, Password: password })
+      .toPromise()
+      .then(response => response as string)
+      .catch(response => response.ok);
   }
 
   register(employer: Employer): Promise<string> {

@@ -1,8 +1,17 @@
 import { Routes } from '@angular/router';
 
+import { PUBLIC_ROUTES } from './public.routes';
 import { EMPLOYER_ROUTES } from './employer.routes';
 
+import { AppComponent } from '../../app.component';
+
+import { TranslationsResolve } from '../_resolves/translations.resolve';
+
 export const APP_ROUTES: Routes = [
-  { path: 'employer', children: EMPLOYER_ROUTES, },
-  // { path: 'seeker', component: OperatorComponent, children: OPERATOR_ROUTES, canActivate: [LoggedInGuard] },
+  {
+    path: '', component: AppComponent, resolve: { translations: TranslationsResolve }, children: [
+      { path: '', children: PUBLIC_ROUTES },
+      { path: 'employer', children: EMPLOYER_ROUTES },
+    ]
+  }
 ];
