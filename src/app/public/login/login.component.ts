@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { TranslationsComponent } from '../../shared/translations/translations.component';
+import {TranslationsComponent} from '../../shared/translations/translations.component';
 
-import { UserSessionService } from '../../shared/_services/user-session.service';
-import { AppHttpService } from '../../shared/_services/http/app-http.service';
+import {UserSessionService} from '../../shared/_services/user-session.service';
+import {AppHttpService} from '../../shared/_services/http/app-http.service';
 
-import { User } from '../../shared/_models/user.model';
+import {User} from '../../shared/_models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -26,13 +26,21 @@ export class LoginComponent extends TranslationsComponent {
     super();
   }
 
+  t(key: string): string {
+    if (!this.translations[key]) {
+      return '';
+    }
+
+    return this.translations[key];
+  }
+
   submit(isValid: boolean) {
     if (isValid) {
       this.isLoginFailed = false;
       this.isLoggingIn = true;
 
       this.appHttp.login(this.user.username, this.user.password)
-      .then((response) => setTimeout(() => this.handleResponse(response), 2000));
+        .then((response) => setTimeout(() => this.handleResponse(response), 2000));
     }
   }
 
