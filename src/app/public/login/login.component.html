@@ -1,22 +1,22 @@
 <div class="row no-gutters">
   <form class="col-md-4 offset-md-4 card" #f="ngForm" (ngSubmit)="submit(f.valid)">
     <div class="card-header">
-      <p class="card-title">{{ t('LOG_IN') }}</p>
+      <p class="card-title">{{ t('LOGIN') }}</p>
     </div>
     <div class="card-block">
       <mat-form-field class="w-100">
-        <input matInput type="text" name="username" placeholder="Username" [(ngModel)]="user.username" #username="ngModel" required>
+        <input matInput type="text" name="username" placeholder="{{ t('USER_NAME') }}" [(ngModel)]="user.username" #username="ngModel" required>
         <i matSuffix class="fa fa-user"></i>
         <mat-error *ngIf="username.errors && f.submitted">This field is required.</mat-error>
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
+        <input matInput type="password" name="password" placeholder="{{ t('PASS') }}" [(ngModel)]="user.password" #password="ngModel" required>
         <i matSuffix class="fa fa-lock"></i>
-        <mat-error *ngIf="password.errors && password.errors.required && f.submitted">This field is required.</mat-error>
-        <mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">This field is required.</mat-error>
+        <mat-error *ngIf="password.errors && password.errors.required && f.submitted">{{ t('REQUIRED') }}.</mat-error>
+        <mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">{{ t('REQUIRED') }}.</mat-error>
       </mat-form-field>
       <a class="d-block mb-3" routerLink="/forgot">Forgot Password</a>
-      <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" color="primary">Remember Me</mat-checkbox>
+      <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" color="primary">{{ t('REMEMBER') }}</mat-checkbox>
     </div>
     <div class="card-footer">
       <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
@@ -24,7 +24,114 @@
         <i class="fa fa-exclamation-circle mr-1"></i>
         <span>Login error, please try again or contact.</span>
       </p>
-      <button class="btn btn-primary">Login</button>
+      <button class="btn btn-primary">{{ t('LOGIN') }}</button>
     </div>
   </form>
 </div>
+
+<div class="tr-account section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="user-account">
+          <div class="account-content">
+            <form action="#" class="tr-form">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="{{ t('USER_NAME') }}">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="{{ t('PASS') }}">
+              </div>
+              <div class="user-option">
+                <div class="checkbox">
+                  <label for="logged"><input type="checkbox" name="logged" id="logged">{{ t('REMEMBER') }}</label>
+                </div>
+                <div class="forgot-password">
+                  <a href="#">{{ t('FORGOT_PASS') }}</a>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">{{ t('LOGIN') }}</button>
+            </form>
+            <div class="new-user text-center">
+              <span><a href="signup.html">{{ t('CREATE_ACC') }}</a> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- container -->
+</div><!-- /.tr-account-->
+
+<div class="footer">
+  <div class="footer-top section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>About Us</h3>
+            <ul class="tr-list">
+              <li><a href="#">About Seeker</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">International Partners</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Feedback</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>Job Seekers</h3>
+            <ul class="tr-list">
+              <li><a href="#">Create Account</a></li>
+              <li><a href="#">Career Counseling</a></li>
+              <li><a href="#">My Bdjobs</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Video Guides</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>Employers</h3>
+            <ul class="tr-list">
+              <li><a href="#">Create Account</a></li>
+              <li><a href="#">Products/Service</a></li>
+              <li><a href="#">Post a Job</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>Newsletter</h3>
+            <p>Earum cumque doloribus, incidunt! Tempora voluptatibus</p>
+            <form class="contact-form" method="post" action="#">
+              <div class="form-group">
+                <input type="email" class="form-control" required="required" placeholder="Your email Id">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.footer-top -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="copyright">
+        <p>Copyright © 2017 <a href="#">Seeker.com.</a> All rights reserved.</p>
+      </div>
+      <div class="footer-social pull-right">
+        <ul class="tr-list">
+          <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.footer-bottom -->
+</div><!-- /.footer -->
