@@ -1,0 +1,51 @@
+<form #f="ngForm" (ngSubmit)="submit(f.valid)">
+  <div class="row">
+    <div class="col-lg-3">
+      <mat-form-field class="w-100">
+        <input matInput type="text" placeholder="שם מעסיק" [(ngModel)]="employer.name" name="name" #name="ngModel" required>
+        <mat-error *ngIf="name.errors && f.submitted">יש להזין שם מעסיק.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="text" placeholder="ח.פ" [(ngModel)]="employer.businessNumber" name="businessNumber" #businessNumber="ngModel" required>
+        <mat-error *ngIf="businessNumber.errors && f.submitted">יש להזין ח.פ.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="email" placeholder="כתובת אימייל" [(ngModel)]="employer.email" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+        <mat-error *ngIf="email.errors && email.errors.required && f.submitted">יש להזין כתובת אימייל.</mat-error>
+        <mat-error *ngIf="email.errors && email.errors.pattern && f.submitted">כתובת אימייל לא תקינה.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="text" placeholder="מס' טלפון" [(ngModel)]="employer.phone" name="phone" #phone="ngModel" required>
+        <mat-error *ngIf="phone.errors && phone.errors.required && f.submitted">יש להזין טלפון.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="text" placeholder="כתובת" [(ngModel)]="employer.address" name="businessNumber">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="text" placeholder="כתובת אתר אינטרנט" [(ngModel)]="employer.website" name="website">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="password" placeholder="סיסמה" [(ngModel)]="employer.password" name="password" #password="ngModel" required>
+        <mat-error *ngIf="password.errors && f.submitted">יש להזין סיסמה.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6">
+      <mat-form-field class="w-100 textarea">
+        <textarea matInput placeholder="על החברה" name="description" [(ngModel)]="employer.description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="d-flex justify-content-between flex-column col-lg-3">
+      <div>
+        <p class="h5">לוגו החברה</p>
+        <label class="image-upload">
+          <i class="fa fa-trash-o remove-image" (click)="removeLogo()" *ngIf="logoPreview"></i>
+          <img [src]="logoPreview ? logoPreview : '/assets/img/placeholder-image.jpg'" class="logo">
+          <input type="file" (change)="setLogo($event.target.files[0])">
+        </label>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">הירשם</button>
+      </div>
+    </div>
+  </div>
+</form>

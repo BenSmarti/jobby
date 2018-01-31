@@ -1,0 +1,17 @@
+.navbar {
+  padding: 0;
+}
+
+#pageTitle {
+  position: relative;
+  height: 400px;
+  background-image: url("/assets/img/page-title.jpg");
+}
+
+#pageTitle::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: '';
+  background-color: rgba(44, 55, 62, 0.8);
+}

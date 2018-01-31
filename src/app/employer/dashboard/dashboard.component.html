@@ -1,0 +1,143 @@
+<p id="welcomeMessage" class="h2">ברוך הבא שלומי</p>
+<div class="d-flex justify-content-end pr-5 pt-3">
+  <div id="postPositionLink" class="text-center pointer">
+    <i class="fa fa-plus-square"></i>
+    <p class="underline">פרסם משרה</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-4" *ngFor="let i of [1, 2, 3]">
+      <div class="pt-2 graph-box">
+        <p class="bold text-center">סה"כ מועמדים</p>
+        <div class="d-flex align-items-center">
+          <div class="d-block graph">
+            <canvas baseChart [legend]="false" [data]="chartData" [labels]="chartLabels" [chartType]="'pie'" [colors]="chartColors"></canvas>
+          </div>
+          <ul class="graph-legend">
+            <li>
+              <span class="graph-legend-label">מועמדים שאהבתי</span>
+              <div class="graph-legend-color"></div>
+            </li>
+            <li>
+              <span class="graph-legend-label">מועמדים שאהבו אותי</span>
+              <div class="graph-legend-color"></div>
+            </li>
+            <li>
+              <span class="graph-legend-label">התאמות</span>
+              <div class="graph-legend-color"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-5 table-container">
+    <div class="table-header">
+      <span class="table-title">משרות פתוחות</span>
+      <a class="table-view-all">
+        <span>לכל המשרות</span>
+        <i class="fa fa-chevron-left ml-3"></i>
+      </a>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>שם משרה</th>
+          <th>התקבלו</th>
+          <th>נדחו</th>
+          <th>בתהליך</th>
+          <th>סה"כ</th>
+          <th>צפייה</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let position of openPositions">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="text-center bold">לא נמצאו משרות פתוחות.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12 col-md-6">
+      <div class="table-container">
+        <div class="table-header">
+          <span class="table-title">משרות פתוחות</span>
+          <a class="table-view-all">
+            <span>לכל המשרות</span>
+            <i class="fa fa-chevron-left ml-3"></i>
+          </a>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>שם משרה</th>
+            <th>התקבלו</th>
+            <th>נדחו</th>
+            <th>בתהליך</th>
+            <th>סה"כ</th>
+            <th>צפייה</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let position of openPositions">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-center bold">לא נמצאו משרות פתוחות.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="table-container">
+        <div class="table-header">
+          <span class="table-title">משרות פתוחות</span>
+          <a class="table-view-all">
+            <span>לכל המשרות</span>
+            <i class="fa fa-chevron-left ml-3"></i>
+          </a>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>שם משרה</th>
+            <th>התקבלו</th>
+            <th>נדחו</th>
+            <th>בתהליך</th>
+            <th>סה"כ</th>
+            <th>צפייה</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let position of openPositions">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-center bold">לא נמצאו משרות פתוחות.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+#welcomeMessage {
+  padding: 12px 22px;
+  background-color: #70798f;
+  color: #fff;
+}
+
+#postPositionLink > * {
+  color: #8d8d8d;
+}
+
+#postPositionLink > i {
+  font-size: 30px;
+}
+
+.graph-box {
+  background-color: #fff;
+  box-shadow: 4px 3px 3px #c3c3c3;
+}
+
+.graph {
+  width: 70%;
+}
+
+.graph-legend {
+  margin-right: -15px;
+  font-size: 10px;
+}
+
+.graph-legend-label, .graph-legend-color {
+  display: inline-block;
+}
+
+.graph-legend-label {
+  width: 95px;
+}
+
+.graph-legend-color {
+  height: 8px;
+  width: 8px;
+}
+
+.graph-legend-color:nth-of-type(1) {
+  background-color: #4a7eae;
+}
+
+.graph-legend-color:nth-of-type(2) {
+  background-color: #5a9bd4;
+}
+
+.graph-legend-color:nth-of-type(3) {
+  background-color: #acc5e4;
+}
+
+.table-container {
+  background-color: #fff;
+}
+
+.table-container > .table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.table-container .table-title {
+  font-size: 18px;
+}
+
+.table-container .table-view-all {
+  font-size: 14px;
+}
+
+.table-container th {
+  padding: 2px;
+  background-color: #70798f;
+  color: #fff;
+  font-size: 16px;
+  text-align: center !important;
+}

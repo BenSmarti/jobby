@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#topHeader {
+  padding: 12px;
+  background-color: #2d3740;
+  color: #fff;
+}
+
+#profile > #unreadMessagesCount {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #e34a68;
+}
+
+#profile > i {
+  font-size: 28px;
+  color: #b3b6ba;
+}
+
+.select-container ::ng-deep * {
+  color: #999da1;
+}
+
+.select-container ::ng-deep .mat-input-underline {
+  background-color: #999da1;
+}
+
+.breadcrumb {
+  margin: 0;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+#content {
+  flex: 1;
+  background-color: #efefef;
+}
