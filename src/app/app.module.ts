@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './base.component';
 
 import { TranslationService } from './shared/_services/http/translation.service';
+import { LocaleService } from './shared/_services/locale.service';
 import { TranslationsResolve } from './shared/_resolves/translations.resolve';
 
 import { APP_ROUTES } from './shared/_routes/app.routes';
@@ -27,7 +28,7 @@ import { APP_ROUTES } from './shared/_routes/app.routes';
     EmployerModule,
     MatSelectModule, MatFormFieldModule
   ],
-  providers: [TranslationService, TranslationsResolve],
+  providers: [LocaleService, TranslationService, TranslationsResolve],
   bootstrap: [BaseComponent]
 })
 export class AppModule {}

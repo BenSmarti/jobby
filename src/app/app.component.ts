@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TranslationService } from './shared/_services/http/translation.service';
+import { LocaleService } from './shared/_services/locale.service';
 
 import { Translation } from './shared/_models/translation.model';
 
@@ -10,52 +11,47 @@ import { Translation } from './shared/_models/translation.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
 
   lang: string;
   translations: Translation[];
 
-  constructor(private route: ActivatedRoute, private renderer: Renderer2, private translationsService: TranslationService) {}
+  constructor(private route: ActivatedRoute, private renderer: Renderer2, private translationsService: TranslationService,
+              private localeService: LocaleService) {}
 
   ngOnInit() {
-    if (localStorage.getItem('lang')) {
-      this.lang = localStorage.getItem('lang');
-    } else {
-      this.lang = navigator.language.substr(0, 2);
-      localStorage.setItem('lang', this.lang);
-    }
+    this.lang = this.localeService.initLang();
 
     const direction = this.lang === 'he' ? 'rtl' : 'ltr';
     this.renderer.addClass(document.body, direction);
 
     this.translations = this.route.snapshot.data['translations'];
-
-    if (!localStorage.getItem('translations')) {
-      localStorage.setItem('translations', JSON.stringify(this.translations));
+    if (!this.localeService.getTranslations()) {
+      this.localeService.setTranslations(this.translations);
     }
   }
 
   changeLocale(): void {
     this.setBodyClass();
+    this.localeService.lang = this.lang;
 
     this.translationsService.getTranslations(this.lang).then(response => {
       this.translations = response;
-      localStorage.setItem('translations', JSON.stringify(this.translations));
+      this.localeService.setTranslations(this.translations);
     });
   }
 
   private setBodyClass(): void {
-    if (this.lang === 'he' && localStorage.getItem('lang') !== 'he') {
+    if (this.lang === 'he' && this.localeService.lang !== 'he') {
       this.renderer.addClass(document.body, 'rtl');
       this.renderer.removeClass(document.body, 'ltr');
     }
 
-    if (this.lang !== 'he' && localStorage.getItem('lang') === 'he') {
+    if (this.lang !== 'he' && this.localeService.lang === 'he') {
       this.renderer.addClass(document.body, 'ltr');
       this.renderer.removeClass(document.body, 'rtl');
     }
 
-    localStorage.setItem('lang', this.lang);
   }
 
   private t(key: string): string {
