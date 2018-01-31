@@ -1,3 +1,11 @@
 export abstract class TranslationsComponent {
-  constructor(protected translations = JSON.parse(localStorage.getItem('translations'))) {}
+  constructor(private translations = JSON.parse(localStorage.getItem('translations'))) {}
+
+  protected t(key: string): string {
+    if (!this.translations[key]) {
+      return '';
+    }
+
+    return this.translations[key];
+  }
 }
