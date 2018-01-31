@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://joby.ori-pc.com'
+  apiUrl: 'http://localhost:8000/api' //'http://joby.ori-pc.com'
 };
