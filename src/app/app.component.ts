@@ -10,7 +10,7 @@ import { Translation } from './shared/_models/translation.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  implements OnInit {
 
   lang: string;
   translations: Translation[];
@@ -56,5 +56,13 @@ export class AppComponent implements OnInit {
     }
 
     localStorage.setItem('lang', this.lang);
+  }
+
+  private t(key: string): string {
+    if (!this.translations[key]) {
+      return '';
+    }
+
+    return this.translations[key];
   }
 }

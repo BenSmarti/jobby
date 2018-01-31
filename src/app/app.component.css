@@ -5,6 +5,8 @@
 #pageTitle {
   position: relative;
   height: 400px;
+  display: flex;
+  align-items: center;
   background-image: url("/assets/img/page-title.jpg");
 }
 
@@ -14,4 +16,8 @@
   width: 100%;
   content: '';
   background-color: rgba(44, 55, 62, 0.8);
+}
+
+#pageTitleContent {
+
 }

@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" routerLink="">{{ translations['HOME_PAGE'] }}</a>
+              <a class="nav-link" routerLink="">{{ t('HOME_PAGE') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="">{{ translations['POST_A_JOB'] }}</a>
+              <a class="nav-link" routerLink="">{{ t('POST_A_JOB') }}</a>
             </li>
           </ul>
         </div>
@@ -36,7 +36,9 @@
       </div>
     </div>
   </div>
-  <div id="pageTitle"></div>
+  <div id="pageTitle">
+    <div id="pageTitleContent">{{ t('EASIEST_WAY_S') }}</div>
+  </div>
 </header>
 <div class="content">
   <router-outlet></router-outlet>
