@@ -14,11 +14,15 @@ import { LocaleService } from './shared/_services/locale.service';
 import { TranslationsResolve } from './shared/_resolves/translations.resolve';
 
 import { APP_ROUTES } from './shared/_routes/app.routes';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     BaseComponent,
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

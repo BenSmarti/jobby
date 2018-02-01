@@ -12,9 +12,6 @@
   align-items: center;
   height: 400px;
   background-image: url('/assets/img/page-title.jpg');
-  background-size: cover;
-  background-position: center;
-
 }
 
 #pageTitle::before {
@@ -51,36 +48,34 @@
   padding: 0 18px;
 }
 
-.ltr ::ng-deep .search-container-input:first-child {
-  border-radius: 30px 0 0 30px;
-  border-right: 1px solid #cdcdcd;
+.search-container-input > i {
+  color: #008def;
+  font-size: 18px;
 }
 
-.rtl ::ng-deep .search-container-input:first-child {
-  border-radius: 0 30px 30px 0;
-  border-left: 1px solid #cdcdcd;
+.search-container-input > input, .search-container-input > .mat-select {
+  height: 100%;
+  width: 250px;
+  border: none;
+  outline: none;
 }
 
-.ltr ::ng-deep .search-container button {
-  border-radius: 0 30px 30px 0;
+.search-container-input ::-webkit-input-placeholder, .search-container-input ::ng-deep .mat-select-placeholder {
+  color: #000;
 }
 
-.rtl ::ng-deep .search-container button {
-  border-radius: 30px 0 0 30px;
+.search-container ::ng-deep .mat-select-trigger {
+  height: 100%;
 }
 
-.ltr ::ng-deep .search-container-input ::ng-deep .mat-select-value {
-  padding-left: 8px;
-  text-align: left;
+.search-container-input ::ng-deep .mat-select-value {
+  vertical-align: middle;
 }
 
-.rtl ::ng-deep .search-container-input ::ng-deep .mat-select-value {
-  padding-right: 8px;
-  text-align: right;
+.search-container button {
+  width: 115px;
+  text-transform: uppercase;
+  background-color: #008def;
+  color: #fff;
+  border: none;
 }
-
-.content {
-  padding-top: 80px;
-  background-color: #f5f4f5;
-}
-
