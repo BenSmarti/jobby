@@ -14,7 +14,7 @@ import {LocaleService} from '../../shared/_services/locale.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent extends TranslationsComponent {
 
   user = new User();
 
@@ -23,14 +23,11 @@ export class LoginComponent  {
   isLoginFailed = false;
   isLoggingIn = false;
 
-<<<<<<< HEAD
+
   constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService,
               localeService: LocaleService) {
     super(localeService);
   }
-=======
-  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {}
->>>>>>> 2de776f4f6ada6c0e74529c69a0aca00724c21b0
 
   submit(isValid: boolean) {
     if (isValid) {
