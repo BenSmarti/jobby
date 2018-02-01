@@ -32,9 +32,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  changeLocale(): void {
+  changeLocale(lang: string): void {
+    this.lang = lang;
     this.setBodyClass();
-    this.localeService.setLang(this.lang);
+    this.localeService.setLang(lang);
     this.langDirection = this.lang === 'he' ? 'rtl' : 'ltr';
 
     this.translationsService.getTranslations(this.lang).then(response => {
@@ -54,13 +55,5 @@ export class AppComponent implements OnInit {
       this.renderer.removeClass(document.body, 'rtl');
     }
 
-  }
-
-  private t(key: string): string {
-    if (!this.translations[key]) {
-      return '';
-    }
-
-    return this.translations[key];
   }
 }

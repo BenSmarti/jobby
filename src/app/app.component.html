@@ -1,73 +1,7 @@
 <div [class]="langDirection">
-  <header>
-    <div id="menu" class="container">
-      <div class="row">
-        <nav class="navbar navbar-toggleable-md navbar-light col-md">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" routerLink="/">
-            <img class="logo" src="/assets/img/logo.svg">
-          </a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" routerLink="">{{ t('HOME_PAGE') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="">{{ t('POST_A_JOB') }}</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div id="headerActions" class="col-md-6">
-          <mat-form-field class="select-container mr-3 ml-3">
-            <img matPrefix [src]="'/assets/img/flags/' + lang + '.png'">
-            <mat-select (selectionChange)="changeLocale()" [(ngModel)]="lang">
-              <mat-option value="he">
-                <img src="/assets/img/flags/he.png">
-                <span>עברית</span>
-              </mat-option>
-              <mat-option value="en">
-                <img src="/assets/img/flags/en.png">
-                <span>English</span>
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <span class="mr-2 ml-2">
-            <i class="fa fa-user link ml-1"></i>
-            <span>{{ t('SIGN_IN') }} /</span>
-            <span>{{ t('REGISTER') }}</span>
-          </span>
-          <mat-chip class="ml-3 chip chip-blue toggle-effect">{{ t('POST_JOB') }}</mat-chip>
-        </div>
-      </div>
-    </div>
-    <div id="pageTitle">
-      <div id="pageTitleContent">
-        <h1 class="mb-3">{{ t('EASIEST_WAY_S') }}</h1>
-        <h2 class="mb-5">{{ t('WE_OFFER') }} 12000 {{ t('JOBS_VACATION_S') }}</h2>
-        <div class="search-container">
-          <div class="search-container-input">
-            <i class="fa fa-search"></i>
-            <input [placeholder]="t('JOB_KEYWORD')">
-          </div>
-          <div class="search-container-input d-flex align-items-center">
-            <i class="fa fa-globe"></i>
-            <mat-select [placeholder]="t('LOCATION')">
-              <mat-option>a</mat-option>
-              <mat-option>b</mat-option>
-              <mat-option>c</mat-option>
-            </mat-select>
-          </div>
-          <button type="submit">{{ t('SEARCH') }}</button>
-        </div>
-      </div>
-    </div>
-  </header>
+  <app-header [lang]="lang" (langChanged)="changeLocale($event)"></app-header>
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-
-
+  <app-footer></app-footer>
 </div>

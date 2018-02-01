@@ -1,0 +1,56 @@
+.wrapper {
+  padding-top: 30px;
+  background-color: #fff;
+}
+
+.job-main {
+  padding: 0 20px;
+}
+
+.job-title {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.job-employer {
+  font-size: 16px;
+}
+
+.job-details {
+  margin-bottom: 30px;
+}
+
+.job-detail {
+  font-size: 12px;
+}
+
+.job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.job-type {
+  padding: 2px 6px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.job-type.full-time {
+  background-color: #f1592a;
+}
+
+.job-type.part-time {
+  background-color: #00aeef;
+}
+
+.job-type.freelance {
+  background-color: #92278f;
+}
+
+.created {
+  color: #bebebe;
+  font-size: 12px;
+}
