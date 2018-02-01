@@ -10,14 +10,11 @@
   position: relative;
   display: flex;
   align-items: center;
-<<<<<<< HEAD
+  height: 400px;
   background-image: url("/assets/img/page-title.jpg");
   background-size: cover;
   background-position: center;
-=======
-  height: 400px;
-  background-image: url('/assets/img/page-title.jpg');
->>>>>>> 2de776f4f6ada6c0e74529c69a0aca00724c21b0
+
 }
 
 #pageTitle::before {
@@ -118,3 +115,4 @@
   padding-top: 80px;
   background-color: #f5f4f5;
 }
+
