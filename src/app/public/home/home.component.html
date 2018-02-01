@@ -1,1 +1,25 @@
-<p>{{ t('BROWSE_JOBS_BY_CATEGORY') }}</p>
+<section id="categories" class="container">
+  <p class="section-title mb-5">{{ t('BROWSE_JOBS_BY_CATEGORY') }}</p>
+  <div class="row">
+    <a class="col-12 col-sm-6 col-md-3 text-center category" *ngFor="let category of categories">
+      <img [src]="'/assets/img/categories/category' + category + '.png'" class="mb-3">
+      <p>{{ t('ACCOUNTING') }} / {{ t('FINANCE') }}</p>
+      <p class="category-count">(1298)</p>
+    </a>
+  </div>
+</section>
+<div id="addResumeBanner" class="container mt-5 mb-5">
+  <p class="h4">{{ t('ADD_YOUR_RESUME_S') }}</p>
+  <mat-chip class="chip-blue toggle-effect text-uppercase">{{ t('ADD_YOUR_RESUME') }}</mat-chip>
+</div>
+<section id="highlightJobs" class="container">
+  <p class="section-title mb-5">{{ t('JOB_YOU_MAY_S') }}</p>
+  <mat-chip-list class="mb-5">
+    <mat-chip class="fade-effect" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'hot' }" (click)="activeHighlightCategory = 'hot'">{{ t('HOT_JOBS') }}</mat-chip>
+    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'recent' }" (click)="activeHighlightCategory = 'recent'">{{ t('RECENT_JOBS') }}</mat-chip>
+    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'popular' }" (click)="activeHighlightCategory = 'popular'">{{ t('POPULAR_JOBS') }}</mat-chip>
+  </mat-chip-list>
+  <div class="row">
+    <app-job-view [job]="job"></app-job-view>
+  </div>
+</section>

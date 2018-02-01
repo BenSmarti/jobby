@@ -1,7 +1,24 @@
+@font-face {
+  font-family: 'Varela Round';
+  src: url('./assets/fonts/VarelaRound-Regular.ttf');
+}
+
+* {
+  font-family: 'Varela Round', sans-serif !important;
+}
+
+.fa {
+  font-family: FontAwesome !important;
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+p {
+  margin: 0;
 }
 
 textarea {
@@ -64,6 +81,63 @@ input[type=file] {
 .logo {
   height: 55px;
   width: auto;
+}
+
+.link {
+  color: #008def;
+}
+
+.section-title {
+  color: #505050;
+  font-size: 24px;
+  text-align: Center;
+  text-transform: uppercase;
+}
+
+.mat-chip {
+  background-color: #fff !important;
+  padding: 8px 20px 5px;
+  border-radius: 40px;
+  cursor: pointer !important;
+  transition: 0.5s;
+}
+
+.chip-blue {
+  color: #fff !important;
+  background-color: #008def !important;
+  border: 1px solid #008def;
+}
+
+.mat-chip.toggle-effect {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 1;
+  vertical-align: middle;
+}
+
+.mat-chip.toggle-effect:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: -1;
+}
+
+.mat-chip.toggle-effect:hover {
+  color: #008def !important;
+}
+
+.mat-chip.toggle-effect:hover::before {
+  right: 0;
+}
+
+.mat-chip.fade-effect:hover {
+  background-color: #008def !important;
+  color: #fff;
 }
 
 /*--- Material ---*/

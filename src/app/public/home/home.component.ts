@@ -11,6 +11,10 @@ import { LocaleService } from '../../shared/_services/locale.service';
 })
 export class HomeComponent extends TranslationsComponent implements OnInit {
 
+  categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  activeHighlightCategory = 'hot';
+
   constructor(localeService: LocaleService) {
     super(localeService);
   }

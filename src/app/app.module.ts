@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { MatChipsModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { PublicModule } from './public/public.module';
 import { EmployerModule } from './employer/employer.module';
 
@@ -26,7 +26,7 @@ import { APP_ROUTES } from './shared/_routes/app.routes';
     RouterModule.forRoot(APP_ROUTES),
     PublicModule,
     EmployerModule,
-    MatSelectModule, MatFormFieldModule
+    MatSelectModule, MatFormFieldModule, MatChipsModule
   ],
   providers: [LocaleService, TranslationService, TranslationsResolve],
   bootstrap: [BaseComponent]

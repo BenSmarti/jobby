@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatSelectModule } from '@angular/material';
+import {
+  MatCheckboxModule, MatChipsModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule,
+  MatSelectModule
+} from '@angular/material';
 
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -21,7 +24,7 @@ import { AppHttpService } from '../shared/_services/http/app-http.service';
     RouterModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatProgressSpinnerModule
+    MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatProgressSpinnerModule, MatChipsModule
   ],
   declarations: [HomeComponent, RegisterComponent, LoginComponent],
   providers: [UserSessionService, AppHttpService]

@@ -14,6 +14,7 @@ import { Translation } from './shared/_models/translation.model';
 export class AppComponent implements OnInit {
 
   lang: string;
+  langDirection: 'rtl' | 'ltr';
   translations: Translation[];
 
   constructor(private route: ActivatedRoute, private renderer: Renderer2, private translationsService: TranslationService,
@@ -22,8 +23,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.lang = this.localeService.initLang();
 
-    const direction = this.lang === 'he' ? 'rtl' : 'ltr';
-    this.renderer.addClass(document.body, direction);
+    this.langDirection = this.lang === 'he' ? 'rtl' : 'ltr';
+    this.renderer.addClass(document.body, this.langDirection);
 
     this.translations = this.route.snapshot.data['translations'];
     if (!this.localeService.getTranslations()) {
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
 
   changeLocale(): void {
     this.setBodyClass();
-    this.localeService.lang = this.lang;
+    this.localeService.setLang(this.lang);
+    this.langDirection = this.lang === 'he' ? 'rtl' : 'ltr';
 
     this.translationsService.getTranslations(this.lang).then(response => {
       this.translations = response;
