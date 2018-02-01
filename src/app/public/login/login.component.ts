@@ -27,6 +27,14 @@ export class LoginComponent extends TranslationsComponent {
     super(localeService);
   }
 
+  onDelay(event: any) {
+    event.srcElement.style.visibility = 'hidden';
+    setTimeout(() => {
+      event.srcElement.style.visibility = '';
+    }, 2250);
+    // console.log(event.srcElement.style);
+  }
+
   submit(isValid: boolean) {
     if (isValid) {
       this.isLoginFailed = false;
