@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="job-main">
+    <img src="/assets/img/jobs/1.png">
+    <p class="job-title">{{ job.title }}</p>
+    <p class="job-employer">{{ job.employer.name }}</p>
+    <ul class="mt-3 job-details">
+      <li class="mb-2 job-detail">
+        <i class="fa fa-map-signs mr-3"></i>
+        <span>{{ job.location }}</span>
+      </li>
+      <li class="mb-2 job-detail">
+        <i class="fa fa-briefcase mr-3"></i>
+        <span>{{ t(job.level) }}</span>
+      </li>
+      <li class="mb-2 job-detail">
+        <i class="fa fa-dollar mr-3"></i>
+        <span>${{ job.minSalary }} - ${{ job.maxSalary }}</span>
+      </li>
+    </ul>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="job-footer">
+    <button [class]="'btn job-type ' + getTypeClass()">{{ t(job.type) }}</button>
+    <span class="created">{{ job.created }}</span>
+  </div>
+</div>
