@@ -1,57 +1,94 @@
-<!--<div class="row no-gutters">-->
-<!--<form class="col-md-4 offset-md-4 card" #f="ngForm" (ngSubmit)="submit(f.valid)">-->
-<!--<div class="card-header">-->
-<!--<p class="card-title">{{ t('LOGIN') }}</p>-->
-<!--</div>-->
-<!--<div class="card-block">-->
-<!--<mat-form-field class="w-100">-->
-<!--<input matInput type="text" name="username" placeholder="{{ t('USER_NAME') }}" [(ngModel)]="user.username"-->
-<!--#username="ngModel" required>-->
-<!--<i matSuffix class="fa fa-user"></i>-->
-<!--<mat-error *ngIf="username.errors && f.submitted">This field is required.</mat-error>-->
-<!--</mat-form-field>-->
-<!--<mat-form-field class="w-100">-->
-<!--<input matInput type="password" name="password" placeholder="{{ t('PASS') }}" [(ngModel)]="user.password"-->
-<!--#password="ngModel" required>-->
-<!--<i matSuffix class="fa fa-lock"></i>-->
-<!--<mat-error *ngIf="password.errors && password.errors.required && f.submitted">{{ t('REQUIRED') }}.</mat-error>-->
-<!--<mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">{{ t('REQUIRED') }}.</mat-error>-->
-<!--</mat-form-field>-->
-<!--<a class="d-block mb-3" routerLink="/forgot">Forgot Password</a>-->
-<!--<mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" color="primary">{{ t('REMEMBER') }}</mat-checkbox>-->
-<!--</div>-->
-<!--<div class="card-footer">-->
-<!--<mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>-->
-<!--<p class="alert alert-danger" *ngIf="isLoginFailed">-->
-<!--<i class="fa fa-exclamation-circle mr-1"></i>-->
-<!--<span>Login error, please try again or contact.</span>-->
-<!--</p>-->
-<!--<button class="btn btn-primary">{{ t('LOGIN') }}</button>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
+<div class="row no-gutters">
+  <form class="col-md-4 offset-md-4 card" #f="ngForm" (ngSubmit)="submit(f.valid)">
+    <div class="card-header">
+      <p class="card-title">{{ t('LOGIN') }}</p>
+    </div>
+    <div class="card-block">
+      <mat-form-field class="w-100">
+        <input matInput
+               type="text"
+               name="username"
+               placeholder="{{ t('USER_NAME') }}"
+               [(ngModel)]="user.username"
+               #username="ngModel"
+               required>
+        <i matSuffix class="fa fa-user"></i>
+        <mat-error *ngIf="username.errors && f.submitted">This field is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input
+          matInput
+          type="password"
+          name="password"
+          placeholder="{{ t('PASS') }}"
+          [(ngModel)]="user.password"
+          #password="ngModel"
+          required>
+        <i matSuffix class="fa fa-lock"></i>
+        <mat-error *ngIf="password.errors && password.errors.required && f.submitted">{{ t('REQUIRED') }}.</mat-error>
+        <mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">{{ t('REQUIRED') }}.</mat-error>
+      </mat-form-field>
+      <a
+        class="d-block mb-3"
+        routerLink="/forgot">Forgot Password</a>
+      <mat-checkbox
+        [(ngModel)]="rememberMe"
+        name="rememberMe" color="primary">{{ t('REMEMBER') }}
+      </mat-checkbox>
+    </div>
+    <div class="card-footer">
+      <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
+      <p class="alert alert-danger" *ngIf="isLoginFailed">
+        <i class="fa fa-exclamation-circle mr-1"></i>
+        <span>Login error, please try again or contact.</span>
+      </p>
+      <button class="btn btn-primary" *ngIf="!isLoginFailed">{{ t('LOGIN') }}</button>
+    </div>
+  </form>
+</div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-8 <!--col-lg-4 col-lg-offset-4-->">
       <div class="user-account">
         <div class="account-content">
-          <form class="tr-form">
+          <form class="tr-form" #f="ngForm" (ngSubmit)="submit(f.valid)">
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="{{ t('USER_NAME') }}">
+              <input
+                type="text"
+                name="username"
+                class="form-control"
+                placeholder="{{ username.errors && username.errors.required && f.submitted ? t('REQUIRED') : t('USER_NAME') }}"
+                [(ngModel)]="user.username"
+                #username="ngModel"
+                required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="{{ t('PASS') }}">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="{{ password.errors && password.errors.required && f.submitted ? t('REQUIRED') : t('PASS') }}"
+                [(ngModel)]="user.password"
+                #password="ngModel"
+                required>
             </div>
             <div class="user-option">
-              <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" color="primary">{{ t('REMEMBER') }}
+              <mat-checkbox [(ngModel)]="rememberMe"
+                            name="rememberMe"
+                            color="primary">{{ t('REMEMBER') }}
               </mat-checkbox>
-              <a [ngClass]="{rtl: t('PASS') === 'סיסמא'}" mat-button routerLink=".">{{ t('FORGOT_PASS') }}</a>
+              <a [ngClass]="{rtl: t('PASS') === 'סיסמא'}" mat-button routerLink="/forgot">{{ t('FORGOT_PASS') }}</a>
             </div>
-            <button type="submit" class="btn btn-primary">{{ t('LOGIN') }}</button>
+              <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
+              <p class="alert alert-danger" *ngIf="isLoginFailed">
+                <i class="fa fa-exclamation-circle mr-1"></i>
+                <span>Login error, please try again or contact.</span>
+              </p>
+              <button type="submit" class="btn btn-primary" (click)="onDelay($event)">{{ t('SIGN_IN') }}</button>
           </form>
           <div class="new-user text-center">
-            <span><a id="middle" href="signup.html">{{ t('CREATE_ACC') }}</a> </span>
+            <span><a id="middle" href="#">{{ t('CREATE_ACC') }}</a> </span>
           </div>
         </div>
       </div>
