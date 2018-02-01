@@ -7,7 +7,18 @@ div {
 }
 
 a {
+  margin-top: 2px;
   text-decoration: none;
+  float: right;
+}
+
+a.rtl {
+  float: left;
+}
+
+a#middle {
+  margin: 0px;
+  float: none;
 }
 
 .section-padding {
@@ -50,15 +61,15 @@ form {
   border-color: #f26522;
 }
 
-@media (min-width: 992px) {
-  .col-md-offset-4 {
-    margin-left: 33.33333333%;
-  }
+/*@media (min-width: 1200px) {*/
+  /*.col-md-offset-4 {*/
+    /*margin-left: 33.33333333%;*/
+  /*}*/
 
-  .col-md-4 {
-    width: 33.33333333%;
-  }
-}
+  /*.col-md-4 {*/
+    /*width: 33.33333333%;*/
+  /*}*/
+/*}*/
 
 .user-option {
   overflow: hidden;
@@ -129,3 +140,7 @@ form {
 .pull-right {
   float: right;
 }
+
+
+
+

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {TranslationsComponent} from '../../shared/translations/translations.component';
@@ -19,10 +19,8 @@ export class LoginComponent extends TranslationsComponent {
   user = new User();
 
   rememberMe: boolean;
-
   isLoginFailed = false;
   isLoggingIn = false;
-
 
   constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService,
               localeService: LocaleService) {
