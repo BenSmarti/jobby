@@ -7,24 +7,16 @@ import { UserSessionService } from '../user-session.service';
 import { Job } from '../../_models/job.model';
 
 @Injectable()
-export class JobService extends BaseHttpService {
+export class EmployerService extends BaseHttpService {
 
-  readonly endPoint = this.apiUrl + '/job';
+  readonly endPoint = this.apiUrl + '/employer';
 
   constructor(private http: HttpClient, userSession: UserSessionService) {
     super(userSession);
   }
 
   getJobs(): Promise<Job[]> {
-    return this.http.get(this.endPoint)
-    .toPromise()
-    .then(response => response as Job[]);
-  }
-
-  getEmployerJobs(type: string): Promise<Job[]> {
-    const options = { headers: this.getTokenHeaders(), params: { type: type } };
-
-    return this.http.get(this.endPoint + '/byEmployer', options)
+    return this.http.get(this.endPoint + '/candidate', { headers: this.getTokenHeaders() })
     .toPromise()
     .then(response => response as Job[]);
   }

@@ -1,6 +1,6 @@
 <div id="menu" class="container">
-  <div class="row">
-    <nav class="navbar navbar-toggleable-md navbar-light col-md">
+  <div class="d-flex justify-content-between">
+    <nav class="navbar navbar-toggleable-md navbar-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,16 +9,16 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="">{{ t('HOME_PAGE') }}</a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="">{{ t('POST_A_JOB') }}</a>
+            <a class="nav-link" routerLink="">{{ t('HOME') }}</a>
+          </li>
+          <li class="nav-item" *ngFor="let link of activeMenuLinks">
+            <a class="nav-link" [routerLink]="link">{{ t(link | uppercase) }}</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div id="headerActions" class="col-md-6">
+    <div id="headerActions">
       <mat-form-field class="select-container mr-3 ml-3">
         <img matPrefix [src]="'/assets/img/flags/' + lang + '.png'">
         <mat-select (selectionChange)="changeLang()" [(ngModel)]="lang">
@@ -32,11 +32,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <span class="mr-2 ml-2">
-            <i class="fa fa-user link ml-1"></i>
-            <span>{{ t('SIGN_IN') }} /</span>
-            <span>{{ t('REGISTER') }}</span>
-          </span>
+      <span class="mr-2 ml-2" *ngIf="!user">
+        <i class="fa fa-user link ml-1"></i>
+        <span (click)="employerLogin()">{{ t('SIGN_IN') }} /</span>
+        <span (click)="seekerLogin()">{{ t('REGISTER') }}</span>
+      </span>
+      <span class="mr-2 ml-2" *ngIf="user">
+        <span>{{ user.username}}</span>
+        <span (click)="logout()">{{ t('SIGN_OUT') }}</span>
+      </span>
       <mat-chip class="ml-3 chip-blue toggle-effect">{{ t('POST_JOB') }}</mat-chip>
     </div>
   </div>

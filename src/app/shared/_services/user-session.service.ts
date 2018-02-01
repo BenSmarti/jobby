@@ -8,7 +8,7 @@ export class UserSessionService {
 
   loggedInSubject: Subject<boolean> = new Subject();
 
-  getUser(): void {
+  getUser(): any {
     if (sessionStorage.getItem('user') !== null) {
       return JSON.parse(sessionStorage.getItem('user'));
     }
@@ -18,6 +18,11 @@ export class UserSessionService {
     }
 
     return null;
+  }
+
+  getToken(): string {
+    const user = this.getUser();
+    return (user && user.token) ? user.token : '';
   }
 
   isLoggedIn(): boolean {

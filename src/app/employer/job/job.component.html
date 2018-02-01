@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 tab" [ngClass]="{ 'active': activeTab === tab }" (click)="setTab(tab)"
+     *ngFor="let tab of tabs">{{ t(tab.label) }}</div>
+  </div>
+  <div class="mt-5 mb-4 data-table">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th *ngFor="let header of headers" (click)="sort(header.column)">
+          <span>{{ t(header.label) }}</span>
+          <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
+        </th>
+        <th>{{ t('OPTIONS') }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="!isSearching">
+        <tr *ngFor="let item of paginatedItems">
+          <td class="job-details">
+            <p>
+              <span class="bold blue">{{ item.job.title }}</span>
+              <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'active-post' : 'inactive-post')">{{ item.job.isActive ? t('ACTIVE_POST') : t('INACTIVE_POST') }}</span>
+            </p>
+            <p class="f-12 grey">
+              <span>{{ item.job.location }}</span>
+              <span class="mr-2">{{ t(item.job.type) }}</span>
+              <span class="mr-2">
+                <i class="fa fa-clock-o"></i>
+                <span>{{ item.job.created }}</span>
+              </span>
+            </p>
+          </td>
+          <td class="seeker-counts">
+            <p class="h5 bold blue">{{ item.seekerCount }}</p>
+            <div class="d-flex justify-content-between grey viewed-seeker-counts">
+              <span>
+                <span>{{ t('VIEWED') }}:</span>
+                <span>{{ item.seekerCount - item.viewedSeekerCount }}</span>
+              </span>
+              <span>
+                <span>{{ t('NOT_VIEWED') }}:</span>
+                <span>{{ item.viewedSeekerCount }}</span>
+              </span>
+            </div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngIf="isSearching">
+        <td colspan="5">
+          <mat-spinner class="m-auto"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="!isSearching && items.length === 0">
+        <td colspan="3">{{ t('JOB_TABLE_EMPTY') }}.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [data]="paginationData" (isLinkClicked)="paginateItems()" *ngIf="items.length > 0"></app-pagination>
+</div>
+

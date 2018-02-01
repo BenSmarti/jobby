@@ -17,6 +17,11 @@
   margin-left: 0;
 }
 
+.rtl .ml-2 {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
 .rtl .mr-5 {
   margin-right: 0;
   margin-left: 3rem;
