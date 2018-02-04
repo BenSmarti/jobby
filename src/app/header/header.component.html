@@ -32,15 +32,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <span class="mr-2 ml-2" *ngIf="!user">
-        <i class="fa fa-user link ml-1"></i>
-        <span (click)="employerLogin()" routerLink="/login">{{ t('SIGN_IN') }} /</span>
-        <span (click)="seekerLogin()" routerLink="/register">{{ t('REGISTER') }}</span>
+      <span class="mx-2" *ngIf="!user">
+        <i class="fa fa-user ml-1 link"></i>
+        <a routerLink="/login" class="black">{{ t('SIGN_IN') }} /</a>
+        <a routerLink="/register" class="black">{{ t('REGISTER') }}</a>
       </span>
-      <span class="mr-2 ml-2" *ngIf="user">
-        <span>{{ user.username}}</span>
-        <span (click)="logout()">{{ t('SIGN_OUT') }}</span>
-      </span>
+      <span class="mx-2" *ngIf="user" (click)="logout()">{{ user.username}}</span>
       <mat-chip class="ml-3 chip-blue toggle-effect" [routerLink]="['/jobs', 'post']">{{ t('POST_JOB') }}</mat-chip>
     </div>
   </div>

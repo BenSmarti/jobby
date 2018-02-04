@@ -21,7 +21,7 @@ a {
   cursor: pointer;
 }
 
-a:hover {
+a:hover, a:active, a:focus, a:visited {
   text-decoration: none;
 }
 
@@ -60,6 +60,10 @@ input[type=file] {
 
 .f-16 {
   font-size: 16px;
+}
+
+.f-18 {
+  font-size: 18px;
 }
 
 .pointer {
@@ -139,17 +143,35 @@ input[type=file] {
   text-transform: uppercase;
 }
 
-.mat-chip {
+.mat-chip, .btn-submit {
+  justify-content: center;
   background-color: #fff !important;
   padding: 8px 20px 5px;
   border-radius: 40px;
   cursor: pointer !important;
 }
 
-.chip-blue {
+.chip-blue, .btn-submit {
   color: #fff !important;
   background-color: #008def !important;
   border: 1px solid #008def;
+}
+
+.black {
+  color: #000;
+}
+
+.grey-link {
+  color: #b7b7b7;
+  transition: 0.5s;
+}
+
+.grey-link:hover {
+  color: #008def;
+}
+
+.rounded-border {
+  border-radius: 40px;
 }
 
 /*--- Data Form ---*/
