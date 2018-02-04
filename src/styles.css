@@ -38,6 +38,22 @@ input[type=file] {
   direction: ltr;
 }
 
+.f-10 {
+  font-size: 10px;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-16 {
+  font-size: 16px;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -85,6 +101,14 @@ input[type=file] {
 
 .link {
   color: #008def;
+}
+
+.blue {
+  color: #4184ed;
+}
+
+.grey {
+  color: #b7b7b7;
 }
 
 .section-title {

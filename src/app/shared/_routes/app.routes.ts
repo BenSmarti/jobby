@@ -11,7 +11,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '', component: AppComponent, resolve: { translations: TranslationsResolve }, children: [
       { path: '', children: PUBLIC_ROUTES },
-      { path: 'employer', children: EMPLOYER_ROUTES },
+      { path: '', children: EMPLOYER_ROUTES },
     ]
   }
 ];
