@@ -13,7 +13,7 @@ import { EmployerService } from '../../shared/_services/http/employer.service';
 })
 export class CandidatesComponent extends DataTableComponent implements OnInit {
 
-  constructor(route: ActivatedRoute, localeService: LocaleService, private employerService: EmployerService) {
+  constructor(route: ActivatedRoute, localeService: LocaleService) {
     super(route, localeService);
   }
 
