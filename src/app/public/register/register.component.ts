@@ -20,7 +20,7 @@ import {FormControl, Validators} from '@angular/forms';
 export class RegisterComponent extends TranslationsComponent {
 
   user = new User();
-  employer = new Employer();
+  employer = new Employer;
 
   logo: File;
   logoPreview: string;
@@ -58,7 +58,7 @@ export class RegisterComponent extends TranslationsComponent {
 
   submit(isValid: boolean): void {
     if (isValid) {
-      this.appHttp.register(this.employer);
+      // this.appHttp.register(this.employer);
     }
   }
 }
