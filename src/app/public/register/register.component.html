@@ -1,51 +1,314 @@
-<form #f="ngForm" (ngSubmit)="submit(f.valid)">
-  <div class="row">
-    <div class="col-lg-3">
-      <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="שם מעסיק" [(ngModel)]="employer.name" name="name" #name="ngModel" required>
-        <mat-error *ngIf="name.errors && f.submitted">יש להזין שם מעסיק.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="ח.פ" [(ngModel)]="employer.businessNumber" name="businessNumber" #businessNumber="ngModel" required>
-        <mat-error *ngIf="businessNumber.errors && f.submitted">יש להזין ח.פ.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="email" placeholder="כתובת אימייל" [(ngModel)]="employer.email" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
-        <mat-error *ngIf="email.errors && email.errors.required && f.submitted">יש להזין כתובת אימייל.</mat-error>
-        <mat-error *ngIf="email.errors && email.errors.pattern && f.submitted">כתובת אימייל לא תקינה.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="מס' טלפון" [(ngModel)]="employer.phone" name="phone" #phone="ngModel" required>
-        <mat-error *ngIf="phone.errors && phone.errors.required && f.submitted">יש להזין טלפון.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="כתובת" [(ngModel)]="employer.address" name="businessNumber">
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="text" placeholder="כתובת אתר אינטרנט" [(ngModel)]="employer.website" name="website">
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput type="password" placeholder="סיסמה" [(ngModel)]="employer.password" name="password" #password="ngModel" required>
-        <mat-error *ngIf="password.errors && f.submitted">יש להזין סיסמה.</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-lg-6">
-      <mat-form-field class="w-100 textarea">
-        <textarea matInput placeholder="על החברה" name="description" [(ngModel)]="employer.description"></textarea>
-      </mat-form-field>
-    </div>
-    <div class="d-flex justify-content-between flex-column col-lg-3">
-      <div>
-        <p class="h5">לוגו החברה</p>
-        <label class="image-upload">
-          <i class="fa fa-trash-o remove-image" (click)="removeLogo()" *ngIf="logoPreview"></i>
-          <img [src]="logoPreview ? logoPreview : '/assets/img/placeholder-image.jpg'" class="logo">
-          <input type="file" (change)="setLogo($event.target.files[0])">
-        </label>
+<!--<form #f="ngForm" (ngSubmit)="submit(f.valid)">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-3">-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="text" placeholder="שם מעסיק" [(ngModel)]="employer.name" name="name" #name="ngModel" required>-->
+<!--<mat-error *ngIf="name.errors && f.submitted">יש להזין שם מעסיק.</mat-error>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="text" placeholder="ח.פ" [(ngModel)]="employer.businessNumber" name="businessNumber" #businessNumber="ngModel" required>-->
+<!--<mat-error *ngIf="businessNumber.errors && f.submitted">יש להזין ח.פ.</mat-error>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="email" placeholder="כתובת אימייל" [(ngModel)]="employer.email" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>-->
+<!--<mat-error *ngIf="email.errors && email.errors.required && f.submitted">יש להזין כתובת אימייל.</mat-error>-->
+<!--<mat-error *ngIf="email.errors && email.errors.pattern && f.submitted">כתובת אימייל לא תקינה.</mat-error>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="text" placeholder="מס' טלפון" [(ngModel)]="employer.phone" name="phone" #phone="ngModel" required>-->
+<!--<mat-error *ngIf="phone.errors && phone.errors.required && f.submitted">יש להזין טלפון.</mat-error>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="text" placeholder="כתובת" [(ngModel)]="employer.address" name="businessNumber">-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="text" placeholder="כתובת אתר אינטרנט" [(ngModel)]="employer.website" name="website">-->
+<!--</mat-form-field>-->
+<!--<mat-form-field class="w-100">-->
+<!--<input matInput type="password" placeholder="סיסמה" [(ngModel)]="employer.password" name="password" #password="ngModel" required>-->
+<!--<mat-error *ngIf="password.errors && f.submitted">יש להזין סיסמה.</mat-error>-->
+<!--</mat-form-field>-->
+<!--</div>-->
+<!--<div class="col-lg-6">-->
+<!--<mat-form-field class="w-100 textarea">-->
+<!--<textarea matInput placeholder="על החברה" name="description" [(ngModel)]="employer.description"></textarea>-->
+<!--</mat-form-field>-->
+<!--</div>-->
+<!--<div class="d-flex justify-content-between flex-column col-lg-3">-->
+<!--<div>-->
+<!--<p class="h5">לוגו החברה</p>-->
+<!--<label class="image-upload">-->
+<!--<i class="fa fa-trash-o remove-image" (click)="removeLogo()" *ngIf="logoPreview"></i>-->
+<!--<img [src]="logoPreview ? logoPreview : '/assets/img/placeholder-image.jpg'" class="logo">-->
+<!--<input type="file" (change)="setLogo($event.target.files[0])">-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="text-center">-->
+<!--<button type="submit" class="btn btn-primary">הירשם</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
+
+<div class="tr-account section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="user-account">
+
+        <mat-tab-group class="demo-tab-group">
+
+          <mat-tab label="Job Seeker">
+            <div class="demo-tab-content">
+              <!-- Tab panes -->
+              <div role="tabpanel" class="tab-pane active" id="seeker">
+                <div class="account-content">
+                  <form class="tr-form" #f="ngForm" (ngSubmit)="submit(f.valid)">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="fullname"
+                        class="form-control"
+                        placeholder="{{ t('FULL_NAME') }}"
+                        [(ngModel)]="employer.fullname"
+                        #username="ngModel"
+                        required>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="username"
+                        class="form-control"
+                        placeholder="{{ t('USER_NAME') }}"
+                        [(ngModel)]="employer.username"
+                        #username="ngModel"
+                        required>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="email"
+                        class="form-control"
+                        placeholder="{{ t('EMAIL') }}"
+                        [(ngModel)]="employer.email"
+                        #username="ngModel"
+                        required>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="{{ password.errors && password.errors.required && f.submitted ? t('REQUIRED') : t('PASS') }}"
+                        [(ngModel)]="employer.password"
+                        #password="ngModel"
+                        required>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="{{ t('CONFIRM') }}"
+                        [(ngModel)]="employer.password"
+                        #password="ngModel"
+                        required>
+                    </div>
+                    <div class="dropdown tr-change-dropdown">
+                      <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Gender</span><i
+                        class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu tr-change">
+                        <li><a href="#">Male</a></li>
+                        <li><a href="#">Female</a></li>
+                      </ul>
+                    </div><!-- /.category-change -->
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                  </form>
+                  <div class="new-user text-center">
+                    <span>Already Registered? <a href="signin.html">Sign in</a> </span>
+                  </div>
+                </div>
+              </div><!-- /Tab panes -->
+            </div>
+          </mat-tab>
+          <mat-tab label="Employers">
+            <div class="demo-tab-content">
+              <!-- Tab panes -->
+              <div role="tabpanel" class="tab-pane" id="employers">
+                <div class="account-content">
+                  <form action="#" class="tr-form">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Full Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="your Email">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Confirm Password">
+                    </div>
+
+                    <!--<mat-form-field>-->
+                      <!--<mat-select placeholder="Favorite animal" [formControl]="animalControl" required>-->
+                        <!--<mat-option>&#45;&#45;</mat-option>-->
+                        <!--<mat-option *ngFor="let animal of animals" [value]="animal">-->
+                          <!--{{animal.name}}-->
+                        <!--</mat-option>-->
+                      <!--</mat-select>-->
+                      <!--<mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>-->
+                      <!--<mat-hint>{{animalControl.value?.sound}}</mat-hint>-->
+                    <!--</mat-form-field>-->
+
+                    <div class="dropdown tr-change-dropdown">
+                      <a data-toggle="dropdown" href="#" aria-expanded="false"><span
+                        class="change-text">Industry Type</span><i class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu tr-change">
+                        <li><a href="#">Industry 1</a></li>
+                        <li><a href="#">Industry 2</a></li>
+                        <li><a href="#">Industry 3</a></li>
+                      </ul>
+                    </div><!-- /.category-change -->
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                  </form>
+                  <div class="new-user text-center">
+                    <span>Already Registered? <a href="signin.html">Sign in</a> </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+        </mat-tab-group>
+
+        <!-- Nav tabs -->
+        <!--<ul class="nav nav-tabs  nav-justified" role="tablist">-->
+        <!--<li role="presentation" class="active">-->
+        <!--<a href="#seeker"-->
+        <!--aria-controls="seeker"-->
+        <!--role="tab"-->
+        <!--data-toggle="tab">Job Seeker</a>-->
+        <!--</li>-->
+        <!--<li role="presentation">-->
+        <!--<a href="#employers"-->
+        <!--aria-controls="employers"-->
+        <!--role="tab"-->
+        <!--data-toggle="tab">Employers</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+
+        <!-- Tab panes -->
+        <!--<div class="tab-content">-->
+        <!--<div role="tabpanel" class="tab-pane active" id="seeker">-->
+        <!--<div class="account-content">-->
+        <!--<form class="tr-form" #f="ngForm" (ngSubmit)="submit(f.valid)">-->
+        <!--<div class="form-group">-->
+        <!--<input-->
+        <!--type="text"-->
+        <!--name="fullname"-->
+        <!--class="form-control"-->
+        <!--placeholder="{{ t('FULL_NAME') }}"-->
+        <!--[(ngModel)]="employer.fullname"-->
+        <!--#username="ngModel"-->
+        <!--required>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input-->
+        <!--type="text"-->
+        <!--name="username"-->
+        <!--class="form-control"-->
+        <!--placeholder="{{ t('USER_NAME') }}"-->
+        <!--[(ngModel)]="employer.username"-->
+        <!--#username="ngModel"-->
+        <!--required>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input-->
+        <!--type="text"-->
+        <!--name="email"-->
+        <!--class="form-control"-->
+        <!--placeholder="{{ t('EMAIL') }}"-->
+        <!--[(ngModel)]="employer.email"-->
+        <!--#username="ngModel"-->
+        <!--required>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input-->
+        <!--type="password"-->
+        <!--name="password"-->
+        <!--class="form-control"-->
+        <!--placeholder="{{ password.errors && password.errors.required && f.submitted ? t('REQUIRED') : t('PASS') }}"-->
+        <!--[(ngModel)]="employer.password"-->
+        <!--#password="ngModel"-->
+        <!--required>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input-->
+        <!--type="password"-->
+        <!--name="password"-->
+        <!--class="form-control"-->
+        <!--placeholder="{{ t('CONFIRM') }}"-->
+        <!--[(ngModel)]="employer.password"-->
+        <!--#password="ngModel"-->
+        <!--required>-->
+        <!--</div>-->
+        <!--<div class="dropdown tr-change-dropdown">-->
+        <!--<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">Gender</span><i-->
+        <!--class="fa fa-angle-down"></i></a>-->
+        <!--<ul class="dropdown-menu tr-change">-->
+        <!--<li><a href="#">Male</a></li>-->
+        <!--<li><a href="#">Female</a></li>-->
+        <!--</ul>-->
+        <!--</div>&lt;!&ndash; /.category-change &ndash;&gt;-->
+        <!--<button type="submit" class="btn btn-primary">Sign Up</button>-->
+        <!--</form>-->
+        <!--<div class="new-user text-center">-->
+        <!--<span>Already Registered? <a href="signin.html">Sign in</a> </span>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div role="tabpanel" class="tab-pane" id="employers">-->
+        <!--<div class="account-content">-->
+        <!--<form action="#" class="tr-form">-->
+        <!--<div class="form-group">-->
+        <!--<input type="text" class="form-control" placeholder="Your Full Name">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="text" class="form-control" placeholder="Username">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="email" class="form-control" placeholder="your Email">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="password" class="form-control" placeholder="Password">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="password" class="form-control" placeholder="Confirm Password">-->
+        <!--</div>-->
+        <!--<div class="dropdown tr-change-dropdown">-->
+        <!--<a data-toggle="dropdown" href="#" aria-expanded="false"><span-->
+        <!--class="change-text">Industry Type</span><i class="fa fa-angle-down"></i></a>-->
+        <!--<ul class="dropdown-menu tr-change">-->
+        <!--<li><a href="#">Industry 1</a></li>-->
+        <!--<li><a href="#">Industry 2</a></li>-->
+        <!--<li><a href="#">Industry 3</a></li>-->
+        <!--</ul>-->
+        <!--</div>&lt;!&ndash; /.category-change &ndash;&gt;-->
+        <!--<button type="submit" class="btn btn-primary">Sign Up</button>-->
+        <!--</form>-->
+        <!--<div class="new-user text-center">-->
+        <!--<span>Already Registered? <a href="signin.html">Sign in</a> </span>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</mat-tab-group>-->
       </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">הירשם</button>
-      </div>
-    </div>
-  </div>
-</form>
+    </div><!-- /.row -->
+  </div><!-- container -->
+</div><!-- /.tr-account-->

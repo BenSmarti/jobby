@@ -1,0 +1,48 @@
+.section-padding {
+  padding: 80px 0;
+  background-color: #f5f4f5;
+}
+
+#loginForm {
+  width: 360px;
+  padding: 35px 30px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+input.form-control {
+  height: 45px;
+}
+
+#usernameInputContainer {
+  margin-bottom: 20px;
+}
+
+::ng-deep .mat-checkbox-layout {
+  margin: 0;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-radius: 10px !important;
+  border-color: #cdcddc;
+}
+
+::ng-deep .mat-checkbox-background {
+  border-radius: 10px !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background-color: #008def;
+}
+
+.chip-button {
+  padding: 11.5px 0 !important;
+  font-size: 14px;
+}
+
+@media (max-width: 360px) {
+  #loginForm {
+    width: 320px;
+    padding: 35px 0;
+  }
+}

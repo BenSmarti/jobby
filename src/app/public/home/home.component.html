@@ -15,9 +15,15 @@
 <section id="highlightJobs" class="container">
   <p class="section-title mb-5">{{ t('JOB_YOU_MAY_S') }}</p>
   <mat-chip-list class="mb-5">
-    <mat-chip class="fade-effect" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'hot' }" (click)="activeHighlightCategory = 'hot'">{{ t('HOT_JOBS') }}</mat-chip>
-    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'recent' }" (click)="activeHighlightCategory = 'recent'">{{ t('RECENT_JOBS') }}</mat-chip>
-    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'popular' }" (click)="activeHighlightCategory = 'popular'">{{ t('POPULAR_JOBS') }}</mat-chip>
+    <mat-chip class="fade-effect" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'hot' }"
+              (click)="activeHighlightCategory = 'hot'">{{ t('HOT_JOBS') }}
+    </mat-chip>
+    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'recent' }"
+              (click)="activeHighlightCategory = 'recent'">{{ t('RECENT_JOBS') }}
+    </mat-chip>
+    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'popular' }"
+              (click)="activeHighlightCategory = 'popular'">{{ t('POPULAR_JOBS') }}
+    </mat-chip>
   </mat-chip-list>
   <div class="row mt-5">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let job of jobs">
@@ -32,19 +38,22 @@
         <img src="/assets/img/home/step-1.png">
         <p class="mt-3 step-number">01 {{ t('STEPS') }}</p>
         <p class="mb-4 step-title">{{ t('REGISTER_AN_ACCOUNT') }}</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry.</p>
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <img src="/assets/img/home/step-2.png">
         <p class="mt-3 step-number">02 {{ t('STEPS') }}</p>
         <p class="mb-4 step-title">{{ t('SEARCH_YOUR_DESIRED_JOB') }}</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry.</p>
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <img src="/assets/img/home/step-3.png">
         <p class="mt-3 step-number">03 {{ t('STEPS') }}</p>
         <p class="mb-4 step-title">{{ t('SEND_YOUR RESUME_S') }}</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry.</p>
       </div>
     </div>
   </div>

@@ -1,15 +1,10 @@
 @font-face {
-  font-family: 'Heebo';
-  src: url('./assets/fonts/Heebo-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'HeeboBold';
-  src: url('./assets/fonts/Heebo-Medium.ttf');
+  font-family: 'Varela Round';
+  src: url('./assets/fonts/VarelaRound-Regular.ttf');
 }
 
 * {
-  font-family: 'Heebo', sans-serif !important;
+  font-family: 'Varela Round', sans-serif !important;
 }
 
 .fa {
@@ -96,7 +91,7 @@ input[type=file] {
 }
 
 .bold {
-  font-family: HeeboBold !important;
+  font-weight: bold;
 }
 
 .underline {
@@ -104,7 +99,7 @@ input[type=file] {
 }
 
 .card-title {
-  font-family: HeeboBold !important;
+  font-weight: bold;
 }
 
 .btn {
@@ -162,27 +157,6 @@ input[type=file] {
   border: 1px solid #008def;
 }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  width: 300px;
-  padding: 4px 8px 4px 4px;
-  border: 1px solid #d5d5d5;
-  border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px #d5d5d5;
-}
-
-.search-container > input {
-  width: 90%;
-  border: none;
-  outline: 0;
-}
-
-.search-container > i {
-  vertical-align: middle;
-  color: #d5d5d5;
-}
-
 .black {
   color: #000;
 }
@@ -203,7 +177,7 @@ input[type=file] {
 /*--- Data Form ---*/
 
 .data-form label {
-  font-family: HeeboBold;
+  font-weight: bold;
 }
 
 .data-form textarea {
@@ -216,13 +190,12 @@ input[type=file] {
 }
 
 .data-form .card-block {
-  padding-bottom: 0;
   background-color: #f8f9fb;
   box-shadow: 0px 4px 6px 0px #999;
 }
 
 .data-form .card-footer {
-  padding: 15px 0;
+  padding: 8px 0 0 0;
   border-top: 1px solid #e9ebea;
 }
 

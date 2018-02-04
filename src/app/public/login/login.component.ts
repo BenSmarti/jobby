@@ -7,22 +7,26 @@ import { UserSessionService } from '../../shared/_services/user-session.service'
 import { AppHttpService } from '../../shared/_services/http/app-http.service';
 
 import { User } from '../../shared/_models/user.model';
+import { LocaleService } from '../../shared/_services/locale.service';
+import {typeSourceSpan} from "@angular/compiler";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent extends TranslationsComponent {
 
   user = new User();
 
   rememberMe: boolean;
-
-  isLoginFailed = false;
+  isLoginFailed: boolean;
   isLoggingIn = false;
 
-  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {}
+  constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService,
+              localeService: LocaleService) {
+    super(localeService);
+  }
 
   submit(isValid: boolean) {
     if (isValid) {
@@ -30,20 +34,20 @@ export class LoginComponent  {
       this.isLoggingIn = true;
 
       this.appHttp.login(this.user.username, this.user.password)
-      .then((response) => setTimeout(() => this.handleResponse(response), 2000));
+        .then((response) => setTimeout(() => this.handleResponse(response), 2000));
     }
   }
 
-  private handleResponse(token: string): void {
-    if (token) {
+  private handleResponse(token: string | boolean): void {
+    if (typeof token === 'string') {
       this.user.accessToken = token;
       this.userSession.login(this.user, this.rememberMe);
-      this.router.navigate(['..']);
+      this.router.navigate(['/']);
     } else {
       this.isLoginFailed = true;
-      this.isLoggingIn = false;
     }
 
+    this.isLoggingIn = false;
   }
 
 }

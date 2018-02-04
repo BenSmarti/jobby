@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { BaseHttpService } from './base-http.service';
 
-import { Employer } from '../../_models/employer.model';
+import { User } from '../../_models/user.model';
 
 @Injectable()
 export class AppHttpService extends BaseHttpService {
@@ -12,17 +12,17 @@ export class AppHttpService extends BaseHttpService {
     super();
   }
 
-  login(username: string, password: string): Promise<string> {
-    return this.http.post(this.apiUrl + '/Account/GenerateTokenEmployer', { UserName: username, Password: password })
-      .toPromise()
-      .then(response => response as string)
-      .catch(response => response.ok);
+  login(username: string, password: string): Promise<string | boolean> {
+    return this.http.post(this.apiUrl + '/login', { username: username, password: password })
+    .toPromise()
+    .catch((response) => (response.status === 200))
+    .then(response => response['token']);
   }
 
-  register(employer: Employer): Promise<string> {
-    return this.http.post(this.apiUrl + '/Account/GenerateTokenEmployer', { UserName: employer.username, Password: employer.password })
-      .toPromise()
-      .then(response => response as string)
-      .catch(response => response.ok);
+  register(user: User): Promise<any> {
+    return this.http.post(this.apiUrl + '/register', { user: user })
+    .toPromise()
+    .then(response => response)
+    .catch(response => console.log(response.code));
   }
 }
