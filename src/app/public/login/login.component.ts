@@ -36,7 +36,7 @@ export class LoginComponent  {
 
   private handleResponse(token: string): void {
     if (token) {
-      this.user.token = token;
+      this.user.accessToken = token;
       this.userSession.login(this.user, this.rememberMe);
       this.router.navigate(['..']);
     } else {

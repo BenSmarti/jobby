@@ -8,38 +8,43 @@
 }
 
 .rtl .mr-1 {
-  margin-right: 0;
+  margin-right: 0 !important;
   margin-left: 0.25rem;
 }
 
 .rtl .ml-1 {
   margin-right: 0.25rem;
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 .rtl .ml-2 {
   margin-right: 0.5rem;
-  margin-left: 0;
+  margin-left: 0 !important;
+}
+
+.rtl .mr-3 {
+  margin-right: 0 !important;
+  margin-left: 1rem;
 }
 
 .rtl .mr-5 {
-  margin-right: 0;
+  margin-right: 0 !important;
   margin-left: 3rem;
 }
 
 .rtl .ml-5 {
   margin-right: 3rem;
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 .rtl .pr-5 {
-  padding-right: 0;
+  padding-right: 0 !important;
   padding-left: 3rem;
 }
 
 .rtl .pl-5 {
   padding-right: 3rem;
-  padding-left: 0;
+  padding-left: 0 !important;
 }
 
 .rtl .offset-1 {

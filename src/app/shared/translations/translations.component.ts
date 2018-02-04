@@ -5,7 +5,7 @@ import { Translation } from '../_models/translation.model';
 export abstract class TranslationsComponent {
   private translations: Translation[] = [];
 
-  constructor(private localeService: LocaleService) {
+  constructor(protected localeService: LocaleService) {
     this.translations = this.localeService.getTranslations();
     this.localeService.langChanged.subscribe(() => this.translations = this.localeService.getTranslations());
   }

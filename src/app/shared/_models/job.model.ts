@@ -8,5 +8,8 @@ export class Job {
   level: 'High Level' | 'Mid Level' | 'Low Level';
   minSalary: number;
   maxSalary: number;
+  salaryMethod: 'monthly' | 'hourly';
+  description: string;
+  requirements: string;
   created: string;
 }

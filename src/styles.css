@@ -17,6 +17,14 @@ ul {
   list-style: none;
 }
 
+a {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 p {
   margin: 0;
 }
@@ -111,10 +119,23 @@ input[type=file] {
   color: #b7b7b7;
 }
 
+.p-icon {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.ltr .p-icon {
+  margin-right: 5px;
+}
+
+.rtl .p-icon {
+  margin-left: 5px;
+}
+
 .section-title {
   color: #505050;
   font-size: 24px;
-  text-align: Center;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -129,6 +150,76 @@ input[type=file] {
   color: #fff !important;
   background-color: #008def !important;
   border: 1px solid #008def;
+}
+
+/*--- Data Form ---*/
+
+.data-form label {
+  font-weight: bold;
+}
+
+.data-form textarea {
+  height: 150px;
+}
+
+.data-form .card-header {
+  background-color: #3e3e3e;
+  color: #fff;
+}
+
+.data-form .card-block {
+  background-color: #f8f9fb;
+  box-shadow: 0px 4px 6px 0px #999;
+}
+
+.data-form .card-footer {
+  padding: 8px 0 0 0;
+  border-top: 1px solid #e9ebea;
+}
+
+.data-form .card-primary {
+  padding: 4px 8px;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.data-form ::-webkit-input-placeholder {
+  color: #b2b4b3;
+}
+
+.data-form .select2-selection__rendered {
+  color: #b2b4b3 !important;
+}
+
+/*--- Bootstrap ---*/
+
+.card-title {
+  margin: 0;
+}
+
+/*--- Material ---*/
+
+.mat-input-element {
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,.54);
+}
+
+.mat-form-field-type-mat-select .mat-form-field-label {
+  width: 100% !important;
+}
+
+.mat-dialog-title {
+  font-size: 26px;
+}
+
+.ltr .mat-form-field-prefix {
+  margin-right: 8px !important;
+}
+
+.textarea .mat-form-field-label {
+  top: 27px !important;
+  left: -6px !important;
 }
 
 .mat-chip.toggle-effect {
@@ -164,26 +255,18 @@ input[type=file] {
   color: #fff;
 }
 
-/*--- Material ---*/
+/*--- Select 2 ---*/
 
-.mat-input-element {
-  padding: 8px;
-  border: 1px solid rgba(0,0,0,.54);
-}
-
-.mat-form-field-type-mat-select .mat-form-field-label {
+.select2-container {
+  display: block;
   width: 100% !important;
 }
 
-.mat-dialog-title {
-  font-size: 26px;
+.select2-selection--single, .select2-selection__arrow {
+  height: 38px !important;
 }
 
-.ltr .mat-form-field-prefix {
-  margin-right: 8px !important;
-}
-
-.textarea .mat-form-field-label {
-  top: 27px !important;
-  left: -6px !important;
+.select2-selection--single {
+  display: flex !important;
+  align-items: center;
 }

@@ -22,7 +22,7 @@ export class UserSessionService {
 
   getToken(): string {
     const user = this.getUser();
-    return (user && user.token) ? user.token : '';
+    return (user && user.accessToken) ? user.accessToken : '';
   }
 
   isLoggedIn(): boolean {
