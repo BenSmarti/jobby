@@ -29,8 +29,15 @@ export class JobService extends BaseHttpService {
     .then(() => true);
   }
 
-  getEmployerJobs(type: string): Promise<Job[]> {
-    const options = { headers: this.getTokenHeaders(), params: { type: type } };
+  getEmployerJobs(type: string, searchCriteria?: Object): Promise<Job[]> {
+    let params = {};
+    if (searchCriteria) {
+      params = searchCriteria;
+    }
+
+    params['type'] = type;
+
+    const options = { headers: this.getTokenHeaders(), params: params };
 
     return this.http.get(this.endPoint + '/byEmployer', options)
     .toPromise()

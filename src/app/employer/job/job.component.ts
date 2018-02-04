@@ -39,6 +39,6 @@ export class JobComponent extends DataTableComponent implements OnInit {
   }
 
   fetchItems(): void {
-    this.jobService.getEmployerJobs(this.activeTab.criterion).then(response =>this.setItems(response));
+    this.jobService.getEmployerJobs(this.activeTab.criterion, this.searchCriteria).then(response =>this.setItems(response));
   }
 }

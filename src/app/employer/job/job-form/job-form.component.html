@@ -52,7 +52,9 @@
           <div class="d-flex">
             <input type="number" class="form-control" name="minSalary" [(ngModel)]="job.minSalary" [placeholder]="t('MINIMUM')">
             <input type="number" class="form-control mx-3" name="maxSalary" [(ngModel)]="job.maxSalary" [placeholder]="t('MAXIMUM')">
-            <select2 [data]="salaryMethods" (valueChanged)="job.salaryMethod = $event.value" [value]="{}" [options]="getSelectOptions(t('HOURLY') + '/' + t('MONTHLY'), true, true)"></select2>
+            <div>
+              <select2 [data]="salaryMethods" (valueChanged)="job.salaryMethod = $event.value" [value]="{}" [options]="getSelectOptions(t('HOURLY') + '/' + t('MONTHLY'), true, true)"></select2>
+            </div>
           </div>
         </div>
       </div>

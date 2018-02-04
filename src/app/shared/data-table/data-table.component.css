@@ -1,5 +1,4 @@
 .data-table {
-  padding: 8px;
   box-shadow: -1px 6px 20px 2px #999;
 }
 
@@ -38,7 +37,7 @@
   vertical-align: middle;
   background-color: #3e3e3e;
   color: #fff;
-  font-weight: bold;
+  font-family: HeeboBold !important;
   text-align: center !important;
 }
 
@@ -46,14 +45,6 @@
   margin-top: 4px;
 }
 
-.search-input-container > * {
-  font-size: 12px;
-}
-
-.search-select-container {
-  padding-top: 0;
-  padding-bottom: 0;
-}
 
 .data-table tr.checked {
   background-color: #356cb3;
@@ -90,8 +81,4 @@
   cursor: pointer;
   color: #356cb3;
   font-size: 18px;
-}
-
-.data-table /deep/ .search-input-container {
-  width: 200px;
 }
