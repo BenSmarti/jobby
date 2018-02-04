@@ -74,23 +74,6 @@ export class HeaderComponent extends TranslationsComponent implements OnInit {
     this.langChanged.emit(this.lang);
   }
 
-  employerLogin(): void {
-    //TODO: change the hardcoded token
-
-    const user = new User();
-    user.username = 'employer@test.com';
-    user.role = 'employer';
-    user.accessToken = '2e5xwNCTBope1fzZzn6Uq0CwhX3znsGLj8rKGBzkNMdzbcVoGI0LQXisfz9cff4C';
-    this.userSession.login(user);
-  }
-
-  seekerLogin(): void {
-    const user = new User();
-    user.username = 'seeker@test.com';
-    user.role = 'seeker';
-    this.userSession.login(user);
-  }
-
   logout(): void {
     this.userSession.logout();
   }
