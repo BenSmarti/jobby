@@ -35,14 +35,10 @@ export class JobComponent extends DataTableComponent implements OnInit {
 
   setTab(tab): void {
     this.activeTab = tab;
-    this.isSearching = true;
-    setTimeout(() => {
-      this.fetchItems();
-      this.isSearching = false;
-    }, 0);
+    this.fetchItems();
   }
 
   fetchItems(): void {
-    this.jobService.getEmployerJobs(this.activeTab.criterion).then(response => setTimeout(this.setItems(response));
+    this.jobService.getEmployerJobs(this.activeTab.criterion).then(response =>this.setItems(response));
   }
 }

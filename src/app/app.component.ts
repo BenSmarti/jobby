@@ -6,6 +6,10 @@ import { LocaleService } from './shared/_services/locale.service';
 
 import { Translation } from './shared/_models/translation.model';
 
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -54,6 +58,5 @@ export class AppComponent implements OnInit {
       this.renderer.addClass(document.body, 'ltr');
       this.renderer.removeClass(document.body, 'rtl');
     }
-
   }
 }

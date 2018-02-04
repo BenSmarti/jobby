@@ -13,7 +13,7 @@
             <a class="nav-link" routerLink="">{{ t('HOME') }}</a>
           </li>
           <li class="nav-item" *ngFor="let link of activeMenuLinks">
-            <a class="nav-link" [routerLink]="link">{{ t(link | uppercase) }}</a>
+            <a class="nav-link" [routerLink]="'/' + link">{{ t(link | uppercase) }}</a>
           </li>
         </ul>
       </div>
@@ -46,7 +46,8 @@
   </div>
 </div>
 <div id="pageTitle">
-  <div id="pageTitleContent">
+  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ t(pageTitle | uppercase) }}</h1>
+  <div id="pageTitleContent" *ngIf="pageTitle === 'home'">
     <h1 class="mb-3">{{ t('EASIEST_WAY_S') }}</h1>
     <h2 class="mb-5">{{ t('WE_OFFER') }} 12000 {{ t('JOBS_VACATION_S') }}</h2>
     <div class="search-container">

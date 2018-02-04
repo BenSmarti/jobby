@@ -10,7 +10,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 400px;
   background-image: url('/assets/img/page-title.jpg');
 }
 
@@ -22,11 +21,19 @@
   background-color: rgba(44, 55, 62, 0.8);
 }
 
+#pageTitleHeading, #pageTitleContent {
+  color: #fff;
+  z-index: 999999;
+}
+
+#pageTitleHeading {
+  padding: 15px;
+}
+
 #pageTitleContent {
   width: 100%;
-  color: #fff;
+  padding: 120px 0;
   text-align: center;
-  z-index: 999999;
 }
 
 #pageTitleContent h1 {

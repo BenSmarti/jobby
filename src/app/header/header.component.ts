@@ -1,4 +1,5 @@
-import {Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { TranslationsComponent } from '../shared/translations/translations.component';
 
@@ -23,13 +24,17 @@ export class HeaderComponent extends TranslationsComponent implements OnInit {
   employerMenuLinks = ['candidates', 'jobs', 'interviews', 'messages'];
   seekerMenuLinks = ['candidates', 'jobs', 'interviews', 'messages'];
 
-  constructor (localeService: LocaleService, private userSession: UserSessionService) {
+  pageTitle: string;
+
+  constructor (private router: Router, private route: ActivatedRoute, localeService: LocaleService,
+               private userSession: UserSessionService) {
     super(localeService);
   }
 
   ngOnInit() {
     this.init();
     this.userSession.loggedInSubject.subscribe(() => this.init());
+    this.setPageTitle();
   }
 
   private init(): void {
@@ -40,6 +45,29 @@ export class HeaderComponent extends TranslationsComponent implements OnInit {
       this.user = null;
       this.activeMenuLinks = [];
     }
+  }
+
+  private setPageTitle(): void {
+    let activeRoute = this.route;
+    while (activeRoute.firstChild) {
+      activeRoute = activeRoute.firstChild;
+    }
+
+    this.pageTitle = activeRoute.snapshot.data.title;
+
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .map(() => this.route)
+      .map((route) => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+
+        return route;
+      })
+      .filter((route) => route.outlet === 'primary')
+      .mergeMap((route) => route.data)
+      .subscribe((event) => this.pageTitle = event.title);
   }
 
   changeLang(): void {
