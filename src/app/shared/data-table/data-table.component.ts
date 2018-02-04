@@ -30,8 +30,19 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
   searchCriteria = {};
   orderCriteria = new DataTableOrderCriteria();
 
+  savedItem: string;
+
   constructor(protected route: ActivatedRoute, localeService: LocaleService) {
     super(localeService);
+  }
+
+  ngOnInit() {
+    if (sessionStorage.getItem('saved-item')) {
+      this.savedItem = sessionStorage.getItem('saved-item');
+      sessionStorage.removeItem('saved-item');
+    }
+
+    this.fetchItems();
   }
 
   setItems(items: any[]): void {
@@ -87,10 +98,6 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
   setLimit(limit: number): void {
     this.paginationData.limit = limit;
     this.paginateItems();
-  }
-
-  ngOnInit() {
-    this.fetchItems();
   }
 
   checkAll(checked: boolean): void {

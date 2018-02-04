@@ -41,7 +41,7 @@
         <span>{{ user.username}}</span>
         <span (click)="logout()">{{ t('SIGN_OUT') }}</span>
       </span>
-      <mat-chip class="ml-3 chip-blue toggle-effect">{{ t('POST_JOB') }}</mat-chip>
+      <mat-chip class="ml-3 chip-blue toggle-effect" [routerLink]="['/jobs', 'post']">{{ t('POST_JOB') }}</mat-chip>
     </div>
   </div>
 </div>

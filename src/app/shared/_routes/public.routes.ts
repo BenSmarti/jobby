@@ -8,6 +8,5 @@ export const PUBLIC_ROUTES: Routes = [
     {path: '', component: HomeComponent, data: {title: 'home'}},
     {path: 'login', component: LoginComponent}, // TODO add data: {title: 'login'}
     {path: 'register', component: RegisterComponent}
-
   ]
 ;

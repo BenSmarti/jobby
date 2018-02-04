@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-3 tab" [ngClass]="{ 'active': activeTab === tab }" (click)="setTab(tab)"
-     *ngFor="let tab of tabs">{{ t(tab.label) }}</div>
+  <div class="row no-gutters" [ngClass]="{ 'mb-5': !savedItem, 'mb-3': savedItem }">
+    <div class="col-12 col-sm-6 col-md-3" (click)="setTab(tab)" *ngFor="let tab of tabs">
+      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
+    </div>
   </div>
-  <div class="mt-5 mb-4 data-table">
+  <p class="alert alert-success saved-message" *ngIf="savedItem">
+    <i class="fa fa-check"></i>
+    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
+  </p>
+  <div class="mb-4 data-table">
     <table class="table table-striped">
       <thead>
       <tr>

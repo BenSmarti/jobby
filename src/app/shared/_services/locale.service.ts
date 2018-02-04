@@ -37,4 +37,8 @@ export class LocaleService {
     localStorage.setItem('translations', JSON.stringify(translations));
     this.langChanged.next(true);
   }
+
+  getDir(): 'rtl' | 'ltr' {
+    return (this.lang === 'he') ? 'rtl' : 'ltr';
+  }
 }

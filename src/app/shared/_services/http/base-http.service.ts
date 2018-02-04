@@ -21,4 +21,8 @@ export class BaseHttpService {
   getTokenHeadersWithFormData(token: string): HttpHeaders {
     return new HttpHeaders({ 'Authorization': token });
   }
+
+  getTokenRequest(): { headers: HttpHeaders } {
+    return { headers: this.getTokenHeaders() };
+  }
 }
