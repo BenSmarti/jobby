@@ -1,55 +1,55 @@
-<div class="row no-gutters">
-  <form class="col-md-4 offset-md-4 card" #f="ngForm" (ngSubmit)="submit(f.valid)">
-    <div class="card-header">
-      <p class="card-title">{{ t('LOGIN') }}</p>
-    </div>
-    <div class="card-block">
-      <mat-form-field class="w-100">
-        <input matInput
-               type="text"
-               name="username"
-               placeholder="{{ t('USER_NAME') }}"
-               [(ngModel)]="user.username"
-               #username="ngModel"
-               required>
-        <i matSuffix class="fa fa-user"></i>
-        <mat-error *ngIf="username.errors && f.submitted">This field is required.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input
-          matInput
-          type="password"
-          name="password"
-          placeholder="{{ t('PASS') }}"
-          [(ngModel)]="user.password"
-          #password="ngModel"
-          required>
-        <i matSuffix class="fa fa-lock"></i>
-        <mat-error *ngIf="password.errors && password.errors.required && f.submitted">{{ t('REQUIRED') }}.</mat-error>
-        <mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">{{ t('REQUIRED') }}.</mat-error>
-      </mat-form-field>
-      <a
-        class="d-block mb-3"
-        routerLink="/forgot">Forgot Password</a>
-      <mat-checkbox
-        [(ngModel)]="rememberMe"
-        name="rememberMe" color="primary">{{ t('REMEMBER') }}
-      </mat-checkbox>
-    </div>
-    <div class="card-footer">
-      <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
-      <p class="alert alert-danger" *ngIf="isLoginFailed">
-        <i class="fa fa-exclamation-circle mr-1"></i>
-        <span>Login error, please try again or contact.</span>
-      </p>
-      <button class="btn btn-primary" *ngIf="!isLoginFailed">{{ t('LOGIN') }}</button>
-    </div>
-  </form>
-</div>
+<!--<div class="row no-gutters">-->
+  <!--<form class="col-md-4 offset-md-4 card" #f="ngForm" (ngSubmit)="submit(f.valid)">-->
+    <!--<div class="card-header">-->
+      <!--<p class="card-title">{{ t('LOGIN') }}</p>-->
+    <!--</div>-->
+    <!--<div class="card-block">-->
+      <!--<mat-form-field class="w-100">-->
+        <!--<input matInput-->
+               <!--type="text"-->
+               <!--name="username"-->
+               <!--placeholder="{{ t('USER_NAME') }}"-->
+               <!--[(ngModel)]="user.username"-->
+               <!--#username="ngModel"-->
+               <!--required>-->
+        <!--<i matSuffix class="fa fa-user"></i>-->
+        <!--<mat-error *ngIf="username.errors && f.submitted">This field is required.</mat-error>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field class="w-100">-->
+        <!--<input-->
+          <!--matInput-->
+          <!--type="password"-->
+          <!--name="password"-->
+          <!--placeholder="{{ t('PASS') }}"-->
+          <!--[(ngModel)]="user.password"-->
+          <!--#password="ngModel"-->
+          <!--required>-->
+        <!--<i matSuffix class="fa fa-lock"></i>-->
+        <!--<mat-error *ngIf="password.errors && password.errors.required && f.submitted">{{ t('REQUIRED') }}.</mat-error>-->
+        <!--<mat-error *ngIf="password.errors && password.errors.minlength && f.submitted">{{ t('REQUIRED') }}.</mat-error>-->
+      <!--</mat-form-field>-->
+      <!--<a-->
+        <!--class="d-block mb-3"-->
+        <!--routerLink="/forgot">Forgot Password</a>-->
+      <!--<mat-checkbox-->
+        <!--[(ngModel)]="rememberMe"-->
+        <!--name="rememberMe" color="primary">{{ t('REMEMBER') }}-->
+      <!--</mat-checkbox>-->
+    <!--</div>-->
+    <!--<div class="card-footer">-->
+      <!--<mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>-->
+      <!--<p class="alert alert-danger" *ngIf="isLoginFailed">-->
+        <!--<i class="fa fa-exclamation-circle mr-1"></i>-->
+        <!--<span>Login error, please try again or contact.</span>-->
+      <!--</p>-->
+      <!--<button class="btn btn-primary" *ngIf="!isLoginFailed">{{ t('LOGIN') }}</button>-->
+    <!--</div>-->
+  <!--</form>-->
+<!--</div>-->
 
-<div class="container">
-  <div class="row">
-
+<div class="section-padding">
+  <div class="container">
+    <div class="row">
       <div class="user-account">
         <div class="account-content">
           <form class="tr-form" #f="ngForm" (ngSubmit)="submit(f.valid)">
@@ -80,19 +80,20 @@
               </mat-checkbox>
               <a [ngClass]="{rtl: t('PASS') === 'סיסמא'}" mat-button routerLink="/forgot">{{ t('FORGOT_PASS') }}</a>
             </div>
-              <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
-              <p class="alert alert-danger" *ngIf="isLoginFailed">
-                <i class="fa fa-exclamation-circle mr-1"></i>
-                <span>Login error, please try again or contact.</span>
-              </p>
-              <button type="submit" class="btn btn-primary" (click)="onDelay($event)">{{ t('SIGN_IN') }}</button>
+            <mat-spinner class="m-auto" *ngIf="isLoggingIn"></mat-spinner>
+            <p class="alert alert-danger" *ngIf="isLoginFailed">
+              <i class="fa fa-exclamation-circle mr-1"></i>
+              <span>Login error, please try again or contact.</span>
+            </p>
+            <button type="submit" class="btn btn-primary" id="submit" (click)="onDelay($event)">{{ t('SIGN_IN') }}</button>
+            <!--<mat-chip class="chip-blue toggle-effect">{{ t('SIGN_IN') }}</mat-chip>-->
           </form>
           <div class="new-user text-center">
-            <span><a id="middle" href="#">{{ t('CREATE_ACC') }}</a> </span>
+            <span><a id="middle" routerLink="/register">{{ t('CREATE_ACC') }}</a> </span>
           </div>
         </div>
       </div>
-
-  </div><!-- /.row -->
-</div><!-- container -->
+    </div><!-- /.row -->
+  </div><!-- container -->
+</div>
 

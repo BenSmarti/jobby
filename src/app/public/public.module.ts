@@ -5,10 +5,8 @@ import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {
-
   MatCheckboxModule, MatChipsModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule,
-  MatSelectModule, MatRadioModule
-
+  MatSelectModule, MatRadioModule, MatTabsModule
 } from '@angular/material';
 
 import {HomeComponent} from './home/home.component';
@@ -27,7 +25,8 @@ import {AppHttpService} from '../shared/_services/http/app-http.service';
     RouterModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatProgressSpinnerModule, MatChipsModule, MatRadioModule
+    MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule,
+    MatProgressSpinnerModule, MatChipsModule, MatRadioModule, MatTabsModule
   ],
   declarations: [HomeComponent, JobListItemComponent, RegisterComponent, LoginComponent],
   providers: [UserSessionService, AppHttpService]

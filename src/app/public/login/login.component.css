@@ -21,6 +21,19 @@ a#middle {
   float: none;
 }
 
+
+#submit:hover {
+  width: 100%;
+  color: #008def;
+  background-color: white;
+  border-color: #008def;
+  border-radius: 30px;
+  transition: width 2s;
+  -webkit-transition: width 2s;
+  transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+}
+
 .section-padding {
   padding: 80px 0;
   background-color: #F5F4F5;
@@ -133,21 +146,16 @@ form {
 
 :host /deep/ .mat-checkbox-frame {
   border-radius: 10px !important;
+  border-color: #CDCDDC;
 }
 
-/*:host /deep/ .mat-checkbox-frame:checked {*/
-/*border-radius: 10px !important;*/
-/*}*/
+:host /deep/ .mat-checkbox-background {
+  border-radius: 10px !important;
+}
 
-/*@media (min-width: 1200px) {*/
-/*.col-md-offset-4 {*/
-/*margin-left: 33.33333333%;*/
-/*}*/
-
-/*.col-md-4 {*/
-/*width: 33.33333333%;*/
-/*}*/
-/*}*/
+:host /deep/ .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background-color: #008DEF;
+}
 
 .user-account {
   position: relative;
@@ -163,7 +171,23 @@ form {
     padding-right: 15px;
     padding-left: 15px;
     width: 380px;
-    margin: 0px 35%;
+    margin: 0px 25%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .user-account {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 380px;
+    margin: 0px 30%;
+  }
+
+  .m-auto {
+    position: relative;
+    margin: 5% 33%;
   }
 }
 
@@ -173,12 +197,16 @@ form {
     float: left;
     width: 33.333333%;
   }
-}
 
-@media screen and (min-width: 1320px) {
-  .user-account {
-    margin: 0px 35%;
-    float: left;
-    width: 33.333333%;
+  .m-auto {
+    position: relative;
+    margin: 5% 33%;
   }
 }
+
+.m-auto {
+  position: relative;
+  margin: 5% 33.333333%;
+}
+
+

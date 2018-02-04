@@ -34,8 +34,8 @@
       </mat-form-field>
       <span class="mr-2 ml-2" *ngIf="!user">
         <i class="fa fa-user link ml-1"></i>
-        <span (click)="employerLogin()">{{ t('SIGN_IN') }} /</span>
-        <span (click)="seekerLogin()">{{ t('REGISTER') }}</span>
+        <span (click)="employerLogin()" routerLink="/login">{{ t('SIGN_IN') }} /</span>
+        <span (click)="seekerLogin()" routerLink="/register">{{ t('REGISTER') }}</span>
       </span>
       <span class="mr-2 ml-2" *ngIf="user">
         <span>{{ user.username}}</span>
