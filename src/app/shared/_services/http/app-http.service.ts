@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { BaseHttpService } from './base-http.service';
 
 import { User } from '../../_models/user.model';
+import {Employer} from '../../_models/employer.model';
+import {Seeker} from '../../_models/seeker.model';
 
 @Injectable()
 export class AppHttpService extends BaseHttpService {
@@ -19,8 +21,8 @@ export class AppHttpService extends BaseHttpService {
     .then(response => response['token']);
   }
 
-  register(user: User): Promise<any> {
-    return this.http.post(this.apiUrl + '/register', { user: user })
+  register(user: User, object: Employer | Seeker): Promise<any> {
+    return this.http.post(this.apiUrl + '/register', { user: user, object: object })
     .toPromise()
     .then(response => response)
     .catch(response => console.log(response.code));

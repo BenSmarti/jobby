@@ -8,6 +8,7 @@ import {UserSessionService} from '../../shared/_services/user-session.service';
 
 import {User} from '../../shared/_models/user.model';
 import {Employer} from '../../shared/_models/employer.model';
+import {Seeker} from '../../shared/_models/seeker.model';
 import {LocaleService} from '../../shared/_services/locale.service';
 
 import {FormControl, Validators} from '@angular/forms';
@@ -20,45 +21,45 @@ import {FormControl, Validators} from '@angular/forms';
 export class RegisterComponent extends TranslationsComponent {
 
   user = new User();
-  employer = new Employer;
+  seeker = new Seeker();
+  employer = new Employer();
+  object: {};
 
-  logo: File;
-  logoPreview: string;
+  isLoginFailed: boolean;
+  isLoggingIn = false;
 
   constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService,
               localeService: LocaleService) {
     super(localeService);
   }
 
-  animalControl = new FormControl('', [Validators.required]);
-
-  animals = [
-    {name: 'Dog', sound: 'Woof!'},
-    {name: 'Cat', sound: 'Meow!'},
-    {name: 'Cow', sound: 'Moo!'},
-    {name: 'Fox', sound: 'Wa-pa-pa-pa-pa-pa-pow!'},
-  ];
-
-  setLogo(logo: File): void {
-    this.logo = logo;
-
-    const reader = new FileReader();
-
-    reader.onload = (event: ProgressEvent) => {
-      this.logoPreview = event.target['result'];
-    };
-
-    reader.readAsDataURL(logo);
-  }
-
-  removeLogo(): void {
-    this.logo = null;
-    this.logoPreview = null;
-  }
-
-  submit(isValid: boolean): void {
-    if (isValid) {
-      // this.appHttp.register(this.employer);
+  isEmployer(seeker: string) {
+    if (typeof seeker === 'string') {
+      return this.seeker;
     }
+    return this.employer;
+  }
+
+  submit(isValid: boolean) {
+
+    if (isValid) {
+      this.isLoginFailed = false;
+      this.isLoggingIn = true;
+
+      this.appHttp.register(this.user, this.object = this.isEmployer(this.seeker.seekername)) // TODO expects one argument
+        .then((response) => setTimeout(() => this.handleResponse(response), 2000));
+    }
+  }
+
+  private handleResponse(token: string | boolean): void {
+    if (typeof token === 'string') {
+      this.user.accessToken = token;
+      this.userSession.login(this.user);
+      this.router.navigate(['/login']);
+    } else {
+      this.isLoginFailed = true;
+    }
+
+    this.isLoggingIn = false;
   }
 }

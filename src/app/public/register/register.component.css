@@ -1,211 +1,75 @@
-* {
-  box-sizing: border-box;
-}
-
-div {
-  display: block;
-}
-
-a {
-  margin-top: 2px;
-  text-decoration: none;
-  float: right;
-}
-
-a.rtl {
-  float: left;
-}
-
-a#middle {
-  margin: 0px;
-  float: none;
-}
-
-
-#submit:hover {
-  width: 100%;
-  color: #008def;
-  background-color: white;
-  border-color: #008def;
-  border-radius: 30px;
-  transition: width 2s;
-  -webkit-transition: width 2s;
-  transition-timing-function: ease;
-  -webkit-transition-timing-function: ease;
-}
-
 .section-padding {
   padding: 80px 0;
-  background-color: #F5F4F5;
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
-  font-family: 'Varela Round', sans-serif;
+  background-color: #f5f4f5;
 }
 
-.user-account, .user-account a {
-  color: #bbc0d4;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.user-account, .user-account a:hover {
-  color: #008def;
-}
-
-.account-content {
-  font-size: 14px;
-  padding: 35px 30px;
-  border-radius: 4px;
+.tab-group {
+  width: 360px;
+  padding: 0px;
   background-color: #fff;
+  margin: 0 auto;
 }
 
-form {
-  display: block;
-  margin-top: 0em;
+.loginForm {
+  width: 360px;
+  padding: 35px 30px;
+  background-color: #fff;
+  margin: 0 auto;
 }
 
-.form-control {
-  font-size: 14px;
-  border-radius: 30px;
-  margin-bottom: 30px;
-  background-color: #fcfcfc;
+::ng-deep .mat-tab-label {
+  padding: 0px 16% !important;
 }
 
-.form-control:focus {
-  border-color: #f26522;
+::ng-deep .mat-tab-label {
+  background-color: #008def;
 }
 
-.user-option {
-  overflow: hidden;
-  margin-bottom: 25px;
+input.form-control {
+  height: 45px;
 }
 
-.checkbox {
-  float: left;
+.InputContainer {
+  margin-bottom: 20px;
+}
+
+::ng-deep .mat-checkbox-layout {
   margin: 0;
 }
 
-.checkbox[_ngcontent-c4] label[_ngcontent-c4] {
-  padding-left: 4px !important;
-}
-
-.checkbox, .radio {
-  position: relative;
-}
-
-.checkbox label {
-  padding-left: 30px;
-}
-
-.checkbox label:before {
-  position: absolute;
-  color: #bbc0d4;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 15px;
-  height: 15px;
-  border: 1px solid #bbc0d4;
-  border-radius: 100%;
-  background-color: #fcfcfc;
-}
-
-.forgot-password {
-  float: right;
-}
-
-.user-account {
-  color: #bbc0d4 !important;
-}
-
-.user-account .btn {
-  width: 100%;
-  padding: 12px 20px 8px;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  background-color: #008def;
-  border-color: #008def;
-  border-radius: 30px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.footer-top {
-  background-color: rgb(255, 255, 255);
-  padding: 80px 0px;
-}
-
-.footer-bottom {
-  padding: 25px 0px 15px;
-}
-
-.pull-right {
-  float: right;
-}
-
-:host /deep/ .mat-checkbox-frame {
+::ng-deep .mat-checkbox-frame {
   border-radius: 10px !important;
-  border-color: #CDCDDC;
+  border-color: #cdcddc;
 }
 
-.user-account {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+::ng-deep .mat-checkbox-background {
+  border-radius: 10px !important;
 }
 
-@media screen and (min-width: 768px) {
-  .user-account {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: 380px;
-    margin: 0px 25%;
+::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background-color: #008def;
+}
+
+.chip-button {
+  padding: 11.5px 0 !important;
+  font-size: 14px;
+}
+
+@media (max-width: 360px) {
+  #loginForm {
+    width: 320px;
+    padding: 35px 0;
   }
 }
 
-@media screen and (min-width: 992px) {
-  .user-account {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: 380px;
-    margin: 0px 30%;
-  }
-
-  .m-auto {
-    position: relative;
-    margin: 5% 33%;
-  }
+::ng-deep .mat-tab-header-pagination-chevron {
+   border-style: none !important;
+   border-width: 0px !important;
+   content: '' !important;
+   height: 0px !important;
+   width: 0px !important;
 }
 
-@media screen and (min-width: 1200px) {
-  .user-account {
-    margin: 0px 35%;
-    float: left;
-    width: 33.333333%;
-  }
-
-  .m-auto {
-    position: relative;
-    margin: 5% 33%;
-  }
-}
-
-.m-auto {
-  position: relative;
-  margin: 5% 33.333333%;
-}
-
-
-.demo-tab-group {
-  border: 1px solid #e8e8e8;
-}
-
-:host /deep/ .mat-tab-label {
-  min-width: 50%;
+::ng-deep .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none !important;
 }
