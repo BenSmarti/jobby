@@ -211,6 +211,10 @@ input[type=file] {
   color: #000;
 }
 
+.grey {
+  color: #b7b7b7;
+}
+
 .grey-link {
   color: #b7b7b7;
   transition: 0.5s;
