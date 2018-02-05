@@ -50,12 +50,4 @@ export class RegisterComponent extends TranslationsComponent {
       //   .then((response) => setTimeout(() => this.handleResponse(response), 2000));
     }
   }
-
-
-  submit(isValid: boolean): void {
-    if (isValid) {
-      this.appHttp.register();
-
-    this.isLoggingIn = false;
-  }
 }

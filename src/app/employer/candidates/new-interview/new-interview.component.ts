@@ -35,7 +35,7 @@ export class NewInterviewComponent extends TranslationsComponent implements OnIn
 
   submit(isValid: boolean): void {
     if (isValid) {
-      this.interviewService.setInterview().then(() => this.dialog.close());
+      // this.interviewService.setInterview().then(() => this.dialog.close());
     }
   }
 }
