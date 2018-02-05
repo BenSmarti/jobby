@@ -58,7 +58,7 @@ export class RegisterComponent extends TranslationsComponent {
 
   submit(isValid: boolean): void {
     if (isValid) {
-      this.appHttp.register(this.employer);
+      this.appHttp.register(this.user);
     }
   }
 }

@@ -15,15 +15,20 @@ import {FooterComponent} from './footer/footer.component';
 import {TranslationService} from './shared/_services/http/translation.service';
 import {LocaleService} from './shared/_services/locale.service';
 import {TranslationsResolve} from './shared/_resolves/translations.resolve';
+import {EmployerActiveJobsResolve} from './shared/_resolves/employer-jobs.resolve';
 
 import {APP_ROUTES} from './shared/_routes/app.routes';
+import { JobViewComponent } from './shared/job-view/job-view.component';
+import { SeekerViewComponent } from './shared/seeker-view/seeker-view.component';
 
 @NgModule({
   declarations: [
     BaseComponent,
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    JobViewComponent,
+    SeekerViewComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import {APP_ROUTES} from './shared/_routes/app.routes';
     JobModule,
     CandidatesModule
   ],
-  providers: [LocaleService, TranslationService, TranslationsResolve],
+  providers: [LocaleService, TranslationService, TranslationsResolve, EmployerActiveJobsResolve],
   bootstrap: [BaseComponent]
 })
 export class AppModule {

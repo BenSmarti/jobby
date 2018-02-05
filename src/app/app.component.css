@@ -52,30 +52,30 @@
   padding: 0 18px;
 }
 
-.ltr ::ng-deep .search-container-input:first-child {
+.ltr ::ng-deep .main-search-container-input:first-child {
   border-radius: 30px 0 0 30px;
   border-right: 1px solid #cdcdcd;
 }
 
-.rtl ::ng-deep .search-container-input:first-child {
+.rtl ::ng-deep .main-search-container-input:first-child {
   border-radius: 0 30px 30px 0;
   border-left: 1px solid #cdcdcd;
 }
 
-.ltr ::ng-deep .search-container button {
+.ltr ::ng-deep #mainSearchContainer button {
   border-radius: 0 30px 30px 0;
 }
 
-.rtl ::ng-deep .search-container button {
+.rtl ::ng-deep #mainSearchContainer button {
   border-radius: 30px 0 0 30px;
 }
 
-.ltr ::ng-deep .search-container-input ::ng-deep .mat-select-value {
+.ltr ::ng-deep .main-search-container-input ::ng-deep .mat-select-value {
   padding-left: 8px;
   text-align: left;
 }
 
-.rtl ::ng-deep .search-container-input ::ng-deep .mat-select-value {
+.rtl ::ng-deep .main-search-container-input ::ng-deep .mat-select-value {
   padding-right: 8px;
   text-align: right;
 }

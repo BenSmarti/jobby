@@ -24,6 +24,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
         "../node_modules/select2/dist/css/select2.min.css",
+        "../node_modules/angular-star-rating/assets/scss/star-rating.scss",
         "./assets/css/material-rtl.css",
         "./assets/css/bootstrap-rtl.css",
         "styles.css"

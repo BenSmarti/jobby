@@ -22,6 +22,12 @@ export class JobService extends BaseHttpService {
     .then(response => response as Job[]);
   }
 
+  getJob(id: number): Promise<Job> {
+    return this.http.get(this.endPoint + '/' + id)
+    .toPromise()
+    .then(response => response as Job);
+  }
+
   newJob(job: Job): Promise<boolean> {
     return this.http.post(this.endPoint, { job: job }, this.getTokenRequest())
     .toPromise()
@@ -46,7 +52,7 @@ export class JobService extends BaseHttpService {
 
   getCategories(): Promise<Select2OptionData[]> {
     return this.http.get(this.endPoint + '/category')
-      .toPromise()
-      .then(response => response as Select2OptionData[]);
+    .toPromise()
+    .then(response => response as Select2OptionData[]);
   }
 }

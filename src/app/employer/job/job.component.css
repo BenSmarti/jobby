@@ -1,32 +1,6 @@
-.tab {
-  padding-bottom: 8px;
-  border-bottom: 2px solid #eeeef0;
-  text-align: center;
-  color: #9f9f9f;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.tab.active, .tab:hover {
-  border-color: #4383ed;
-}
-
 .job-details {
   width: 70%;
   text-align: start !important;
-}
-
-.job-small-details {
-
-}
-
-.active-post {
-  color: #3ca44d;
-}
-
-.inactive-post {
-  color: #f05040;
 }
 
 .seeker-counts {

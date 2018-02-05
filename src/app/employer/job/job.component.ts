@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {DataTableComponent} from '../../shared/data-table/data-table.component';
+import { DataTableComponent } from '../../shared/data-table/data-table.component';
 
-import {LocaleService} from '../../shared/_services/locale.service';
-import {JobService} from '../../shared/_services/http/job.service';
+import { LocaleService } from '../../shared/_services/locale.service';
+import { JobService } from '../../shared/_services/http/job.service';
 
 @Component({
   selector: 'app-job',
@@ -13,15 +13,14 @@ import {JobService} from '../../shared/_services/http/job.service';
 })
 export class JobComponent extends DataTableComponent implements OnInit {
 
-  activeTab;
 
   readonly tabs = [
-    {label: 'ACTIVE_TASKS', criterion: 'active'}, {label: 'FROZEN_TASKS', criterion: 'inactive'},
-    {label: 'DRAFTS', criterion: 'drafts'}, {label: 'DELETED_TASKS', criterion: 'deleted'}
+    { label: 'ACTIVE_TASKS', criterion: 'active'}, { label: 'FROZEN_TASKS', criterion: 'inactive' },
+    { label: 'DRAFTS', criterion: 'drafts'}, { label: 'DELETED_TASKS', criterion: 'deleted' }
   ];
 
   readonly headers = [
-    {column: null, label: 'JOB_NAME'}, {column: null, label: 'CANDIDATES'}
+    { column: null, label: 'JOB'}, {column: null, label: 'CANDIDATES' }
   ];
 
   constructor(route: ActivatedRoute, localeService: LocaleService, private jobService: JobService) {
@@ -31,11 +30,6 @@ export class JobComponent extends DataTableComponent implements OnInit {
   ngOnInit() {
     this.activeTab = this.tabs[0];
     super.ngOnInit();
-  }
-
-  setTab(tab): void {
-    this.activeTab = tab;
-    this.fetchItems();
   }
 
   fetchItems(): void {

@@ -20,11 +20,11 @@
           #password="ngModel"
           required>
       </div>
-      <div class="d-flex align-items-center justify-content-between mt-4 mb-4">
+      <div class="d-flex align-items-center justify-content-between my-4">
         <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" color="primary" class="grey-link">{{ t('REMEMBER_ME') }}</mat-checkbox>
         <a class="grey-link" routerLink="/forgot">{{ t('FORGOT_PASS') }}</a>
       </div>
-      <mat-spinner class="mr-auto ml-auto mb-3" *ngIf="isLoggingIn"></mat-spinner>
+      <mat-spinner class="mx-auto mb-3" *ngIf="isLoggingIn"></mat-spinner>
       <p class="alert alert-danger" *ngIf="isLoginFailed">
         <i class="fa fa-exclamation-circle p-icon f-18"></i>
         <span>{{ t('LOGIN_ERROR') }}.</span>

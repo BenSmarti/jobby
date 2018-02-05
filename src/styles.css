@@ -95,7 +95,7 @@ input[type=file] {
   border-bottom: 1px solid;
 }
 
-.bold {
+.bold, .bold * {
   font-family: HeeboBold !important;
 }
 
@@ -116,6 +116,11 @@ input[type=file] {
   width: auto;
 }
 
+.icon {
+  height: 25px;
+  width: auto;
+}
+
 .link {
   color: #008def;
 }
@@ -126,6 +131,14 @@ input[type=file] {
 
 .grey {
   color: #b7b7b7;
+}
+
+.green {
+  color: #3ca44d;
+}
+
+.red {
+  color: #f05040;
 }
 
 .p-icon {
@@ -162,25 +175,36 @@ input[type=file] {
   border: 1px solid #008def;
 }
 
-.search-container {
+.input-container {
   display: flex;
   align-items: center;
-  width: 300px;
-  padding: 4px 8px 4px 4px;
+  padding: 0 8px 0 4px;
   border: 1px solid #d5d5d5;
   border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px #d5d5d5;
 }
 
-.search-container > input {
+.rtl .input-container > input {
+  text-align: right;
+}
+
+.ltr .input-container > input {
+  text-align: left;
+}
+
+.input-container > input {
   width: 90%;
   border: none;
   outline: 0;
 }
 
-.search-container > i {
+.input-container > i {
   vertical-align: middle;
   color: #d5d5d5;
+}
+
+.search-container {
+  width: 300px;
+  box-shadow: 2px 2px 2px 2px #d5d5d5;
 }
 
 .black {
@@ -198,6 +222,24 @@ input[type=file] {
 
 .rounded-border {
   border-radius: 40px;
+}
+
+.tab {
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eeeef0;
+  text-align: center;
+  color: #9f9f9f;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab.active, .tab:hover {
+  border-color: #4383ed;
+}
+
+.box-shadow {
+  box-shadow: -1px 6px 20px 2px #999;
 }
 
 /*--- Data Form ---*/
@@ -302,6 +344,11 @@ input[type=file] {
 .mat-chip.fade-effect:hover {
   background-color: #008def !important;
   color: #fff;
+}
+
+.mat-dialog-title {
+  color: #777;
+  border-bottom: 2px solid #d9d9d9;
 }
 
 /*--- Select 2 ---*/

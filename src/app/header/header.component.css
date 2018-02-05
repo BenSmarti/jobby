@@ -44,42 +44,42 @@
   font-size: 24px;
 }
 
-.search-container {
+#mainSearchContainer {
   display: flex;
   justify-content: center;
 }
 
-.search-container-input {
+.main-search-container-input {
   background-color: #fff;
   height: 45px;
   padding: 0 18px;
 }
 
-.search-container-input > i {
+.main-search-container-input > i {
   color: #008def;
   font-size: 18px;
 }
 
-.search-container-input > input, .search-container-input > .mat-select {
+.main-search-container-input > input, .main-search-container-input > .mat-select {
   height: 100%;
   width: 250px;
   border: none;
   outline: none;
 }
 
-.search-container-input ::-webkit-input-placeholder, .search-container-input ::ng-deep .mat-select-placeholder {
+.main-search-container-input ::-webkit-input-placeholder, .main-search-container-input ::ng-deep .mat-select-placeholder {
   color: #000;
 }
 
-.search-container ::ng-deep .mat-select-trigger {
+.main-search-container-input ::ng-deep .mat-select-trigger {
   height: 100%;
 }
 
-.search-container-input ::ng-deep .mat-select-value {
+.main-search-container-input ::ng-deep .mat-select-value {
   vertical-align: middle;
 }
 
-.search-container button {
+#mainSearchContainer button {
   width: 115px;
   text-transform: uppercase;
   background-color: #008def;

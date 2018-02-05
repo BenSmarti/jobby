@@ -28,6 +28,12 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
     { id: 'hourly', text: this.t('HOURLY')}
   ];
 
+  readonly jobTypes = [
+    { id: 'full_time', text: this.t('FULL_TIME')},
+    { id: 'part_time', text: this.t('PART_TIME')},
+    { id: 'freelance', text: this.t('FREELANCE')}
+  ];
+
   constructor(private router: Router, private route: ActivatedRoute, protected localeService: LocaleService,
               private jobService: JobService) {
     super(localeService);

@@ -1,4 +1,4 @@
-.data-table {
+.data-table table {
   box-shadow: -1px 6px 20px 2px #999;
 }
 
@@ -17,10 +17,6 @@
   cursor: pointer;
 }
 
-.data-table-actions ::ng-deep .mat-form-field {
-  width: 270px;
-}
-
 .saved-message > i {
     font-size: 22px;
 }
@@ -29,15 +25,10 @@
     vertical-align: top;
 }
 
-.check-all-container {
-  padding-top: 20px;
-}
-
 .data-table th {
   vertical-align: middle;
   background-color: #3e3e3e;
   color: #fff;
-  font-family: HeeboBold !important;
   text-align: center !important;
 }
 
@@ -45,40 +36,19 @@
   margin-top: 4px;
 }
 
-
-.data-table tr.checked {
-  background-color: #356cb3;
-}
-
-.data-table tr.checked * {
-  color: #fff;
-}
-
-.data-table tr:nth-child(even) {
-  background-color: #fff;
+.data-table .row-actions {
+  width: 150px;
 }
 
 .data-table td {
-  padding: 0.5rem;
   text-align: center;
-  font-size: 14px;
-}
-
-.data-table td .badge {
-    padding: 8px;
-}
-
-.data-table .row-actions {
-  width: 150px;
 }
 
 .data-table .row-actions > a {
   text-decoration: none;
 }
 
-.data-table .row-actions i, .data-table .row-icon {
-  margin-left: 4px;
+.data-table .row-icon {
   cursor: pointer;
-  color: #356cb3;
-  font-size: 18px;
+  width: 20px;
 }

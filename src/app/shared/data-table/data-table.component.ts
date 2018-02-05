@@ -20,6 +20,8 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
 
   headers: DataTableHeader[] = [];
 
+  activeTab;
+
   items: any[] = [];
   checkedItems = {};
 
@@ -100,32 +102,9 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
     this.paginateItems();
   }
 
-  checkAll(checked: boolean): void {
-    if (checked) {
-      for (let i = 0; i < this.items.length; i++) {
-        this.checkedItems[this.items[i].id] = this.items[i];
-      }
-    } else {
-      this.checkedItems = {};
-    }
-  }
-
-  setItemChecked(item: any, checked: boolean): void {
-    if (checked) {
-      this.checkedItems[item.id] = item;
-    } else {
-      delete this.checkedItems[item.id];
-    }
-  }
-
-  protected getCheckedItems(): any[] {
-    const checkedItemsArr = [];
-
-    for (const key in this.checkedItems) {
-      checkedItemsArr.push(this.checkedItems[key]);
-    }
-
-    return checkedItemsArr;
+  setTab(tab): void {
+    this.activeTab = tab;
+    this.fetchItems();
   }
 
   confirmDelete(): Promise<boolean> {
