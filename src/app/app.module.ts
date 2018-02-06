@@ -11,6 +11,9 @@ import {AppComponent} from './app.component';
 import {BaseComponent} from './base.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
+import { JobViewComponent } from './shared/job-view/job-view.component';
+import { SeekerViewComponent } from './shared/seeker-view/seeker-view.component';
+import { ChatComponent } from './shared/chat/chat.component';
 
 import {TranslationService} from './shared/_services/http/translation.service';
 import {LocaleService} from './shared/_services/locale.service';
@@ -18,8 +21,6 @@ import {TranslationsResolve} from './shared/_resolves/translations.resolve';
 import {EmployerActiveJobsResolve} from './shared/_resolves/employer-jobs.resolve';
 
 import {APP_ROUTES} from './shared/_routes/app.routes';
-import { JobViewComponent } from './shared/job-view/job-view.component';
-import { SeekerViewComponent } from './shared/seeker-view/seeker-view.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SeekerViewComponent } from './shared/seeker-view/seeker-view.component'
     HeaderComponent,
     FooterComponent,
     JobViewComponent,
-    SeekerViewComponent
+    SeekerViewComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

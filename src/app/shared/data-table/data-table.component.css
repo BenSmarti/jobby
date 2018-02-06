@@ -25,8 +25,11 @@
     vertical-align: top;
 }
 
-.data-table th {
+.data-table th, .data-table td {
   vertical-align: middle;
+}
+
+.data-table th {
   background-color: #3e3e3e;
   color: #fff;
   text-align: center !important;

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, HostListener} from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { TranslationsComponent } from '../shared/translations/translations.component';
@@ -26,12 +26,20 @@ export class HeaderComponent extends TranslationsComponent implements OnInit {
 
   pageTitle: string;
 
+  pageWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.pageWidth = event.target.innerWidth;
+  }
+
   constructor (private router: Router, private route: ActivatedRoute, localeService: LocaleService,
                private userSession: UserSessionService) {
     super(localeService);
   }
 
   ngOnInit() {
+    this.pageWidth = window.innerWidth;
     this.init();
     this.userSession.loggedInSubject.subscribe(() => this.init());
     this.setPageTitle();

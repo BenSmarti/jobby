@@ -121,6 +121,16 @@ input[type=file] {
   width: auto;
 }
 
+.icon-sm {
+  height: 15px;
+  width: auto;
+}
+
+.icon-lg {
+  height: 50px;
+  width: auto;
+}
+
 .link {
   color: #008def;
 }
@@ -230,6 +240,20 @@ input[type=file] {
 
 .box-shadow {
   box-shadow: -1px 6px 20px 2px #999;
+}
+
+.tab {
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eeeef0;
+  text-align: center;
+  color: #9f9f9f;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab.active, .tab:hover {
+  border-color: #4383ed;
 }
 
 /*--- Data Form ---*/

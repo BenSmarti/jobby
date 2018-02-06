@@ -1,0 +1,74 @@
+#contacts {
+  min-height: 700px;
+}
+
+.ltr :host #contacts {
+  border-right: 1px solid #d5d5d5;
+}
+
+.rtl :host #contacts {
+  border-left: 1px solid #d5d5d5;
+}
+
+#contacts .input-container {
+  padding: 13px;
+  border: none;
+  border-radius: 0;
+}
+
+.contact-person, #selectJobContainer, #contacts .input-container {
+  border-bottom: 1px solid #d5d5d5;
+}
+
+#selectJobContainer {
+  padding: 12px;
+}
+
+#selectJobContainer > .search-container {
+  width: 200px;
+}
+
+#chatMessages {
+  height: 540px;
+}
+
+.divider {
+  height: 1px;
+  background: #d5d5d5;
+  flex-grow: 1;
+}
+
+.message-text {
+  display: inline-block;
+  width: 320px;
+  padding: 20px 35px;
+  border-radius: 12px;
+  vertical-align: top;
+}
+
+.ltr :host .received {
+  direction: rtl;
+}
+
+.rtl :host .received {
+  direction: ltr;
+}
+
+.sent > .message-text {
+  background-color: #e5e5e5;
+}
+
+.received > .message-text {
+  background-color: #8ea9d4;
+  color: #fff;
+}
+
+#writeMessage {
+  border-top: 1px solid #d5d5d5;
+}
+
+#writeMessage > input {
+  border: none;
+  outline: 0;
+  flex-grow: 1;
+}
