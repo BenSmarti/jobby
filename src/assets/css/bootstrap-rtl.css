@@ -160,6 +160,10 @@
     margin-right: 41.666667%;
     margin-left: 0;
   }
+
+  .rtl .text-md-left {
+    text-align: right !important;
+  }
 }
 
 @media (min-width: 1200px) {

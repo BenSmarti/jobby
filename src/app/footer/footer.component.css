@@ -1,8 +1,12 @@
 #topFooter {
-  height: 477px;
+  padding: 30px 0;
+}
+
+#topFooter a, #bottomFooter {
+  color: #858585;
 }
 
 #bottomFooter {
-  height: 70px;
+  padding: 12px 0;
   background-color: #f5f4f5;
 }
