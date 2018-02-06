@@ -11,7 +11,7 @@ import { SeekerViewComponent } from '../seeker-view/seeker-view.component';
 export const PUBLIC_ROUTES: Routes = [
     { path: '', component: HomeComponent, data: { title: 'home'} },
     { path: 'login', component: LoginComponent, data: { title: 'login' } },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent, data: { title: 'registration' } },
     { path: 'jobs/:id', component: JobViewComponent },
     { path: 'candidates/:id', component: SeekerViewComponent }
   ]

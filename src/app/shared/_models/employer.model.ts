@@ -1,4 +1,10 @@
+import { User } from './user.model';
+
 export class Employer {
-  employername: string;
-  industry?: string;
+  name: string;
+  user: User;
+
+  constructor() {
+    this.user = new User;
+  }
 }

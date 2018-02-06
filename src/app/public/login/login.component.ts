@@ -8,12 +8,11 @@ import { AppHttpService } from '../../shared/_services/http/app-http.service';
 
 import { User } from '../../shared/_models/user.model';
 import { LocaleService } from '../../shared/_services/locale.service';
-import {typeSourceSpan} from "@angular/compiler";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../forms.css']
 })
 export class LoginComponent extends TranslationsComponent {
 

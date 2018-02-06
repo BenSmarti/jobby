@@ -1,5 +1,5 @@
 <div class="section-padding">
-  <form id="loginForm" #f="ngForm">
+  <form class="form-container" #f="ngForm">
       <div id="usernameInputContainer" class="form-group">
         <input
           type="text"
@@ -26,7 +26,7 @@
       </div>
       <mat-spinner class="mx-auto mb-3" *ngIf="isLoggingIn"></mat-spinner>
       <p class="alert alert-danger" *ngIf="isLoginFailed">
-        <i class="fa fa-exclamation-circle p-icon f-18"></i>
+        <i class="fa fa-exclamation-circle p-icon"></i>
         <span>{{ t('LOGIN_ERROR') }}.</span>
       </p>
       <div class="text-center">
