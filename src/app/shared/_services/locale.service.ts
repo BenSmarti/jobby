@@ -22,6 +22,7 @@ export class LocaleService {
 
   setLang(lang: string): void {
     this.lang = lang;
+    localStorage.removeItem('lang');
     localStorage.setItem('lang', this.lang);
   }
 

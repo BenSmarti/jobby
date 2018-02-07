@@ -131,6 +131,11 @@ input[type=file] {
   width: auto;
 }
 
+.icon-xl {
+  height: 75px;
+  width: auto;
+}
+
 .link {
   color: #008def;
 }
@@ -171,7 +176,7 @@ input[type=file] {
   text-transform: uppercase;
 }
 
-.mat-chip, .btn-submit {
+.mat-chip, .chip-button, .btn-submit {
   justify-content: center;
   background-color: #fff !important;
   padding: 8px 20px 5px;
@@ -183,6 +188,39 @@ input[type=file] {
   color: #fff !important;
   background-color: #008def !important;
   border: 1px solid #008def;
+}
+
+.chip-button.toggle-effect {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 1;
+  vertical-align: middle;
+}
+
+.chip-button.toggle-effect:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.chip-button.toggle-effect:hover {
+  color: #008def !important;
+}
+
+.chip-button.toggle-effect:hover::before {
+  right: 0;
+}
+
+.chip-button.fade-effect:hover {
+  background-color: #008def !important;
+  color: #fff;
 }
 
 .input-container {
@@ -256,6 +294,10 @@ input[type=file] {
   border-color: #4383ed;
 }
 
+.border-bottom-grey {
+  border-bottom: 1px solid #d5d5d5;
+}
+
 /*--- Data Form ---*/
 
 .data-form label {
@@ -325,39 +367,6 @@ input[type=file] {
 .textarea .mat-form-field-label {
   top: 27px !important;
   left: -6px !important;
-}
-
-.mat-chip.toggle-effect {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  z-index: 1;
-  vertical-align: middle;
-}
-
-.mat-chip.toggle-effect:before {
-  position: absolute;
-  content: "";
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  z-index: -1;
-  transition: 0.5s;
-}
-
-.mat-chip.toggle-effect:hover {
-  color: #008def !important;
-}
-
-.mat-chip.toggle-effect:hover::before {
-  right: 0;
-}
-
-.mat-chip.fade-effect:hover {
-  background-color: #008def !important;
-  color: #fff;
 }
 
 .mat-dialog-title {
