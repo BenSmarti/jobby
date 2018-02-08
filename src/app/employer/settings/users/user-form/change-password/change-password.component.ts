@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { TranslationsComponent } from '../../../../shared/translations/translations.component';
+import { TranslationsComponent } from '../../../../../shared/translations/translations.component';
 
-import { LocaleService } from '../../../../shared/_services/locale.service';
+import { LocaleService } from '../../../../../shared/_services/locale.service';
 
 @Component({
   selector: 'app-change-password',

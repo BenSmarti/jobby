@@ -179,7 +179,7 @@ input[type=file] {
 .mat-chip, .chip-button, .btn-submit {
   justify-content: center;
   background-color: #fff !important;
-  padding: 8px 20px 5px;
+  padding: 6px 20px;
   border-radius: 40px;
   cursor: pointer !important;
 }

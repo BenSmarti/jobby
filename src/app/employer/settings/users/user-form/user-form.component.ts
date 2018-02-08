@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { TranslationsComponent } from '../../../shared/translations/translations.component';
+import { TranslationsComponent } from '../../../../shared/translations/translations.component';
 
-import { UserSessionService } from '../../../shared/_services/user-session.service';
-import { LocaleService } from '../../../shared/_services/locale.service';
+import { UserSessionService } from '../../../../shared/_services/user-session.service';
+import { LocaleService } from '../../../../shared/_services/locale.service';
 
-import { User } from '../../../shared/_models/user.model';
+import { User } from '../../../../shared/_models/user.model';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 
 @Component({

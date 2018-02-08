@@ -1,67 +1,14 @@
-<div class="container pt-3 pb-3 data-table">
-  <div class="d-flex justify-content-end mb-5 mt-3">
-    <select (change)="fetchItems()" [(ngModel)]="selectedJobID" class="search-container">
-      <option disabled [value]="null">{{ t('SELECT_JOB') }}</option>
-      <option *ngFor="let job of employerActiveJobs" [value]="job.id">{{ job.title }}</option>
-    </select>
-  </div>
+<div class="container py-3">
   <div class="row no-gutters mb-3">
-    <div class="col-12 col-sm-6 col-md" (click)="setTab(tab)">
-      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
-    </div>
-    <div class="col-12 col-sm-6 col-md" (click)="setTab(tab)">
-      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
-    </div>
+    <a class="col-12 col-sm-6 col-md" [routerLink]="['/settings', 'employers']" (click)="activeTab = 'employers'">
+      <div class="tab" [ngClass]="{ 'active': activeTab === 'employers' }">{{ t('EMPLOYERS') }}</div>
+    </a>
+    <a class="col-12 col-sm-6 col-md" [routerLink]="['/settings', 'users']" (click)="activeTab = 'users'">
+      <div class="tab" [ngClass]="{ 'active': activeTab === 'users' }">{{ t('USERS') }}</div>
+    </a>
   </div>
-  <p class="alert alert-success saved-message" *ngIf="savedItem">
-    <i class="fa fa-check"></i>
-    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
-  </p>
-  <div class="mb-2 input-container search-container">
-    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="t('SEARCH')">
-    <i class="fa fa-search" (click)="search()"></i>
+  <div class="data-table">
+    <router-outlet></router-outlet>
   </div>
-  <div class="mb-4">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th></th>
-        <th *ngFor="let header of headers" (click)="sort(header.column)">
-          <span>{{ t(header.label) }}</span>
-          <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <ng-container *ngIf="!isSearching">
-        <tr *ngFor="let item of paginatedItems">
-          <td>
-            <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [numOfStars]="1" (onRatingChange)="setEmployerLike()"></star-rating-comp>
-          </td>
-          <td>
-            <a [routerLink]="'./' + item.seeker.id">{{ item.seeker.firstName + ' ' + item.seeker.lastName }}</a>
-          </td>
-          <td>{{ item.job.title }}</td>
-          <td>{{ item.seeker.phone }}</td>
-          <td>{{ item.seeker.email }}</td>
-          <td>{{ item.interview ? item.interview.date : '' }}</td>
-          <td>{{ item.status }}</td>
-          <td>
-            <img src="/assets/img/icons/calendar-page-empty.svg" (click)="setInterview(item.seeker, item.job)" class="row-icon">
-          </td>
-        </tr>
-      </ng-container>
-      <tr *ngIf="isSearching">
-        <td colspan="8">
-          <mat-spinner class="mx-auto"></mat-spinner>
-        </td>
-      </tr>
-      <tr *ngIf="!isSearching && items.length === 0">
-        <td colspan="8">{{ t('CANDIDATE_TABLE_EMPTY') }}.</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <app-pagination [data]="paginationData" (isLinkClicked)="paginateItems()" *ngIf="items.length > 0"></app-pagination>
 </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { TranslationsComponent } from '../translations/translations.component';
 
@@ -23,7 +24,6 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
   activeTab;
 
   items: any[] = [];
-  checkedItems = {};
 
   paginatedItems: any[];
   paginationData = new PaginationData();
@@ -34,6 +34,9 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
 
   savedItem: string;
 
+  pageSubscription: Subscription;
+  currentPage: number;
+
   constructor(protected route: ActivatedRoute, localeService: LocaleService) {
     super(localeService);
   }
@@ -43,6 +46,8 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
       this.savedItem = sessionStorage.getItem('saved-item');
       sessionStorage.removeItem('saved-item');
     }
+
+    this.pageSubscription = this.route.queryParams.subscribe((message) => this.setCurrentPage(+message['page']));
 
     this.fetchItems();
   }
@@ -57,26 +62,29 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
   }
 
   paginateItems(): void {
-    const data = this.paginationData;
-    const totalPages = Math.ceil(data.totalItems / data.limit);
-
+    const totalPages = Math.ceil(this.paginationData.totalItems / this.paginationData.limit);
     this.paginationData.totalPages = (totalPages > 0) ? totalPages : 1;
 
     this.setCurrentPage();
+  }
 
+  protected setCurrentPage(page?: number): void {
+    if (!page) {
+      this.currentPage = (this.route.snapshot.queryParams['page']) ? +this.route.snapshot.queryParams['page'] : 1;
+    } else {
+      this.currentPage = page;
+    }
+
+    if (this.currentPage > this.paginationData.totalPages) {
+      this.currentPage = this.paginationData.totalPages;
+    }
+
+    this.paginationData.currentPage = this.currentPage;
+
+    const data = this.paginationData;
     this.paginatedItems = this.items.slice((data.currentPage - 1) * data.limit, data.currentPage * data.limit);
 
     this.isPaginated = true;
-  }
-
-  protected setCurrentPage(): void {
-    let page = (this.route.snapshot.queryParams['page']) ? +this.route.snapshot.queryParams['page'] : 1;
-
-    if (page > this.paginationData.totalPages) {
-      page = this.paginationData.totalPages;
-    }
-
-    this.paginationData.currentPage = page;
   }
 
   search(keyCode?: number): void {

@@ -9,28 +9,28 @@
         </span>
     </div>
     <ul class="pagination justify-content-center">
-        <li class="page-item" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: 1 }">
+        <li class="page-item">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: 1 }">
                 <i class="fa fa-angle-double-right"></i>
             </a>
         </li>
-        <li class="page-item" *ngIf="data.currentPage - 2 >= 1" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: data.currentPage - 2 }">{{ data.currentPage - 2 }}</a>
+        <li class="page-item" *ngIf="data.currentPage - 2 >= 1">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: data.currentPage - 2 }">{{ data.currentPage - 2 }}</a>
         </li>
-        <li class="page-item" *ngIf="data.currentPage - 1 >= 1" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: data.currentPage - 1 }">{{ data.currentPage - 1 }}</a>
+        <li class="page-item" *ngIf="data.currentPage - 1 >= 1">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: data.currentPage - 1 }">{{ data.currentPage - 1 }}</a>
         </li>
         <li class="page-item active">
             <a class="page-link">{{ data.currentPage }}</a>
         </li>
-        <li class="page-item" *ngIf="data.currentPage + 1 <= data.totalPages" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: data.currentPage + 1 }">{{ data.currentPage + 1 }}</a>
+        <li class="page-item" *ngIf="data.currentPage + 1 <= data.totalPages">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: data.currentPage + 1 }">{{ data.currentPage + 1 }}</a>
         </li>
-        <li class="page-item" *ngIf="data.currentPage + 2 <= data.totalPages" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: data.currentPage + 2 }">{{ data.currentPage + 2 }}</a>
+        <li class="page-item" *ngIf="data.currentPage + 2 <= data.totalPages">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: data.currentPage + 2 }">{{ data.currentPage + 2 }}</a>
         </li>
-        <li class="page-item" (click)="linkClicked()">
-            <a class="page-link" [routerLink]="getUrl()" [queryParams]="{ page: data.totalPages }">
+        <li class="page-item">
+            <a class="page-link" routerLink="./" [queryParams]="{ page: data.totalPages }">
                 <i class="fa fa-angle-double-left"></i>
             </a>
         </li>
