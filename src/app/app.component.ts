@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, Output } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TranslationService } from './shared/_services/http/translation.service';

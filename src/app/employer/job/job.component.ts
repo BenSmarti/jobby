@@ -13,14 +13,13 @@ import { JobService } from '../../shared/_services/http/job.service';
 })
 export class JobComponent extends DataTableComponent implements OnInit {
 
-
   readonly tabs = [
-    { label: 'ACTIVE_TASKS', criterion: 'active'}, { label: 'FROZEN_TASKS', criterion: 'inactive' },
-    { label: 'DRAFTS', criterion: 'drafts'}, { label: 'DELETED_TASKS', criterion: 'deleted' }
+    { label: 'ACTIVE_TASKS', criterion: 'active' }, { label: 'FROZEN_TASKS', criterion: 'inactive' },
+    { label: 'DRAFTS', criterion: 'drafts' }, { label: 'DELETED_TASKS', criterion: 'deleted' }
   ];
 
   readonly headers = [
-    { column: null, label: 'JOB'}, {column: null, label: 'CANDIDATES' }
+    { column: null, label: 'JOB' }, { column: null, label: 'CANDIDATES' }
   ];
 
   constructor(route: ActivatedRoute, localeService: LocaleService, private jobService: JobService) {
@@ -33,6 +32,6 @@ export class JobComponent extends DataTableComponent implements OnInit {
   }
 
   fetchItems(): void {
-    this.jobService.getEmployerJobs(this.activeTab.criterion, this.searchCriteria).then(response =>this.setItems(response));
+    this.jobService.getEmployerJobs(this.activeTab.criterion, this.searchCriteria).then(response => this.setItems(response));
   }
 }

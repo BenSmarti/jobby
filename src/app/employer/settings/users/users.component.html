@@ -1,0 +1,53 @@
+<div class="data-table">
+  <p class="alert alert-success saved-message" *ngIf="savedItem">
+    <i class="fa fa-check"></i>
+    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
+  </p>
+  <div class="d-flex justify-content-between mb-2">
+    <div class="input-container search-container">
+      <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="t('SEARCH')">
+      <i class="fa fa-search" (click)="search()"></i>
+    </div>
+    <a class="chip-button chip-blue toggle-effect" routerLink="./form">{{ t('NEW_USER') }}</a>
+  </div>
+  <div class="mb-4">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th *ngFor="let header of headers" (click)="sort(header.column)">
+          <span>{{ t(header.label) }}</span>
+          <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
+        </th>
+        <th>{{ t('OPTIONS') }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="!isSearching">
+        <tr *ngFor="let item of paginatedItems">
+          <td class="blue bold">{{ item.username }}</td>
+          <td class="bold">{{ item.role }}</td>
+          <td class="bold">{{ item.created }}</td>
+          <td>
+            <a>
+              <img src="/assets/img/icons/pencil.svg" class="row-icon mr-2">
+            </a>
+            <a>
+              <img src="/assets/img/icons/trash-bin.svg" class="row-icon">
+            </a>
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngIf="isSearching">
+        <td colspan="4">
+          <mat-spinner class="mx-auto"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="!isSearching && items.length === 0">
+        <td colspan="4">{{ t('USERS_TABLE_EMPTY') }}.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [data]="paginationData" (isLinkClicked)="paginateItems()" *ngIf="items.length > 0"></app-pagination>
+</div>
+

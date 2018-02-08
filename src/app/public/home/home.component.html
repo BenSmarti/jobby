@@ -10,18 +10,18 @@
 </section>
 <div id="addResumeBanner" class="container">
   <p class="h4">{{ t('ADD_YOUR_RESUME_S') }}</p>
-  <mat-chip class="chip-blue toggle-effect text-uppercase">{{ t('ADD_YOUR_RESUME') }}</mat-chip>
+  <button class="chip-button chip-blue toggle-effect text-uppercase">{{ t('ADD_YOUR_RESUME') }}</button>
 </div>
 <section id="highlightJobs" class="container">
   <p class="section-title mb-5">{{ t('JOB_YOU_MAY_S') }}</p>
   <mat-chip-list class="mb-5">
-    <mat-chip class="fade-effect" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'hot' }"
+    <mat-chip class="chip-button fade-effect" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'hot', 'chip-default': activeHighlightCategory !== 'hot' }"
               (click)="activeHighlightCategory = 'hot'">{{ t('HOT_JOBS') }}
     </mat-chip>
-    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'recent' }"
+    <mat-chip class="chip-button fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'recent', 'chip-default': activeHighlightCategory !== 'hot' }"
               (click)="activeHighlightCategory = 'recent'">{{ t('RECENT_JOBS') }}
     </mat-chip>
-    <mat-chip class="fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'popular' }"
+    <mat-chip class="chip-button fade-effect ml-3" [ngClass]="{ 'chip-blue': activeHighlightCategory === 'popular', 'chip-default': activeHighlightCategory !== 'hot' }"
               (click)="activeHighlightCategory = 'popular'">{{ t('POPULAR_JOBS') }}
     </mat-chip>
   </mat-chip-list>

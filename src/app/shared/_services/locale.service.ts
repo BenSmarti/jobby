@@ -14,7 +14,7 @@ export class LocaleService {
       this.lang = localStorage.getItem('lang');
     } else {
       this.lang = navigator.language.substr(0, 2);
-      localStorage.setItem('lang ', this.lang);
+      localStorage.setItem('lang', this.lang);
     }
 
     return this.lang;

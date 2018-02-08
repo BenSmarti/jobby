@@ -24,14 +24,14 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
   isFailed = false;
 
   readonly salaryMethods = [
-    { id: 'monthly', text: this.t('MONTHLY')},
-    { id: 'hourly', text: this.t('HOURLY')}
+    { id: 'monthly', text: this.t('MONTHLY') },
+    { id: 'hourly', text: this.t('HOURLY') }
   ];
 
   readonly jobTypes = [
-    { id: 'full_time', text: this.t('FULL_TIME')},
-    { id: 'part_time', text: this.t('PART_TIME')},
-    { id: 'freelance', text: this.t('FREELANCE')}
+    { id: 'full_time', text: this.t('FULL_TIME') },
+    { id: 'part_time', text: this.t('PART_TIME') },
+    { id: 'freelance', text: this.t('FREELANCE') }
   ];
 
   constructor(private router: Router, private route: ActivatedRoute, protected localeService: LocaleService,
@@ -41,7 +41,6 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
 
   ngOnInit() {
     this.jobService.getCategories().then(response => this.setCategories(response));
-    // this.localeService.langChanged.subscribe()
   }
 
   private setCategories(categories: Select2OptionData[]): void {

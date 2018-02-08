@@ -1,5 +1,5 @@
 <p mat-dialog-title>{{ t('SET_INTERVIEW_APPOINTMENT') }}</p>
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="submit(f.valid)">
   <p>
     <span class="bold">{{ t('CANDIDATE_NAME') }}:</span>
     <span>{{ seeker.firstName + ' ' + seeker.lastName }}</span>
@@ -36,6 +36,6 @@
     <textarea id="interviewComments" class="form-control" name="comments" [(ngModel)]="interview.comments"></textarea>
   </div>
   <div mat-dialog-actions>
-    <mat-chip class="chip-button chip-blue fade-effect" (click)="submit(f.valid)">{{ t('SET_INTERVIEW') }}</mat-chip>
+    <button type="submit" class="chip-button chip-blue">{{ t('SET_INTERVIEW') }}</button>
   </div>
 </form>

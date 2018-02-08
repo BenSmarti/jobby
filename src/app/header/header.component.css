@@ -2,10 +2,6 @@
   padding: 0;
 }
 
-.header-actions .chip-button {
-  text-transform: uppercase;
-}
-
 #pageTitle {
   position: relative;
   display: flex;

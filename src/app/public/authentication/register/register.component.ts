@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TranslationsComponent } from '../../shared/translations/translations.component';
+import { TranslationsComponent } from '../../../shared/translations/translations.component';
 
-import { AppHttpService } from '../../shared/_services/http/app-http.service';
-import { UserSessionService } from '../../shared/_services/user-session.service';
-import { LocaleService } from '../../shared/_services/locale.service';
+import { AppHttpService } from '../../../shared/_services/http/app-http.service';
+import { UserSessionService } from '../../../shared/_services/user-session.service';
+import { LocaleService } from '../../../shared/_services/locale.service';
 
-import { Employer } from '../../shared/_models/employer.model';
-import { Seeker } from '../../shared/_models/seeker.model';
+import { Employer } from '../../../shared/_models/employer.model';
+import { Seeker } from '../../../shared/_models/seeker.model';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css', '../forms.css']
+  styleUrls: ['./register.component.css', '../authentication.css']
 })
 export class RegisterComponent extends TranslationsComponent {
 

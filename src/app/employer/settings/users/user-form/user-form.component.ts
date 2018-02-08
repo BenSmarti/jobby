@@ -16,7 +16,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
 })
 export class UserFormComponent extends TranslationsComponent implements OnInit {
 
-  user: User;
+  user = new User;
 
   constructor(private dialog: MatDialog, localeService: LocaleService, private userSession: UserSessionService) {
     super(localeService);

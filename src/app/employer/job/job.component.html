@@ -1,4 +1,4 @@
-<div class="container pt-3 pb-3 data-table">
+<div class="container py-3 data-table">
   <div class="row no-gutters mb-3">
     <div class="col-12 col-sm-6 col-md-3" (click)="setTab(tab)" *ngFor="let tab of tabs">
       <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
@@ -27,7 +27,7 @@
       <ng-container *ngIf="!isSearching">
         <tr *ngFor="let item of paginatedItems">
           <td class="job-details">
-            <a [routerLink]="'/jobs/' + item.job.id">
+            <a [routerLink]="['/jobs', 'view', item.job.id]">
               <p>
                 <span class="bold blue">{{ item.job.title }}</span>
                 <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'green' : 'red')">{{ item.job.isActive ? t('ACTIVE_POST') : t('INACTIVE_POST') }}</span>
@@ -59,7 +59,7 @@
             <img src="/assets/img/icons/ice-crystal.svg" class="icon">
             <img src="/assets/img/icons/arrow-up-circle.svg" class="ml-2 icon">
             <img src="/assets/img/icons/pencil.svg" class="ml-2 icon">
-            <img src="/assets/img/icons/delete.svg" class="ml-2 icon">
+            <img src="/assets/img/icons/trash-bin.svg" class="ml-2 icon">
           </td>
         </tr>
       </ng-container>

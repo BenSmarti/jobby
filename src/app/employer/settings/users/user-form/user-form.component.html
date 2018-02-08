@@ -1,41 +1,80 @@
-<div class="container pt-3 box-shadow">
-  <div class="d-flex justify-content-between align-items-end py-3 border-bottom-grey">
-    <div>
-      <img src="/assets/img/icons/user.svg" class="icon-xl">
-      <span class="h4 bold ml-2">{{ user.username }}</span>
+<div class="container data-form">
+  <!--<div class="d-flex justify-content-between align-items-end py-3 border-bottom-grey">-->
+    <!--<div>-->
+      <!--<span class="pointer" [matMenuTriggerFor]="profileMenu">-->
+        <!--<span>{{ t('OPTIONS') }}</span>-->
+        <!--<i class="fa fa-chevron-down ml-1"></i>-->
+      <!--</span>-->
+      <!--<mat-menu #profileMenu="matMenu">-->
+        <!--<a mat-menu-item (click)="openPasswordModal()">{{ t('CHANGE_PASSWORD') }}</a>-->
+        <!--<a mat-menu-item>{{ t('DELETE_USER') }}</a>-->
+      <!--</mat-menu>-->
+    <!--</div>-->
+  <!--</div>-->
+  <a routerLink=".." class="d-block mb-2">
+    <i class="fa fa-chevron-right p-icon"></i>
+    <span>{{ t('BACK_TO_USERS') }}</span>
+  </a>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">{{ t('NEW_USER') }}</div>
     </div>
-    <div>
-      <span class="pointer" [matMenuTriggerFor]="profileMenu">
-        <span>{{ t('OPTIONS') }}</span>
-        <i class="fa fa-chevron-down ml-1"></i>
-      </span>
-      <mat-menu #profileMenu="matMenu">
-        <a mat-menu-item (click)="openPasswordModal()">{{ t('CHANGE_PASSWORD') }}</a>
-        <a mat-menu-item>{{ t('DELETE_USER') }}</a>
-      </mat-menu>
-    </div>
+    <form #f="ngForm" (ngSubmit)="submit(f.valid)" class="card-block">
+      <div class="row">
+        <div class="col-12 col-sm">
+          <div class="form-group">
+            <label for="nameInput">{{ t('user_NAME') }}*</label>
+            <input id="nameInput" type="text" class="form-control" name="name"
+                   #name="ngModel" [(ngModel)]="user.name" [placeholder]="t('WRITE_user_NAME')" required>
+            <p class="alert alert-danger" *ngIf="name.errors && f.submitted">{{ t('REQUIRED_FIELD') }}</p>
+          </div>
+          <div class="form-group">
+            <label for="businessNumberInput">{{ t('BUSINESS_NUMBER') }}*</label>
+            <input id="businessNumberInput" type="text" class="form-control" name="name"
+                   #businessNumber="ngModel" [(ngModel)]="user.businessNumber" [placeholder]="t('WRITE_user_NAME')" required>
+            <p class="alert alert-danger" *ngIf="businessNumber.errors && f.submitted">{{ t('REQUIRED_FIELD') }}</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm d-flex justify-content-end align-items-center">
+          <div class="upload-logo">
+            <img [src]="logoPreview ? (logoPreview | safeUrl) : '/assets/img/user-placeholder.svg'" class="upload-logo-image">
+            <label>
+              <img src="/assets/img/icons/upload-white.svg" class="upload-logo-icon">
+              <input type="file" (change)="uploadLogo($event.target.files[0])" #fileInput>
+            </label>
+            <img src="/assets/img/icons/trash-bin-white.svg" class="upload-logo-icon delete-logo" *ngIf="logoPreview" (click)="resetLogo(fileInput)">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm form-group">
+          <label for="emailInput">{{ t('EMAIL') }}</label>
+          <input id="emailInput" type="email" class="form-control" name="email" #email="ngModel"
+                 [(ngModel)]="user.email" [placeholder]="t('WRITE_EMAIL')" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+          <p class="alert alert-danger" *ngIf="email.errors && f.submitted">{{ t('INVALID_EMAIL') }}</p>
+        </div>
+        <div class="col-12 col-sm form-group">
+          <label for="phoneInput">{{ t('PHONE') }}</label>
+          <input id="phoneInput" type="text" class="form-control" name="phone" [(ngModel)]="user.address" [placeholder]="t('WRITE_PHONE')">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm form-group">
+          <label for="addressInput">{{ t('ADDRESS') }}</label>
+          <input id="addressInput" type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="user.address" [placeholder]="t('WRITE_ADDRESS')">
+        </div>
+        <div class="col-12 col-sm form-group">
+          <label for="websiteInput">{{ t('WEBSITE_ADDRESS') }}</label>
+          <input id="websiteInput" type="url" class="form-control ltr" name="website" [(ngModel)]="user.website" placeholder="http://">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">{{ t('ABOUT_THE_COMPANY') }}</label>
+        <textarea id="description" class="form-control w-100"></textarea>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="card-primary chip-button chip-blue">{{ t('SAVE') }}</button>
+      </div>
+    </form>
   </div>
-  <form class="p-3" #f="ngForm" (ngSubmit)="submit(f.valid)" novalidate>
-    <div class="row">
-      <div class="col col-sm-5 col-md-4 form-group">
-        <label class="grey bold">{{ t('FULL_NAME') }}</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col col-sm-5 col-md-4">
-        <label class="grey bold">{{ t('PHONE_NUMBER') }}</label>
-        <input type="text" class="form-control">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-sm-5 col-md-4 form-group">
-        <label class="grey bold">{{ t('ROLE') }}</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col col-sm-5 col-md-4">
-        <label class="grey bold">{{ t('EMAIL') }}</label>
-        <input type="email" class="form-control">
-      </div>
-    </div>
-    <button type="submit" class="mt-5 chip-button chip-blue fade-effect">{{ t('SAVE') }}</button>
-  </form>
 </div>

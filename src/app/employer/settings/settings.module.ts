@@ -5,11 +5,15 @@ import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { UserFormModule } from './users/user-form/user-form.module';
 import { DataTableModule } from '../../shared/data-table/data-table.module';
+import { SafeUrlModule } from '../../shared/_pipes/safe-url.module';
 
 import { SettingsComponent } from './settings.component';
 import { UsersComponent } from './users/users.component';
 import { EmployersComponent } from './employers/employers.component';
 import { EmployerFormComponent } from './employers/employer-form/employer-form.component';
+
+import { EmployerService } from '../../shared/_services/http/employer.service';
+import { UserService } from '../../shared/_services/http/user.service';
 
 @NgModule({
   imports: [
@@ -18,8 +22,10 @@ import { EmployerFormComponent } from './employers/employer-form/employer-form.c
     RouterModule,
     UserFormModule,
     MatProgressSpinnerModule,
-    DataTableModule
+    DataTableModule,
+    SafeUrlModule
   ],
-  declarations: [SettingsComponent, UsersComponent, EmployersComponent, EmployerFormComponent]
+  declarations: [SettingsComponent, UsersComponent, EmployersComponent, EmployerFormComponent],
+  providers: [EmployerService, UserService]
 })
 export class SettingsModule {}

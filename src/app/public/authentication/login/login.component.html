@@ -30,7 +30,7 @@
         <span>{{ t('LOGIN_ERROR') }}.</span>
       </p>
       <div class="text-center">
-        <mat-chip class="w-100 mb-3 text-uppercase chip-button chip-blue toggle-effect" (click)="submit(f.valid)">{{ t('LOGIN') }}</mat-chip>
+        <button class="w-100 mb-3 text-uppercase chip-button chip-blue toggle-effect" (click)="submit(f.valid)">{{ t('LOGIN') }}</button>
         <a class="grey-link" routerLink="/register">{{ t('CREATE_ACC') }}</a>
       </div>
   </form>
