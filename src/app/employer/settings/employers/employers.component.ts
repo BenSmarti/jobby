@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 
 import { EmployerService } from '../../../shared/_services/http/employer.service';
-import { LocaleService } from '../../../shared/_services/locale.service';
 
 @Component({
   selector: 'app-employers',
@@ -17,8 +16,8 @@ export class EmployersComponent extends DataTableComponent {
     { column: 'employerName', label: 'EMPLOYER_NAME' }, { column: 'activeJobs', label: 'ACTIVE_JOBS' }
   ];
 
-  constructor(route: ActivatedRoute, localeService: LocaleService, private employerService: EmployerService) {
-    super(route, localeService);
+  constructor(route: ActivatedRoute, private employerService: EmployerService) {
+    super(route);
   }
 
   fetchItems(): void {

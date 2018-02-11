@@ -1,8 +1,15 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
 import { LocaleService } from '../_services/locale.service';
 
 import { Translation } from '../_models/translation.model';
 
-export abstract class TranslationsComponent {
+@Pipe({
+  name: 't',
+  pure: false
+})
+export class TranslatePipe implements PipeTransform {
+
   private translations: Translation[] = [];
 
   constructor(protected localeService: LocaleService) {
@@ -10,7 +17,7 @@ export abstract class TranslationsComponent {
     this.localeService.langChanged.subscribe(() => this.translations = this.localeService.getTranslations());
   }
 
-  protected t(key: string): string {
+  transform(key: string) {
     if (!this.translations[key]) {
       return '';
     }

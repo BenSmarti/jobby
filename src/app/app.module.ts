@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule, MatMenuModule, MatSelectModule } from '@angular/material';
+
+import { TranslateModule } from './shared/_pipes/translate.module';
 import { JobModule } from './employer/job/job.module';
 import { CandidatesModule } from './employer/candidates/candidates.module';
 import { SettingsModule } from './employer/settings/settings.module';
@@ -20,11 +22,11 @@ import { FooterComponent } from './footer/footer.component';
 
 import { TranslationService } from './shared/_services/http/translation.service';
 import { LocaleService } from './shared/_services/locale.service';
+
 import { TranslationsResolve } from './shared/_resolves/translations.resolve';
 import { EmployerActiveJobsResolve } from './shared/_resolves/employer-jobs.resolve';
 
 import { APP_ROUTES } from './shared/_routes/app.routes';
-import { SafeUrlPipe } from './shared/_pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { SafeUrlPipe } from './shared/_pipes/safe-url.pipe';
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
     MatSelectModule, MatFormFieldModule, MatMenuModule,
+    TranslateModule,
     HomeModule,
     AuthenticationModule,
     JobModule,

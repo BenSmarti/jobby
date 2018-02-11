@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { Select2Module } from 'ng2-select2';
+
 import { DataTableModule } from '../../shared/data-table/data-table.module';
+import { TranslateModule } from '../../shared/_pipes/translate.module';
 
 import { JobComponent } from './job.component';
 
@@ -18,7 +20,8 @@ import { JobFormComponent } from './job-form/job-form.component';
     FormsModule,
     MatProgressSpinnerModule,
     Select2Module,
-    DataTableModule
+    DataTableModule,
+    TranslateModule
   ],
   declarations: [JobComponent, JobFormComponent],
   providers: [JobService]

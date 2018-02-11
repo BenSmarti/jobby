@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { TranslationsComponent } from '../../../shared/translations/translations.component';
-
-import { LocaleService } from '../../../shared/_services/locale.service';
 import { JobService } from '../../../shared/_services/http/job.service';
+import { LocaleService } from '../../../shared/_services/locale.service';
+
+import { TranslatePipe } from '../../../shared/_pipes/translate.pipe';
 
 import { Select2OptionData } from 'ng2-select2';
 import { Job } from '../../../shared/_models/job.model';
-
-declare let Select2Options: any;
 
 @Component({
   selector: 'app-job-form',
   templateUrl: './job-form.component.html',
   styleUrls: ['./job-form.component.css']
 })
-export class JobFormComponent extends TranslationsComponent implements OnInit {
+export class JobFormComponent implements OnInit {
 
   job = new Job();
   categories: Select2OptionData[] = [];
@@ -24,20 +22,18 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
   isFailed = false;
 
   readonly salaryMethods = [
-    { id: 'monthly', text: this.t('MONTHLY') },
-    { id: 'hourly', text: this.t('HOURLY') }
+    { id: 'monthly', text: this.t.transform('MONTHLY') },
+    { id: 'hourly', text: this.t.transform('HOURLY') }
   ];
 
   readonly jobTypes = [
-    { id: 'full_time', text: this.t('FULL_TIME') },
-    { id: 'part_time', text: this.t('PART_TIME') },
-    { id: 'freelance', text: this.t('FREELANCE') }
+    { id: 'full_time', text: this.t.transform('FULL_TIME') },
+    { id: 'part_time', text: this.t.transform('PART_TIME') },
+    { id: 'freelance', text: this.t.transform('FREELANCE') }
   ];
 
-  constructor(private router: Router, private route: ActivatedRoute, protected localeService: LocaleService,
-              private jobService: JobService) {
-    super(localeService);
-  }
+  constructor(private router: Router, private route: ActivatedRoute, private t: TranslatePipe,
+              private localeService: LocaleService, private jobService: JobService) {}
 
   ngOnInit() {
     this.jobService.getCategories().then(response => this.setCategories(response));
@@ -45,7 +41,7 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
 
   private setCategories(categories: Select2OptionData[]): void {
     for (let i = 0; i < categories.length; i++) {
-      categories[i].text = this.t(categories[i].text.toUpperCase());
+      categories[i].text = this.t.transform(categories[i].text.toUpperCase());
       this.categories.push(categories[i]);
     }
   }
@@ -54,7 +50,7 @@ export class JobFormComponent extends TranslationsComponent implements OnInit {
     const options = <Select2Options>{
       dir: this.localeService.getDir(),
       lang: this.localeService.lang,
-      placeholder: literal ? placeholder : this.t(('select_' + placeholder).toUpperCase())
+      placeholder: literal ? placeholder : this.t.transform(('select_' + placeholder).toUpperCase())
     };
 
     if (disableSearch) {

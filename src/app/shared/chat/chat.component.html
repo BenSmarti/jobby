@@ -17,7 +17,7 @@
     <div class="w-75">
       <div id="selectJobContainer" class="text-right">
         <select class="search-container">
-          <option selected disabled>{{ t('SELECT_JOB') }}</option>
+          <option selected disabled>{{ 'SELECT_JOB' | t }}</option>
         </select>
       </div>
       <div id="chatMessages">
@@ -48,8 +48,8 @@
       </div>
       <div id="writeMessage" class="d-flex p-3">
         <img src="/assets/img/icons/attachment.svg" class="mr-3 icon">
-        <input [placeholder]="t('WRITE_HERE')">
-        <span class="float-right blue bold">{{ t('SEND') }}</span>
+        <input [placeholder]="'WRITE_HERE' | t">
+        <span class="float-right blue bold">{{ 'SEND' | t }}</span>
       </div>
     </div>
   </div>

@@ -1,9 +1,6 @@
-import {Component, Input, Output, EventEmitter, OnInit, HostListener} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
-import { TranslationsComponent } from '../shared/translations/translations.component';
-
-import { LocaleService } from '../shared/_services/locale.service';
 import { UserSessionService } from '../shared/_services/user-session.service';
 
 import { User } from '../shared/_models/user.model';
@@ -13,7 +10,7 @@ import { User } from '../shared/_models/user.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent extends TranslationsComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   @Input() lang;
   @Output() langChanged = new EventEmitter();
 
@@ -33,10 +30,7 @@ export class HeaderComponent extends TranslationsComponent implements OnInit {
     this.pageWidth = event.target.innerWidth;
   }
 
-  constructor (private router: Router, private route: ActivatedRoute, localeService: LocaleService,
-               private userSession: UserSessionService) {
-    super(localeService);
-  }
+  constructor (private router: Router, private route: ActivatedRoute, private userSession: UserSessionService) {}
 
   ngOnInit() {
     this.pageWidth = window.innerWidth;

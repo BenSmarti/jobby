@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="">{{ t('HOME') }}</a>
+            <a class="nav-link" routerLink="">{{ 'HOME' | t }}</a>
           </li>
           <li class="nav-item" *ngFor="let link of activeMenuLinks">
-            <a class="nav-link" [routerLink]="'/' + link">{{ t(link | uppercase) }}</a>
+            <a class="nav-link" [routerLink]="'/' + link">{{ link | uppercase | t }}</a>
           </li>
         </ul>
       </div>
@@ -31,27 +31,28 @@
       </mat-form-field>
       <span class="mx-2" *ngIf="!user">
         <i class="fa fa-user ml-1 link"></i>
-        <a routerLink="/login" class="black">{{ t('SIGN_IN') }} /</a>
-        <a routerLink="/register" class="black">{{ t('REGISTER') }}</a>
+        <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
+        <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
       </span>
-      <button class="mx-3 chip-button chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ t('POST_JOB') }}</button>
+      <button class="mx-3 chip-button chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
       <ng-container *ngIf="user">
         <span class="pointer" [matMenuTriggerFor]="userMenu">
-          <span>{{ t('MY_ACCOUNT') }}</span>
+          <span>{{ 'MY_ACCOUNT' | t }}</span>
           <i class="fa fa-chevron-down ml-1"></i>
         </span>
         <mat-menu #userMenu="matMenu">
-          <a mat-menu-item routerLink="/profile">{{ t('MY_PROFILE') }}</a>
-          <a mat-menu-item routerLink="/settings">{{ t('SETTINGS') }}</a>
-          <a mat-menu-item>{{ t('SUBSCRIPTION') }}</a>
-          <a mat-menu-item>{{ t('HELP') }}</a>
-          <a mat-menu-item (click)="logout()">{{ t('LOGOUT') }}</a>
+          <a mat-menu-item routerLink="/profile">{{ 'MY_PROFILE' | t }}</a>
+          <a mat-menu-item routerLink="/settings">{{ 'SETTINGS' | t }}</a>
+          <a mat-menu-item>{{ 'SUBSCRIPTION' | t }}</a>
+          <a mat-menu-item>{{ 'HELP' | t }}</a>
+          <a mat-menu-item (click)="logout()">{{ 'LOGOUT' | t }}</a>
         </mat-menu>
       </ng-container>
     </div>
     <div class="hidden-md-up">
-      <button class="ml-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']">{{ t('POST_JOB') }}</button>
-      <button *ngIf="user" class="navbar-toggler navbar-toggler-right ml-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="ml-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
+      <button *ngIf="user" class="navbar-toggler navbar-toggler-right ml-2" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-label]="'TOGGLE' | t">
         <i class="fa fa-bars"></i>
       </button>
     </div>
@@ -72,31 +73,31 @@
     </mat-form-field>
     <span class="mx-2" *ngIf="!user">
         <i class="fa fa-user ml-1 link"></i>
-        <a routerLink="/login" class="black">{{ t('SIGN_IN') }} /</a>
-        <a routerLink="/register" class="black">{{ t('REGISTER') }}</a>
+        <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
+        <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
       </span>
-    <button class="ml-3 chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ t('POST_JOB') }}</button>
+    <button class="ml-3 chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
   </div>
 </div>
 <div id="pageTitle">
-  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ t(pageTitle | uppercase) }}</h1>
+  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ pageTitle | uppercase | t }}</h1>
   <div id="pageTitleContent" *ngIf="pageTitle === 'home'">
-    <h1 class="mb-3">{{ t('EASIEST_WAY_S') }}</h1>
-    <h2 class="mb-5">{{ t('WE_OFFER') }} 12000 {{ t('JOBS_VACATION_S') }}</h2>
+    <h1 class="mb-3">{{ 'EASIEST_WAY_S' | t }}</h1>
+    <h2 class="mb-5">{{ 'WE_OFFER' | t }} 12000 {{ 'JOBS_VACATION_S' | t }}</h2>
     <div id="mainSearchContainer">
       <div class="main-search-container-input">
         <i class="fa fa-search"></i>
-        <input [placeholder]="t('JOB_KEYWORD')">
+        <input [placeholder]="'JOB_KEYWORD' | t">
       </div>
       <div class="main-search-container-input d-flex align-items-center">
         <i class="fa fa-globe"></i>
-        <mat-select [placeholder]="t('LOCATION')">
+        <mat-select [placeholder]="'LOCATION' | t">
           <mat-option>a</mat-option>
           <mat-option>b</mat-option>
           <mat-option>c</mat-option>
         </mat-select>
       </div>
-      <button type="submit">{{ t('SEARCH') }}</button>
+      <button type="submit">{{ 'SEARCH' | t }}</button>
     </div>
   </div>
 </div>

@@ -1,21 +1,21 @@
 <div class="container py-3 data-table">
   <div class="d-flex justify-content-end mb-5 mt-3">
     <select (change)="fetchItems()" [(ngModel)]="selectedJobID" class="search-container">
-      <option disabled [value]="null">{{ t('SELECT_JOB') }}</option>
+      <option disabled [value]="null">{{ 'SELECT_JOB' | t }}</option>
       <option *ngFor="let job of employerActiveJobs" [value]="job.id">{{ job.title }}</option>
     </select>
   </div>
   <div class="row no-gutters mb-3">
     <div class="col-12 col-sm-6 col-md" (click)="setTab(tab)" *ngFor="let tab of tabs">
-      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
+      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ tab.label | t }}</div>
     </div>
   </div>
   <p class="alert alert-success saved-message" *ngIf="savedItem">
     <i class="fa fa-check"></i>
-    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
+    <span>{{ savedItem + ' ' + ('WAS_SAVED_SUCCESSFULLY' | t) }}.</span>
   </p>
   <div class="mb-2 input-container search-container">
-    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="t('SEARCH')">
+    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
     <i class="fa fa-search" (click)="search()"></i>
   </div>
   <div class="mb-4">
@@ -24,7 +24,7 @@
       <tr>
         <th></th>
         <th *ngFor="let header of headers" (click)="sort(header.column)">
-          <span>{{ t(header.label) }}</span>
+          <span>{{ header.label | t }}</span>
           <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
         </th>
       </tr>
@@ -54,7 +54,7 @@
         </td>
       </tr>
       <tr *ngIf="!isSearching && items.length === 0">
-        <td colspan="8">{{ t('CANDIDATE_TABLE_EMPTY') }}.</td>
+        <td colspan="8">{{ 'CANDIDATE_TABLE_EMPTY' | t }}.</td>
       </tr>
       </tbody>
     </table>

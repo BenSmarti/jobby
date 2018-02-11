@@ -5,11 +5,10 @@ import { MatDialog } from '@angular/material';
 import { DataTableComponent } from '../../shared/data-table/data-table.component';
 import { NewInterviewComponent } from './new-interview/new-interview.component';
 
-import { LocaleService } from '../../shared/_services/locale.service';
 import { CandidateService } from '../../shared/_services/http/candidate.service';
 
 import { Job } from '../../shared/_models/job.model';
-import {Seeker} from '../../shared/_models/seeker.model';
+import { Seeker } from '../../shared/_models/seeker.model';
 
 @Component({
   selector: 'app-candidates',
@@ -35,9 +34,8 @@ export class CandidatesComponent extends DataTableComponent implements OnInit {
     { column: null, label: 'INTERVIEW_APPOINTMENT' }
   ];
 
-  constructor(route: ActivatedRoute, private dialog: MatDialog, localeService: LocaleService,
-              private candidateService: CandidateService) {
-    super(route, localeService);
+  constructor(route: ActivatedRoute, private dialog: MatDialog, private candidateService: CandidateService) {
+    super(route);
   }
 
   ngOnInit() {

@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material';
+
 import { UserFormModule } from './users/user-form/user-form.module';
 import { DataTableModule } from '../../shared/data-table/data-table.module';
 import { SafeUrlModule } from '../../shared/_pipes/safe-url.module';
+import { TranslateModule } from '../../shared/_pipes/translate.module';
 
 import { SettingsComponent } from './settings.component';
 import { UsersComponent } from './users/users.component';
@@ -23,7 +25,8 @@ import { UserService } from '../../shared/_services/http/user.service';
     UserFormModule,
     MatProgressSpinnerModule,
     DataTableModule,
-    SafeUrlModule
+    SafeUrlModule,
+    TranslateModule
   ],
   declarations: [SettingsComponent, UsersComponent, EmployersComponent, EmployerFormComponent],
   providers: [EmployerService, UserService]

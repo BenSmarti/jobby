@@ -1,15 +1,15 @@
 <div class="container py-3 data-table">
   <div class="row no-gutters mb-3">
     <div class="col-12 col-sm-6 col-md-3" (click)="setTab(tab)" *ngFor="let tab of tabs">
-      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ t(tab.label) }}</div>
+      <div class="tab" [ngClass]="{ 'active': activeTab === tab }">{{ tab.label | t }}</div>
     </div>
   </div>
   <p class="alert alert-success saved-message" *ngIf="savedItem">
     <i class="fa fa-check"></i>
-    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
+    <span>{{ savedItem + ' ' + 'WAS_SAVED_SUCCESSFULLY' | t }}.</span>
   </p>
   <div class="mb-2 input-container search-container">
-    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="t('SEARCH')">
+    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
     <i class="fa fa-search" (click)="search()"></i>
   </div>
   <div class="mb-4">
@@ -17,10 +17,10 @@
       <thead>
       <tr>
         <th *ngFor="let header of headers" (click)="sort(header.column)">
-          <span>{{ t(header.label) }}</span>
+          <span>{{ header.label | t }}</span>
           <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
         </th>
-        <th>{{ t('OPTIONS') }}</th>
+        <th>{{ 'OPTIONS' | t }}</th>
       </tr>
       </thead>
       <tbody>
@@ -30,11 +30,11 @@
             <a [routerLink]="['/jobs', 'view', item.job.id]">
               <p>
                 <span class="bold blue">{{ item.job.title }}</span>
-                <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'green' : 'red')">{{ item.job.isActive ? t('ACTIVE_POST') : t('INACTIVE_POST') }}</span>
+                <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'green' : 'red')">{{ item.job.isActive ? ('ACTIVE_POST' | t) : ('INACTIVE_POST' | t) }}</span>
               </p>
               <p class="f-12 grey">
                 <span>{{ item.job.location }}</span>
-                <span class="mr-2">{{ t(item.job.type) }}</span>
+                <span class="mr-2">{{ item.job.type | t }}</span>
                 <span class="mr-2">
                 <i class="fa fa-clock-o"></i>
                 <span>{{ item.job.created }}</span>
@@ -46,11 +46,11 @@
             <p class="h5 bold blue">{{ item.seekerCount }}</p>
             <div class="d-flex justify-content-between grey viewed-seeker-counts">
               <span>
-                <span>{{ t('VIEWED') }}:</span>
+                <span>{{ 'VIEWED' | t }}:</span>
                 <span>{{ item.seekerCount - item.viewedSeekerCount }}</span>
               </span>
               <span>
-                <span>{{ t('NOT_VIEWED') }}:</span>
+                <span>{{ 'NOT_VIEWED' | t }}:</span>
                 <span>{{ item.viewedSeekerCount }}</span>
               </span>
             </div>
@@ -69,7 +69,7 @@
         </td>
       </tr>
       <tr *ngIf="!isSearching && items.length === 0">
-        <td colspan="3">{{ t('JOB_TABLE_EMPTY') }}.</td>
+        <td colspan="3">{{ 'JOB_TABLE_EMPTY' | t }}.</td>
       </tr>
       </tbody>
     </table>

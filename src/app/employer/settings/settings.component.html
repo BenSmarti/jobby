@@ -1,10 +1,10 @@
 <div class="container py-3">
   <div class="row no-gutters mb-2">
     <a class="col-12 col-sm-6 col-md" [routerLink]="['/settings', 'employers']" (click)="activeTab = 'employers'">
-      <div class="tab" [ngClass]="{ 'active': activeTab === 'employers' }">{{ t('EMPLOYERS') }}</div>
+      <div class="tab" [ngClass]="{ 'active': activeTab === 'employers' }">{{ 'EMPLOYERS' | t }}</div>
     </a>
     <a class="col-12 col-sm-6 col-md" [routerLink]="['/settings', 'users']" (click)="activeTab = 'users'">
-      <div class="tab" [ngClass]="{ 'active': activeTab === 'users' }">{{ t('USERS') }}</div>
+      <div class="tab" [ngClass]="{ 'active': activeTab === 'users' }">{{ 'USERS' | t }}</div>
     </a>
   </div>
   <div class="data-table">

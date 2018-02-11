@@ -1,24 +1,24 @@
 <div class="data-table">
   <p class="alert alert-success saved-message" *ngIf="savedItem">
     <i class="fa fa-check"></i>
-    <span>{{ savedItem + ' ' + t('WAS_SAVED_SUCCESSFULLY') }}.</span>
+    <span>{{ savedItem + ' ' + 'WAS_SAVED_SUCCESSFULLY' | t }}.</span>
   </p>
   <div class="d-flex justify-content-between mb-2">
     <div class="input-container search-container">
-      <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="t('SEARCH')">
+      <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
       <i class="fa fa-search" (click)="search()"></i>
     </div>
-    <a class="chip-button chip-blue toggle-effect" routerLink="./form">{{ t('NEW_EMPLOYER') }}</a>
+    <a class="chip-button chip-blue toggle-effect" routerLink="./form">{{ 'NEW_EMPLOYER' | t }}</a>
   </div>
   <div class="mb-4">
     <table class="table table-striped">
       <thead>
       <tr>
         <th *ngFor="let header of headers" (click)="sort(header.column)">
-          <span>{{ t(header.label) }}</span>
+          <span>{{ header.label | t }}</span>
           <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
         </th>
-        <th>{{ t('OPTIONS') }}</th>
+        <th>{{ 'OPTIONS' | t }}</th>
       </tr>
       </thead>
       <tbody>
@@ -42,7 +42,7 @@
         </td>
       </tr>
       <tr *ngIf="!isSearching && items.length === 0">
-        <td colspan="3">{{ t('EMPLOYERS_TABLE_EMPTY') }}.</td>
+        <td colspan="3">{{ 'EMPLOYERS_TABLE_EMPTY' | t }}.</td>
       </tr>
       </tbody>
     </table>

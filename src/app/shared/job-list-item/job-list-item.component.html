@@ -10,7 +10,7 @@
       </li>
       <li class="mb-2 job-detail">
         <i class="fa fa-briefcase mr-3"></i>
-        <span>{{ t(job.level) }}</span>
+        <span>{{ job.level | t }}</span>
       </li>
       <li class="mb-2 job-detail">
         <i class="fa fa-dollar mr-3"></i>
@@ -20,7 +20,7 @@
   </div>
   <!--<mat-divider></mat-divider>-->
   <div class="job-footer">
-    <button [class]="'btn job-type ' + getTypeClass()">{{ t(job.type) }}</button>
+    <button [class]="'btn job-type ' + getTypeClass()">{{ job.type | t }}</button>
     <span class="created">{{ job.created }}</span>
   </div>
 </div>

@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DataTableComponent } from '../../../shared/data-table/data-table.component';
 
 import { UserService } from '../../../shared/_services/http/user.service';
-import { LocaleService } from '../../../shared/_services/locale.service';
 
 @Component({
   selector: 'app-users',
@@ -18,8 +17,8 @@ export class UsersComponent extends DataTableComponent {
     { column: 'created', label: 'CREATION_DATE' },
   ];
 
-  constructor(route: ActivatedRoute, localeService: LocaleService, private userService: UserService) {
-    super(route, localeService);
+  constructor(route: ActivatedRoute, private userService: UserService) {
+    super(route);
   }
 
   fetchItems(): void {

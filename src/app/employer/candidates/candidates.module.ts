@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatChipsModule, MatDialogModule, MatProgressSpinnerModule } from '@angular/material';
 import { StarRatingModule } from 'angular-star-rating';
+
 import { DataTableModule } from '../../shared/data-table/data-table.module';
+import { TranslateModule } from '../../shared/_pipes/translate.module';
 
 import { CandidatesComponent } from './candidates.component';
 import { NewInterviewComponent } from './new-interview/new-interview.component';
@@ -16,7 +18,8 @@ import { NewInterviewComponent } from './new-interview/new-interview.component';
     RouterModule,
     MatProgressSpinnerModule, MatDialogModule, MatChipsModule,
     StarRatingModule.forRoot(),
-    DataTableModule
+    DataTableModule,
+    TranslateModule
   ],
   declarations: [CandidatesComponent, NewInterviewComponent],
   entryComponents: [NewInterviewComponent]

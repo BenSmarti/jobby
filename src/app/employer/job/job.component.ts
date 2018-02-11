@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { DataTableComponent } from '../../shared/data-table/data-table.component';
 
-import { LocaleService } from '../../shared/_services/locale.service';
 import { JobService } from '../../shared/_services/http/job.service';
 
 @Component({
@@ -22,8 +21,8 @@ export class JobComponent extends DataTableComponent implements OnInit {
     { column: null, label: 'JOB' }, { column: null, label: 'CANDIDATES' }
   ];
 
-  constructor(route: ActivatedRoute, localeService: LocaleService, private jobService: JobService) {
-    super(route, localeService);
+  constructor(route: ActivatedRoute, private jobService: JobService) {
+    super(route);
   }
 
   ngOnInit() {

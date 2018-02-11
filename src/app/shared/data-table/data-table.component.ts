@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TranslationsComponent } from '../translations/translations.component';
-
-import { LocaleService } from '../_services/locale.service';
-
 import { DataTableHeader } from './classes/data-table-header';
 import { DataTableOrderCriteria } from './classes/data-table-order-criteria';
 import { PaginationData } from './classes/pagination-data';
@@ -17,7 +13,7 @@ declare let swal: any;
   template: '',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent extends TranslationsComponent implements OnInit {
+export class DataTableComponent implements OnInit {
 
   headers: DataTableHeader[] = [];
 
@@ -37,9 +33,7 @@ export class DataTableComponent extends TranslationsComponent implements OnInit 
   pageSubscription: Subscription;
   currentPage: number;
 
-  constructor(protected route: ActivatedRoute, localeService: LocaleService) {
-    super(localeService);
-  }
+  constructor(protected route: ActivatedRoute) {}
 
   ngOnInit() {
     if (sessionStorage.getItem('saved-item')) {

@@ -1,30 +1,30 @@
-<p mat-dialog-title>{{ t('SET_INTERVIEW_APPOINTMENT') }}</p>
+<p mat-dialog-title>{{ 'SET_INTERVIEW_APPOINTMENT' | t }}</p>
 <form #f="ngForm" (ngSubmit)="submit(f.valid)">
   <p>
-    <span class="bold">{{ t('CANDIDATE_NAME') }}:</span>
+    <span class="bold">{{ 'CANDIDATE_NAME' | t }}:</span>
     <span>{{ seeker.firstName + ' ' + seeker.lastName }}</span>
   </p>
   <p>
-    <span class="bold">{{ t('JOB_NAME') }}:</span>
+    <span class="bold">{{ 'JOB_NAME' | t }}:</span>
     <span>{{ job.title }}</span>
   </p>
   <div class="row my-4">
     <div class="col-md">
-      <label for="interviewDate">{{ t('INTERVIEW_DATE') }}</label>
+      <label for="interviewDate">{{ 'INTERVIEW_DATE' | t }}</label>
       <div class="input-container">
         <input id="interviewDate" type="date" name="date" [(ngModel)]="interview.date">
         <img class="icon" src="/assets/img/icons/calendar-page-empty.svg">
       </div>
     </div>
     <div class="col-md">
-      <label for="interviewTime">{{ t('INTERVIEW_TIME') }}</label>
+      <label for="interviewTime">{{ 'INTERVIEW_TIME' | t }}</label>
       <div class="input-container">
         <input id="interviewTime" type="time" name="time" [(ngModel)]="interview.date">
         <img class="icon" src="/assets/img/icons/calendar-page-empty.svg">
       </div>
     </div>
     <div class="col-md">
-      <label for="interviewLocation">{{ t('INTERVIEW_LOCATION') }}</label>
+      <label for="interviewLocation">{{ 'INTERVIEW_LOCATION' | t }}</label>
       <div class="input-container">
         <input id="interviewLocation" type="text" name="location" [(ngModel)]="interview.location">
         <img class="icon" src="/assets/img/icons/calendar-page-empty.svg">
@@ -32,10 +32,10 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="interviewComments">{{ t('EXTRA_COMMENTS') }}</label>
+    <label for="interviewComments">{{ 'EXTRA_COMMENTS' | t }}</label>
     <textarea id="interviewComments" class="form-control" name="comments" [(ngModel)]="interview.comments"></textarea>
   </div>
   <div mat-dialog-actions>
-    <button type="submit" class="chip-button chip-blue">{{ t('SET_INTERVIEW') }}</button>
+    <button type="submit" class="chip-button chip-blue toggle-effect">{{ 'SET_INTERVIEW' | t }}</button>
   </div>
 </form>
