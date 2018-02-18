@@ -1,9 +1,9 @@
 <section id="categories" class="container">
   <p class="section-title mb-5">{{ 'BROWSE_JOBS_BY_CATEGORY' | t }}</p>
   <div class="row">
-    <a class="col-12 col-sm-6 col-md-3 text-center category" *ngFor="let category of categories">
-      <img [src]="'/assets/img/categories/category' + category + '.png'" class="mb-3">
-      <p>{{ 'ACCOUNTING' | t }} / {{ 'FINANCE' | t }}</p>
+    <a class="col-12 col-sm-6 col-md-3 text-center category" *ngFor="let category of categories; let index = index">
+      <img [src]="'/assets/img/categories/category' + (index + 1) + '.png'" class="mb-3">
+      <p>{{ category.text | uppercase | t }}</p>
       <p class="category-count">(1298)</p>
     </a>
   </div>

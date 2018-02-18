@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TranslationsComponent } from '../../shared/translations/translations.component';
-
 import { JobService } from '../../shared/_services/http/job.service';
 import { MiscService } from '../../shared/_services/http/misc.service';
 
 import { Job } from '../../shared/_models/job.model';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,7 @@ import { Job } from '../../shared/_models/job.model';
 })
 export class HomeComponent implements OnInit {
 
-  categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  categories = [];
 
   activeHighlightCategory = 'hot';
 
@@ -28,7 +27,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.jobService.getJobs().then(response => this.jobs = response);
+    this.jobService.getCategories().then(response => this.categories = response);
     this.miscService.getCounters().then(response => this.counters = response);
+
+    this.abc().next((a) => console.log(a));
   }
 
+  abc() {
+    return Observable.create((observer) => {
+      setTimeout(() => observer.next(1), 2000);
+      setTimeout(() => observer.next(2), 3000);
+      setTimeout(() => observer.next(3), 4000);
+      setTimeout(() => observer.next(4), 5000);
+    }).subscribe((message) => message);
+  }
 }

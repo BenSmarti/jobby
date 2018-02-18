@@ -31,8 +31,8 @@ export class JobService extends BaseHttpService {
   newJob(job: Job): Promise<boolean> {
     return this.http.post(this.endPoint, { job: job }, this.getTokenRequest())
     .toPromise()
-    .catch((response) => (response.status === 201))
-    .then(() => true);
+    .then(() => true)
+    .catch((response) => (response.status === 201));
   }
 
   getEmployerJobs(type: string, searchCriteria?: Object): Promise<Job[]> {

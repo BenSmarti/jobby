@@ -32,6 +32,10 @@
   height: 540px;
 }
 
+.message {
+  clear: both;
+}
+
 .divider {
   height: 1px;
   background: #d5d5d5;
