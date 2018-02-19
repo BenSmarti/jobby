@@ -27,14 +27,16 @@ export class LoginComponent {
       this.isLoggingIn = true;
 
       this.appHttp.login(this.user.username, this.user.password)
-        .then((response) => setTimeout(() => this.handleResponse(response), 2000));
+      .then((response) => setTimeout(() => this.handleResponse(response), 2000));
     }
   }
 
-  private handleResponse(token: string | boolean): void {
-    if (typeof token === 'string') {
-      this.user.accessToken = token;
+  private handleResponse(response: any): void {
+    if (response) {
+      this.user.accessToken = response['token'];
+      this.user.role = response['role'];
       this.userSession.login(this.user, this.rememberMe);
+
       this.router.navigate(['/']);
     } else {
       this.isLoginFailed = true;

@@ -30,9 +30,9 @@
             <a [routerLink]="['/jobs', 'view', item.job.id]">
               <p>
                 <span class="bold blue">{{ item.job.title }}</span>
-                <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'green' : 'red')">{{ item.job.isActive ? ('ACTIVE_POST' | t) : ('INACTIVE_POST' | t) }}</span>
+                <span [class]="'f-10 bold ml-2 ' + (item.job.isActive ? 'green-text' : 'red-text')">{{ item.job.isActive ? ('ACTIVE_POST' | t) : ('INACTIVE_POST' | t) }}</span>
               </p>
-              <p class="f-12 grey">
+              <p class="f-12 grey-text">
                 <span>{{ item.job.location }}</span>
                 <span class="mr-2">{{ item.job.type | t }}</span>
                 <span class="mr-2">
@@ -44,7 +44,7 @@
           </td>
           <td class="seeker-counts">
             <p class="h5 bold blue">{{ item.seekerCount }}</p>
-            <div class="d-flex justify-content-between grey viewed-seeker-counts">
+            <div class="d-flex justify-content-between grey-text viewed-seeker-counts">
               <span>
                 <span>{{ 'VIEWED' | t }}:</span>
                 <span>{{ item.seekerCount - item.viewedSeekerCount }}</span>

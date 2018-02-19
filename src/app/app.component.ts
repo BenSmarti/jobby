@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TranslationService } from './shared/_services/http/translation.service';
@@ -17,6 +17,13 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class AppComponent implements OnInit {
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.pageWidth = window.innerWidth;
+  }
+
+  pageWidth: number;
+
   lang: string;
   langDirection: 'rtl' | 'ltr';
   translations: Translation[];
@@ -25,6 +32,8 @@ export class AppComponent implements OnInit {
               private localeService: LocaleService) {}
 
   ngOnInit() {
+    this.pageWidth = window.innerWidth;
+
     this.lang = this.localeService.initLang();
 
     this.langDirection = this.lang === 'he' ? 'rtl' : 'ltr';

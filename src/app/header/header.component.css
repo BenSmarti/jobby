@@ -83,7 +83,7 @@
   border: none;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .navbar-toggler {
     position: static;
     padding: 8px 10px;
@@ -94,10 +94,86 @@
   .navbar-toggler > i {
     color: #008def;
   }
-}
 
-@media (max-width: 768px) {
-  #menu {
+  #mobileHeader {
+    display: flex;
     padding: 0 18px;
+    text-align: center;
+    align-items: center;
+  }
+
+  #mobileHeader > * {
+    width: 50px;
+  }
+
+  #mobileHeader > .logo-container {
+    flex-grow: 1;
+  }
+
+  #mobileMenu {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(66,132,237) 0%, rgb(65,115,190) 10%, rgb(64,97,142) 100%);
+    box-shadow: 0 5px 12.5px 0.5px rgba(0, 0, 0, 0.35);
+    z-index: 9999999;
+  }
+
+  .ltr :host #mobileMenu {
+    left: 0;
+  }
+
+  .rtl :host #mobileMenu {
+    right: 0;
+  }
+
+  #mobileMenu li {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #mobileMenu li > a {
+    color: #fff;
+    font-size: 22px;
+  }
+
+  #mobileMenu li.active {
+    background-color: #4a5e8e;
+  }
+
+  .rtl :host #mobileMenu li.active {
+    border-right: 5px solid #fff;
+  }
+
+  .ltr :host #mobileMenu li.active {
+    border-left: 5px solid #fff;
+  }
+
+  #hideMobileMenu {
+    position: absolute;
+    top: 5px;
+    width: 40px;
+  }
+
+  .rtl :host #hideMobileMenu {
+    left: 25px;
+  }
+
+  .ltr :host #hideMobileMenu {
+    right: 25px;
+  }
+
+  .shadow-gradient {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999998;
+  }
+
+  #pageTitle, #pageTitle:before {
+    background: #fff;
   }
 }

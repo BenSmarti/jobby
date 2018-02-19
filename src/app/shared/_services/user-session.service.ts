@@ -9,11 +9,11 @@ export class UserSessionService {
   loggedInSubject: Subject<boolean> = new Subject();
 
   getUser(): any {
-    if (sessionStorage.getItem('user') !== null) {
+    if (sessionStorage.getItem('user')) {
       return JSON.parse(sessionStorage.getItem('user'));
     }
 
-    if (localStorage.getItem('user') !== null) {
+    if (localStorage.getItem('user')) {
       return JSON.parse(localStorage.getItem('user'));
     }
 
@@ -26,7 +26,7 @@ export class UserSessionService {
   }
 
   isLoggedIn(): boolean {
-    return this.getUser() ? true : false;
+    return !!this.getUser();
   }
 
   login(user: User, rememberMe?: boolean): void {
@@ -40,11 +40,11 @@ export class UserSessionService {
   }
 
   logout(): void {
-    if (sessionStorage.getItem('user') !== null) {
+    if (sessionStorage.getItem('user')) {
       sessionStorage.removeItem('user');
     }
 
-    if (localStorage.getItem('user') !== null) {
+    if (localStorage.getItem('user')) {
       localStorage.removeItem('user');
     }
 

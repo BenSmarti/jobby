@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { BaseHttpService } from './base-http.service';
 
 import { User } from '../../_models/user.model';
-import {Employer} from '../../_models/employer.model';
-import {Seeker} from '../../_models/seeker.model';
+import { Employer } from '../../_models/employer.model';
+import { Seeker } from '../../_models/seeker.model';
 
 @Injectable()
 export class AppHttpService extends BaseHttpService {
@@ -14,11 +14,11 @@ export class AppHttpService extends BaseHttpService {
     super();
   }
 
-  login(username: string, password: string): Promise<string | boolean> {
+  login(username: string, password: string): Promise<any> {
     return this.http.post(this.apiUrl + '/login', { username: username, password: password })
     .toPromise()
-    .catch((response) => (response.status === 200))
-    .then(response => response['token']);
+    .catch(() => false)
+    .then(response => response);
   }
 
   register(user: User, object: Employer | Seeker): Promise<any> {

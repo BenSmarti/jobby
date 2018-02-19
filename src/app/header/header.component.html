@@ -1,6 +1,6 @@
-<div id="menu" [ngClass]="{ container: pageWidth > 768 }">
+<div id="menu" class="container" *ngIf="pageWidth >= 768">
   <div class="d-flex justify-content-between align-items-center">
-    <nav class="navbar navbar-toggleable-md navbar-light">
+    <nav class="navbar navbar-light">
       <a class="navbar-brand" routerLink="/">
         <img class="logo" src="/assets/img/logo.svg">
       </a>
@@ -15,8 +15,8 @@
         </ul>
       </div>
     </nav>
-    <div class="hidden-sm-down header-actions" *ngIf="pageWidth > 768">
-      <mat-form-field class="select-container mr-3 ml-3">
+    <div class="header-actions">
+      <mat-form-field class="mx-3 select-container">
         <img matPrefix [src]="'/assets/img/flags/' + lang + '.png'">
         <mat-select (selectionChange)="changeLang()" [(ngModel)]="lang">
           <mat-option value="he">
@@ -34,7 +34,7 @@
         <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
         <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
       </span>
-      <button class="mx-3 chip-button chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
+      <button class="mx-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']" *ngIf="user.role === 'employer'">{{ 'POST_JOB' | t }}</button>
       <ng-container *ngIf="user">
         <span class="pointer" [matMenuTriggerFor]="userMenu">
           <span>{{ 'MY_ACCOUNT' | t }}</span>
@@ -49,39 +49,50 @@
         </mat-menu>
       </ng-container>
     </div>
-    <div class="hidden-md-up">
-      <button class="ml-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
-      <button *ngIf="user" class="navbar-toggler navbar-toggler-right ml-2" type="button" data-toggle="collapse"
-      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-label]="'TOGGLE' | t">
-        <i class="fa fa-bars"></i>
-      </button>
-    </div>
-  </div>
-  <div class="hidden-md-up header-actions" *ngIf="pageWidth <= 768">
-    <mat-form-field class="select-container mr-3 ml-3">
-      <img matPrefix [src]="'/assets/img/flags/' + lang + '.png'">
-      <mat-select (selectionChange)="changeLang()" [(ngModel)]="lang">
-        <mat-option value="he">
-          <img src="/assets/img/flags/he.png">
-          <span>עברית</span>
-        </mat-option>
-        <mat-option value="en">
-          <img src="/assets/img/flags/en.png">
-          <span>English</span>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <span class="mx-2" *ngIf="!user">
-        <i class="fa fa-user ml-1 link"></i>
-        <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
-        <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
-      </span>
-    <button class="ml-3 chip-blue toggle-effect hidden-sm-down" [routerLink]="['/jobs', 'form']">{{ 'POST_JOB' | t }}</button>
   </div>
 </div>
+<div id="mobileHeader" *ngIf="pageWidth < 768">
+  <div>
+    <img src="/assets/img/icons/mobile-menu.svg" (click)="mobileMenuState = 'shown'">
+  </div>
+  <div class="logo-container">
+    <img class="logo" src="/assets/img/logo.svg">
+  </div>
+  <a>
+    <img src="/assets/img/icons/chat.svg">
+  </a>
+</div>
+<div id="mobileMenu" class="pt-5" [@slideToggle]="mobileMenuState">
+  <img id="hideMobileMenu" class="image-sm" src="/assets/img/icons/mobile-menu.svg" (click)="mobileMenuState = 'hidden'">
+  <div class="ml-5">
+    <div class="ml-3 circle-image image-sm">
+      <img [src]="user.image ? user.image : '/assets/img/user-placeholder.svg'" class="img-fluid">
+    </div>
+    <p class="h4 text-white mt-2">{{ user.username }}</p>
+    <p class="h5 text-white">{{ user.email }}</p>
+  </div>
+  <ul class="mt-4">
+    <li class="pl-5" routerLinkActive="active">
+      <a routerLink="">My JOBY</a>
+    </li>
+    <li class="pl-5" routerLinkActive="active">
+      <a routerLink="/interviews">{{ 'INTERVIEWS' | t }}</a>
+    </li>
+    <li class="pl-5" routerLinkActive="active">
+      <a routerLink="/preferences">{{ 'PREFERENCES' | t }}</a>
+    </li>
+    <li class="pl-5" routerLinkActive="active">
+      <a routerLink="/settings">{{ 'SETTINGS' | t }}</a>
+    </li>
+    <li class="pl-5">
+      <a (click)="logout()">{{ 'SIGN_OUT' | t }}</a>
+    </li>
+  </ul>
+</div>
+<div class="shadow-gradient" *ngIf="mobileMenuState === 'shown'"></div>
 <div id="pageTitle">
   <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ pageTitle | uppercase | t }}</h1>
-  <div id="pageTitleContent" *ngIf="pageTitle === 'home'">
+  <div id="homeSearchContainer" *ngIf="pageWidth >= 768 && pageTitle === 'home'">
     <h1 class="mb-3">{{ 'EASIEST_WAY_S' | t }}</h1>
     <h2 class="mb-5">{{ 'WE_OFFER' | t }} 12000 {{ 'JOBS_VACATION_S' | t }}</h2>
     <div id="mainSearchContainer">
@@ -99,5 +110,9 @@
       </div>
       <button type="submit">{{ 'SEARCH' | t }}</button>
     </div>
+  </div>
+  <div class="input-container" *ngIf="pageWidth < 768 && pageTitle === 'home'">
+    <input>
+    <i class="fa fa-search"></i>
   </div>
 </div>

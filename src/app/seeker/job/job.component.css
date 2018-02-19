@@ -1,0 +1,45 @@
+#searchContainer > div {
+  flex-grow: 1;
+}
+
+.rtl :host #searchContainer > div {
+  border-left: 1px solid #dedede;
+}
+
+.ltr :host #searchContainer > div {
+  border-right: 1px solid #dedede;
+}
+
+#searchContainer > div:last-child {
+  border: none !important;
+}
+
+.job {
+  padding: 0 15px;
+}
+
+.job > * {
+  flex-grow: 1;
+}
+
+.decline-icon, .accept-icon {
+  height: 71px;
+  width: 71px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.decline-icon {
+  background-image: linear-gradient( 76deg, rgb(255,59,48) 0%, rgb(230,2,0) 100%);
+  box-shadow: 0 6px 16px 0 rgba(249, 46, 37, 0.55);
+}
+
+.accept-icon {
+  border-radius: 50%;
+  background-image: linear-gradient( 76deg, rgb(0,169,82) 0%, rgb(134,200,60) 100%);
+  box-shadow: 0 6px 16px 0 rgba(28, 175, 77, 0.55);
+}
+
+.decline-icon > img, .accept-icon > img {
+  margin: 25px;
+}

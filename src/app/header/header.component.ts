@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { UserSessionService } from '../shared/_services/user-session.service';
 
@@ -8,10 +9,28 @@ import { User } from '../shared/_models/user.model';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  animations: [
+    trigger('slideToggle', [
+      state('hidden', style({
+        width: '0',
+        opacity: '0',
+        display: 'none'
+      })),
+      state('shown', style({
+        width: '80%',
+        opacity: '1',
+        display: '*'
+      })),
+      transition('hidden => shown', animate('200ms ease-in')),
+      transition('shown => hidden', animate('200ms ease-out'))
+    ]),
+  ]
 })
 export class HeaderComponent implements OnInit {
   @Input() lang;
+  @Input() pageWidth: number;
+
   @Output() langChanged = new EventEmitter();
 
   user: User;
@@ -23,17 +42,11 @@ export class HeaderComponent implements OnInit {
 
   pageTitle: string;
 
-  pageWidth: number;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.pageWidth = event.target.innerWidth;
-  }
+  mobileMenuState = 'hidden';
 
   constructor (private router: Router, private route: ActivatedRoute, private userSession: UserSessionService) {}
 
   ngOnInit() {
-    this.pageWidth = window.innerWidth;
     this.init();
     this.userSession.loggedInSubject.subscribe(() => this.init());
     this.setPageTitle();

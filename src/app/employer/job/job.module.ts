@@ -13,6 +13,8 @@ import { JobComponent } from './job.component';
 import { JobService } from '../../shared/_services/http/job.service';
 import { JobFormComponent } from './job-form/job-form.component';
 
+import { TranslatePipe } from '../../shared/_pipes/translate.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +26,6 @@ import { JobFormComponent } from './job-form/job-form.component';
     TranslateModule
   ],
   declarations: [JobComponent, JobFormComponent],
-  providers: [JobService]
+  providers: [JobService, TranslatePipe]
 })
 export class JobModule {}
