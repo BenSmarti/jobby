@@ -1,0 +1,48 @@
+<div class="container py-3 data-table">
+  <div class="mb-2 input-container search-container">
+    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
+    <i class="fa fa-search" (click)="search()"></i>
+  </div>
+  <div class="mb-4">
+    <table class="table table-striped table-spaced">
+      <thead>
+      <tr>
+        <th *ngFor="let header of headers" (click)="sort(header.column)">
+          <span>{{ header.label | t }}</span>
+          <i [class]="getHeaderIconClass()" *ngIf="orderCriteria.orderBy === header.column"></i>
+        </th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="!isSearching">
+        <tr *ngFor="let item of paginatedItems">
+          <td>
+            <img [src]="helpers.getEmployerLogo(item.employer)" class="img-fluid">
+          </td>
+          <td>
+            <a [routerLink]="['../job', item.job.id]">{{ item.job.role }}</a>
+          </td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.employer.email }}</td>
+          <td>{{ item.employer.phone }}</td>
+          <td>
+            <img src="/assets/img/icons/location.svg" class="icon">
+            <img src="/assets/img/icons/cancel.svg" class="ml-2 icon">
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngIf="isSearching">
+        <td colspan="6">
+          <mat-spinner class="mx-auto"></mat-spinner>
+        </td>
+      </tr>
+      <tr *ngIf="!isSearching && items.length === 0">
+        <td colspan="6">{{ 'INTERVIEW_TABLE_EMPTY' | t }}.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [data]="paginationData" *ngIf="items.length > 0"></app-pagination>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="container py-3 data-table">
+  <div class="d-flex mb-3">
+    <div class="tab" [ngClass]="{ 'active': activeTab === tab }" (click)="setTab(tab)" *ngFor="let tab of tabs">{{ tab.label | t }}</div>
+  </div>
+  <div class="mb-2 input-container search-container">
+    <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
+    <i class="fa fa-search" (click)="search()"></i>
+  </div>
+  <div *ngFor="let job of jobs" class="mb-3">
+    <app-job-list-item [job]="job">
+      <ng-container jobActions>
+        {{ job['isLiked'] }}
+        <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [numOfStars]="1" [rating]="abc ? 1 : 0" (onRatingChange)="setCandidateLike(job)"></star-rating-comp>
+        <img src="/assets/img/icons/chat.svg" class="align-middle job-action">
+      </ng-container>
+    </app-job-list-item>
+  </div>
+  <app-pagination [data]="paginationData" *ngIf="items.length > 0"></app-pagination>
+</div>

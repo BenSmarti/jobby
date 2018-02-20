@@ -8,8 +8,17 @@
   src: url('./assets/fonts/Heebo-Medium.ttf');
 }
 
-* {
+@font-face {
+  font-family: 'Raleway';
+  src: url('./assets/fonts/Raleway-Regular.ttf');
+}
+
+.rtl * {
   font-family: 'Heebo', sans-serif !important;
+}
+
+.ltr * {
+  font-family: 'Raleway', sans-serif !important;
 }
 
 .fa {
@@ -30,7 +39,7 @@ a:hover, a:active, a:focus, a:visited {
   text-decoration: none;
 }
 
-p {
+p, figure {
   margin: 0;
 }
 
@@ -160,6 +169,10 @@ input[type=file] {
   color: #f05040;
 }
 
+.logo-black-text {
+  color: #616263;
+}
+
 .p-icon {
   font-size: 16px;
   vertical-align: middle;
@@ -240,9 +253,16 @@ input[type=file] {
 .input-container {
   display: flex;
   align-items: center;
+  border: 1px solid #e3e9ef;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .05);
+}
+
+.rtl .input-container {
   padding: 0 8px 0 4px;
-  border: 1px solid #d5d5d5;
-  border-radius: 8px;
+}
+
+.ltr .input-container {
+  padding: 0 4px 0 8px;
 }
 
 .rtl .input-container > input {
@@ -254,7 +274,7 @@ input[type=file] {
 }
 
 .input-container > input {
-  width: 90%;
+  width: 95%;
   border: none;
   outline: 0;
 }
@@ -266,7 +286,7 @@ input[type=file] {
 
 .search-container {
   width: 300px;
-  box-shadow: 2px 2px 2px 2px #d5d5d5;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .05);
 }
 
 .black {
@@ -295,7 +315,8 @@ input[type=file] {
 }
 
 .box-shadow-light {
-  box-shadow: -1px 6px 20px 2px #dedede;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.05);
+  border: 1px solid #e3e9ef;
 }
 
 .tab {
@@ -306,6 +327,7 @@ input[type=file] {
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
+  flex-grow: 1;
 }
 
 .tab.active, .tab:hover {
@@ -314,6 +336,10 @@ input[type=file] {
 
 .border-bottom-grey {
   border-bottom: 1px solid #d5d5d5;
+}
+
+.circle {
+  border-radius: 50%;
 }
 
 .circle-image {
@@ -378,6 +404,12 @@ input[type=file] {
   z-index: -2;
 }
 
+.decline-icon, .accept-icon {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+}
+
 /*--- Data Form ---*/
 
 .data-form label {
@@ -418,6 +450,10 @@ input[type=file] {
 
 .data-form .select2-selection__rendered {
   color: #b2b4b3 !important;
+}
+
+.star-svg {
+  outline: 0;
 }
 
 /*--- Bootstrap ---*/
@@ -469,4 +505,10 @@ input[type=file] {
 .select2-selection--single {
   display: flex !important;
   align-items: center;
+}
+
+@media (max-width: 596px) {
+  .search-container {
+    width: initial;
+  }
 }

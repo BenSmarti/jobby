@@ -20,6 +20,7 @@ import { TranslationService } from './shared/_services/http/translation.service'
 import { LocaleService } from './shared/_services/locale.service';
 
 import { TranslationsResolve } from './shared/_resolves/translations.resolve';
+import { JobResolve } from './shared/_resolves/job.resolve';
 
 import { LoggedInGuard } from './shared/_guards/LoggedIn.guard';
 
@@ -44,7 +45,7 @@ import { APP_ROUTES } from './shared/_routes/app.routes';
     EmployerModule,
     SeekerModule
   ],
-  providers: [LocaleService, TranslationService, TranslationsResolve, LoggedInGuard],
+  providers: [LocaleService, TranslationService, TranslationsResolve, JobResolve, LoggedInGuard],
   bootstrap: [BaseComponent]
 })
 export class AppModule {}

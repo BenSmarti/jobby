@@ -1,5 +1,6 @@
 .data-table table {
-  box-shadow: -1px 6px 20px 2px #999;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.05);
+  border: 1px solid #e3e9ef;
 }
 
 .data-table-actions {
@@ -45,6 +46,10 @@
 
 .data-table td {
   text-align: center;
+}
+
+.data-table .table-spaced td {
+  padding: 2rem 1.25rem !important;
 }
 
 .data-table .row-actions > a {

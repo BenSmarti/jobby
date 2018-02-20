@@ -38,9 +38,10 @@ export class HeaderComponent implements OnInit {
   activeMenuLinks;
 
   employerMenuLinks = ['candidates', 'jobs', 'interviews', 'messages'];
-  seekerMenuLinks = ['candidates', 'jobs', 'interviews', 'messages'];
+  seekerMenuLinks = [{ label: 'My Jobby', url: 'myJobby', translate: false }, 'interviews', 'preferences', 'settings'];
 
   pageTitle: string;
+  translatePageTitle = true;
 
   mobileMenuState = 'hidden';
 
@@ -69,6 +70,8 @@ export class HeaderComponent implements OnInit {
     }
 
     this.pageTitle = activeRoute.snapshot.data.title;
+
+    this.translatePageTitle = activeRoute.snapshot.data.translate !== false;
 
     this.router.events
       .filter((event) => event instanceof NavigationEnd)

@@ -1,0 +1,5 @@
+<div class="tab active">{{ 'MESSAGES' | t }}</div>
+<div class="mb-2 input-container search-container">
+  <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
+  <i class="fa fa-search" (click)="search()"></i>
+</div>

@@ -43,7 +43,6 @@ export class CandidatesComponent extends DataTableComponent implements OnInit {
     this.employerActiveJobs = this.route.snapshot.data['activeJobs'];
   }
 
-
   fetchItems(): void {
     this.candidateService.getCandidates(this.selectedJobID, 'all').then(response => this.setItems(response));
   }

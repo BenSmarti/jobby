@@ -1,16 +1,17 @@
 <div id="menu" class="container" *ngIf="pageWidth >= 768">
   <div class="d-flex justify-content-between align-items-center">
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-light navbar-toggleable-md">
       <a class="navbar-brand" routerLink="/">
         <img class="logo" src="/assets/img/logo.svg">
       </a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="">{{ 'HOME' | t }}</a>
           </li>
           <li class="nav-item" *ngFor="let link of activeMenuLinks">
-            <a class="nav-link" [routerLink]="'/' + link">{{ link | uppercase | t }}</a>
+            <a class="nav-link" [routerLink]="['/' + user.role, link]" *ngIf="!link.url">{{ link | uppercase | t }}</a>
+            <a class="nav-link" [routerLink]="['/' + user.role, link.url]" *ngIf="link.url">{{ link.translate === false ? link.label : (link.label | uppercase | t) }}</a>
           </li>
         </ul>
       </div>
@@ -34,7 +35,7 @@
         <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
         <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
       </span>
-      <button class="mx-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']" *ngIf="user.role === 'employer'">{{ 'POST_JOB' | t }}</button>
+      <button class="mx-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']" *ngIf="user && user.role === 'employer'">{{ 'POST_JOB' | t }}</button>
       <ng-container *ngIf="user">
         <span class="pointer" [matMenuTriggerFor]="userMenu">
           <span>{{ 'MY_ACCOUNT' | t }}</span>
@@ -43,7 +44,7 @@
         <mat-menu #userMenu="matMenu">
           <a mat-menu-item routerLink="/profile">{{ 'MY_PROFILE' | t }}</a>
           <a mat-menu-item routerLink="/settings">{{ 'SETTINGS' | t }}</a>
-          <a mat-menu-item>{{ 'SUBSCRIPTION' | t }}</a>
+          <a mat-menu-item *ngIf="user.role === 'employer'">{{ 'SUBSCRIPTION' | t }}</a>
           <a mat-menu-item>{{ 'HELP' | t }}</a>
           <a mat-menu-item (click)="logout()">{{ 'LOGOUT' | t }}</a>
         </mat-menu>
@@ -58,31 +59,26 @@
   <div class="logo-container">
     <img class="logo" src="/assets/img/logo.svg">
   </div>
-  <a>
+  <a routerLink="/m/messages">
     <img src="/assets/img/icons/chat.svg">
   </a>
 </div>
-<div id="mobileMenu" class="pt-5" [@slideToggle]="mobileMenuState">
+<div id="mobileMenu" class="pt-5" [@slideToggle]="mobileMenuState" *ngIf="user">
   <img id="hideMobileMenu" class="image-sm" src="/assets/img/icons/mobile-menu.svg" (click)="mobileMenuState = 'hidden'">
   <div class="ml-5">
-    <div class="ml-3 circle-image image-sm">
+    <div class="ml-3 circle image-sm">
       <img [src]="user.image ? user.image : '/assets/img/user-placeholder.svg'" class="img-fluid">
     </div>
     <p class="h4 text-white mt-2">{{ user.username }}</p>
     <p class="h5 text-white">{{ user.email }}</p>
   </div>
   <ul class="mt-4">
-    <li class="pl-5" routerLinkActive="active">
-      <a routerLink="">My JOBY</a>
+    <li class="pl-5" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="/seeker">Home</a>
     </li>
-    <li class="pl-5" routerLinkActive="active">
-      <a routerLink="/interviews">{{ 'INTERVIEWS' | t }}</a>
-    </li>
-    <li class="pl-5" routerLinkActive="active">
-      <a routerLink="/preferences">{{ 'PREFERENCES' | t }}</a>
-    </li>
-    <li class="pl-5" routerLinkActive="active">
-      <a routerLink="/settings">{{ 'SETTINGS' | t }}</a>
+    <li class="pl-5" routerLinkActive="active" *ngFor="let link of seekerMenuLinks">
+      <a [routerLink]="['/seeker', link]" *ngIf="!link.url">{{ link | uppercase | t }}</a>
+      <a [routerLink]="['/seeker', link.url]" *ngIf="link.url">{{ !link.translate ? link.label : (link.label | uppercase | t) }}</a>
     </li>
     <li class="pl-5">
       <a (click)="logout()">{{ 'SIGN_OUT' | t }}</a>
@@ -90,8 +86,8 @@
   </ul>
 </div>
 <div class="shadow-gradient" *ngIf="mobileMenuState === 'shown'"></div>
-<div id="pageTitle">
-  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ pageTitle | uppercase | t }}</h1>
+<div id="pageTitle" *ngIf="pageWidth >= 768">
+  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home'">{{ translatePageTitle ? (pageTitle | uppercase | t) : pageTitle }}</h1>
   <div id="homeSearchContainer" *ngIf="pageWidth >= 768 && pageTitle === 'home'">
     <h1 class="mb-3">{{ 'EASIEST_WAY_S' | t }}</h1>
     <h2 class="mb-5">{{ 'WE_OFFER' | t }} 12000 {{ 'JOBS_VACATION_S' | t }}</h2>
