@@ -1,5 +1,17 @@
 <div class="tab active">{{ 'MESSAGES' | t }}</div>
 <div class="mb-2 input-container search-container">
-  <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
+  <input type="search" [(ngModel)]="q" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
   <i class="fa fa-search" (click)="search()"></i>
+</div>
+<div *ngFor="let chat of chats" class="py-1 px-3 chat-item">
+  <div class="d-flex align-items-center">
+    <img [src]="helpers.getEmployerLogo(chat.employer)" class="circle-logo box-shadow-light mr-3">
+    <div class="flex-grow-1">
+      <p class="bold">{{ chat.employer.name }}</p>
+    </div>
+    <a class="logo-black-text chat-link" [routerLink]="['./', chat.id]">
+      <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+  <div class="text-right grey-text f-12">{{ chat.lastMessageTime }}</div>
 </div>

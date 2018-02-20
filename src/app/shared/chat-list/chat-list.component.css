@@ -1,0 +1,23 @@
+.input-container {
+  height: 50px;
+}
+
+.circle-logo {
+  height: 75px;
+  width: 75px;
+  padding: 3px;
+}
+
+.chat-item {
+  border-bottom: 1px solid #e6e6e8;
+}
+
+.chat-link {
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.chat-link > i {
+  font-size: 32px;
+}

@@ -6,13 +6,10 @@
   margin-top: -75px;
 }
 
-#employerLogoContainer > img {
+#employerLogoContainer > .circle-logo {
   height: 150px;
   width: 150px;
   padding: 8px;
-  border-radius: 50%;
-  background-color: #fff;
-  object-fit: contain;
 }
 
 #jobActions {

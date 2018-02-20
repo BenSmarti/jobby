@@ -410,6 +410,16 @@ input[type=file] {
   cursor: pointer;
 }
 
+.circle-logo {
+  border-radius: 50%;
+  background-color: #fff;
+  object-fit: contain;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
 /*--- Data Form ---*/
 
 .data-form label {

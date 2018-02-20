@@ -32,8 +32,8 @@
       </mat-form-field>
       <span class="mx-2" *ngIf="!user">
         <i class="fa fa-user ml-1 link"></i>
-        <a routerLink="/login" class="black">{{ 'SIGN_IN' | t }} /</a>
-        <a routerLink="/register" class="black">{{ 'REGISTER' | t }}</a>
+        <a routerLink="/login" class="logo-black-text">{{ 'SIGN_IN' | t }} /</a>
+        <a routerLink="/register" class="logo-black-text">{{ 'REGISTER' | t }}</a>
       </span>
       <button class="mx-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']" *ngIf="user && user.role === 'employer'">{{ 'POST_JOB' | t }}</button>
       <ng-container *ngIf="user">
@@ -59,7 +59,7 @@
   <div class="logo-container">
     <img class="logo" src="/assets/img/logo.svg">
   </div>
-  <a routerLink="/m/messages">
+  <a routerLink="/m/chats">
     <img src="/assets/img/icons/chat.svg">
   </a>
 </div>

@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
 
   activeMenuLinks;
 
-  employerMenuLinks = ['candidates', 'jobs', 'interviews', 'messages'];
+  employerMenuLinks = ['candidates', 'jobs', 'interviews', 'chats'];
   seekerMenuLinks = [{ label: 'My Jobby', url: 'myJobby', translate: false }, 'interviews', 'preferences', 'settings'];
 
   pageTitle: string;

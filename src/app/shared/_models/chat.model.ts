@@ -6,5 +6,6 @@ export class Chat {
   id: number;
   employer: Employer;
   seeker: Seeker;
-  message: ChatMessage[];
+  messages: ChatMessage[];
+  lastMessageTime: string;
 }

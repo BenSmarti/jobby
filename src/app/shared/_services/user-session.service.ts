@@ -30,10 +30,12 @@ export class UserSessionService {
   }
 
   login(user: User, rememberMe?: boolean): void {
+    const userObj = { username: user.username, token: user.accessToken, role: user.role };
+
     if (rememberMe) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(userObj));
     } else {
-      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem('user', JSON.stringify(userObj));
     }
 
     this.loggedInSubject.next(true);

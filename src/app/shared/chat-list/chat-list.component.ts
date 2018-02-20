@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
-import { DataTableComponent } from '../data-table/data-table.component';
-
+import { HelpersService } from '../_services/helpers.service';
 import { ChatService } from '../_services/http/chat.service';
+
+import { Chat } from '../_models/chat.model';
 
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.css'],
-  providers: [ChatService]
+  providers: [HelpersService, ChatService]
 })
-export class ChatListComponent extends DataTableComponent implements OnInit {
+export class ChatListComponent implements OnInit {
 
-  constructor(route: ActivatedRoute, private chatService: ChatService) {
-    super(route);
+  q: string;
+
+  chats: Chat[];
+
+  constructor(public helpers: HelpersService, private chatService: ChatService) {}
+
+  ngOnInit() {
+    this.chatService.getChats(this.q).then(response => this.chats = response);
   }
-
-  fetchItems() {
-    this.chatService.getChats().then(response => this.setItems(response));
-  }
-
 }
