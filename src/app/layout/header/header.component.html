@@ -46,9 +46,9 @@
         </span>
         <mat-menu #userMenu="matMenu">
           <a mat-menu-item routerLink="/profile">{{ 'MY_PROFILE' | t }}</a>
-          <a mat-menu-item routerLink="/settings">{{ 'SETTINGS' | t }}</a>
+          <a mat-menu-item [routerLink]="['/' + user.type, 'settings']">{{ 'SETTINGS' | t }}</a>
+          <a mat-menu-item [routerLink]="['/' + user.type, 'preferences']">{{ 'PREFERENCES' | t }}</a>
           <a mat-menu-item *ngIf="user.type === 'employer'">{{ 'SUBSCRIPTION' | t }}</a>
-          <a mat-menu-item>{{ 'HELP' | t }}</a>
           <a mat-menu-item (click)="logout()">{{ 'LOGOUT' | t }}</a>
         </mat-menu>
       </ng-container>

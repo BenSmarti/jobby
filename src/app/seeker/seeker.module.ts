@@ -5,6 +5,8 @@ import { HomeModule } from './home/home.module';
 import { JobSearchModule } from '../public/job-search/job-search.module';
 import { MyJobbyModule } from './my-jobby/my-jobby.module';
 import { InterviewModule } from './interview/interview.module';
+import { SettingsModule } from './settings/settings.module';
+import { PreferencesModule } from './preferences/preferences.module';
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import { InterviewModule } from './interview/interview.module';
     HomeModule,
     JobSearchModule,
     MyJobbyModule,
-    InterviewModule
+    InterviewModule,
+    SettingsModule,
+    PreferencesModule
   ]
 })
 export class SeekerModule {}

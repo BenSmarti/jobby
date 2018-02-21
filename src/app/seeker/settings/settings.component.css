@@ -1,0 +1,25 @@
+.btn-danger {
+  width: 220px;
+  border-radius: 22px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 100px auto;
+  }
+
+  .btn-danger {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px auto;
+  }
+
+  .btn-danger {
+    margin-top: 60px;
+  }
+}

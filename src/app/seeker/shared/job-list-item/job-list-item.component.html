@@ -1,7 +1,7 @@
 <div class="py-2 py-md-0 p-md-4 box-shadow-light job">
   <div class="row justify-content-center align-items-center">
     <figure class="col-12 col-md text-center">
-      <img [src]="job.employer.logo" class="img-fluid">
+      <img [src]="job.employer.logo" class="employer-logo">
     </figure>
     <div class="col-12 col-md-3 my-3 my-md-0">
       <p class="h4">{{ job.title }}</p>
@@ -10,15 +10,15 @@
     <ul class="col-12 col-md mb-4 mb-md-0">
       <li class="d-flex">
         <img src="/assets/img/icons/location-blue.svg" class="align-middle icon">
-        <span>{{ job.location }}</span>
+        <span class="bold">{{ job.location }}</span>
       </li>
       <li class="d-flex my-2">
         <img src="/assets/img/icons/timelapse-blue.svg" class="align-middle icon">
-        <span>{{ job.type | uppercase | t }}</span>
+        <span class="bold">{{ job.type | uppercase | t }}</span>
       </li>
       <li class="d-flex">
         <img src="/assets/img/icons/dollar-blue.svg" class="align-middle icon">
-        <span>{{ job.minSalary }} - {{ job.maxSalary }} {{ job.salaryMethod | uppercase |t }}</span>
+        <span class="bold">{{ job.minSalary }} - {{ job.maxSalary }} {{ job.salaryMethod | uppercase |t }}</span>
       </li>
     </ul>
     <a [routerLink]="['/job', job.id]" class="col-md mb-3 mb-md-0 bold text-center">{{ 'MORE_DETAILS' | t }}</a>
