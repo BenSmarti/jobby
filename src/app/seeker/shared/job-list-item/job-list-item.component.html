@@ -1,27 +1,27 @@
 <div class="py-2 py-md-0 p-md-4 box-shadow-light job">
   <div class="row justify-content-center align-items-center">
     <figure class="col-12 col-md text-center">
-      <img src="/assets/img/jobs/1.png" class="img-fluid">
+      <img [src]="job.employer.logo" class="img-fluid">
     </figure>
     <div class="col-12 col-md-3 my-3 my-md-0">
-      <p class="h4">Retail Store Service</p>
-      <p class="h5 grey-text">WalMart, Inc</p>
+      <p class="h4">{{ job.title }}</p>
+      <p class="h5 grey-text">{{ job.employer.name }}</p>
     </div>
     <ul class="col-12 col-md mb-4 mb-md-0">
-      <li>
+      <li class="d-flex">
         <img src="/assets/img/icons/location-blue.svg" class="align-middle icon">
-        <span>Miami, FL</span>
+        <span>{{ job.location }}</span>
       </li>
-      <li class="my-2 my-md-0">
+      <li class="d-flex my-2">
         <img src="/assets/img/icons/timelapse-blue.svg" class="align-middle icon">
-        <span>{{ 'FULL_TIME' | t }}</span>
+        <span>{{ job.type | uppercase | t }}</span>
       </li>
-      <li>
+      <li class="d-flex">
         <img src="/assets/img/icons/dollar-blue.svg" class="align-middle icon">
-        <span>15 {{ 'PER_HOUR' | t }}</span>
+        <span>{{ job.minSalary }} - {{ job.maxSalary }} {{ job.salaryMethod | uppercase |t }}</span>
       </li>
     </ul>
-    <a routerLink="./job/211" class="col-md mb-3 mb-md-0 bold text-center">{{ 'MORE_DETAILS' | t }}</a>
+    <a [routerLink]="['/job', job.id]" class="col-md mb-3 mb-md-0 bold text-center">{{ 'MORE_DETAILS' | t }}</a>
     <div class="col-12 col-md d-flex justify-content-center align-items-center">
       <ng-content select="[jobActions]"></ng-content>
     </div>

@@ -134,6 +134,11 @@ input[type=file] {
   width: auto;
 }
 
+.icon-md {
+  height: 35px;
+  width: auto;
+}
+
 .icon-lg {
   height: 50px;
   width: auto;
@@ -298,7 +303,7 @@ input[type=file] {
 }
 
 .grey-link {
-  color: #b7b7b7;
+  color: #b7b7b7 !important;
   transition: 0.5s;
 }
 

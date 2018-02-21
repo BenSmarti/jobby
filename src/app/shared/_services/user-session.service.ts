@@ -30,7 +30,7 @@ export class UserSessionService {
   }
 
   login(user: User, rememberMe?: boolean): void {
-    const userObj = { username: user.username, token: user.accessToken, role: user.role };
+    const userObj = { username: user.username, accessToken: user.accessToken, type: user.type, image: user.image };
 
     if (rememberMe) {
       localStorage.setItem('user', JSON.stringify(userObj));

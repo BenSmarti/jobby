@@ -1,0 +1,46 @@
+#chatTitle {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8ea;
+}
+
+.message > .circle-image {
+  vertical-align: text-top;
+}
+
+.message-text {
+  padding: 8px 12px;
+}
+
+#writeMessage {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background-color: #eaeaea;
+}
+
+.ltr :host #writeMessage {
+  left: 0;
+}
+
+.rtl :host #writeMessage {
+  right: 0;
+}
+
+#writeMessage > * {
+  min-width: 50px;
+}
+
+#writeMessageInput {
+  background-color: inherit;
+  border: 0;
+  outline: 0;
+}
+
+.ltr :host #writeMessageInput {
+  border-left: 1px solid #e8e8ea;
+}
+
+.rtl :host #writeMessageInput {
+  border-right: 1px solid #e8e8ea;
+}

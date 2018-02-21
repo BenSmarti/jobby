@@ -13,8 +13,8 @@ import { SeekerModule } from './seeker/seeker.module';
 
 import { BaseComponent } from './base.component';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 import { TranslationService } from './shared/_services/http/translation.service';
 import { LocaleService } from './shared/_services/locale.service';
@@ -25,6 +25,7 @@ import { JobResolve } from './shared/_resolves/job.resolve';
 import { LoggedInGuard } from './shared/_guards/LoggedIn.guard';
 
 import { APP_ROUTES } from './shared/_routes/app.routes';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { APP_ROUTES } from './shared/_routes/app.routes';
     HomeModule,
     AuthenticationModule,
     EmployerModule,
-    SeekerModule
+    SeekerModule,
+    UserModule
   ],
   providers: [LocaleService, TranslationService, TranslationsResolve, JobResolve, LoggedInGuard],
   bootstrap: [BaseComponent]

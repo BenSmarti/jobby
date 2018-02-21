@@ -1,0 +1,22 @@
+.ltr :host .received {
+  direction: rtl;
+}
+
+.rtl :host .received {
+  direction: ltr;
+}
+
+.received > .message-text {
+  background-color: #eaeaea;
+}
+
+.sent > .message-text {
+  background-color: #4767b1;
+  color: #fff;
+}
+
+.message-text {
+  display: inline-block;
+  border-radius: 12px;
+  vertical-align: top;
+}

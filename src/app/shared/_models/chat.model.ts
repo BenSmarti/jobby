@@ -1,11 +1,9 @@
-import { Employer } from './employer.model';
-import { Seeker } from './seeker.model';
 import { ChatMessage } from './chat-message.model';
+import { ChatPartner } from './chat-partner.model';
 
 export class Chat {
   id: number;
-  employer: Employer;
-  seeker: Seeker;
+  partner: ChatPartner;
   messages: ChatMessage[];
   lastMessageTime: string;
 }

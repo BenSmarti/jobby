@@ -5,6 +5,7 @@ export class Seeker {
   lastName: string;
   email: string;
   phone: string;
+  image: string;
   gender: 'male' | 'female';
   user: User;
 

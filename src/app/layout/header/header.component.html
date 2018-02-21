@@ -1,0 +1,130 @@
+<div id="menu" class="container" *ngIf="pageWidth >= 768">
+  <div class="d-flex justify-content-between align-items-center">
+    <nav class="navbar navbar-light navbar-toggleable-md">
+      <a class="navbar-brand" routerLink="/">
+        <img class="logo" src="/assets/img/logo.svg">
+      </a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="">{{ 'HOME' | t }}</a>
+          </li>
+          <li class="nav-item" *ngFor="let link of activeMenuLinks">
+            <a class="nav-link" [routerLink]="['/' + user.type, link]" *ngIf="!link.url">{{ link | uppercase | t }}</a>
+            <a class="nav-link" [routerLink]="['/' + user.type, link.url]" *ngIf="link.url">{{ link.translate === false ? link.label : (link.label | uppercase | t) }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/chats">{{ 'CHATS' | t }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <mat-form-field class="mx-3 select-container">
+        <img matPrefix [src]="'/assets/img/flags/' + lang + '.png'">
+        <mat-select (selectionChange)="changeLang()" [(ngModel)]="lang">
+          <mat-option value="he">
+            <img src="/assets/img/flags/he.png">
+            <span>עברית</span>
+          </mat-option>
+          <mat-option value="en">
+            <img src="/assets/img/flags/en.png">
+            <span>English</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="mx-2" *ngIf="!user">
+        <i class="fa fa-user ml-1 link"></i>
+        <a routerLink="/login" class="logo-black-text">{{ 'SIGN_IN' | t }} /</a>
+        <a routerLink="/register" class="logo-black-text">{{ 'REGISTER' | t }}</a>
+      </span>
+      <button class="mx-3 chip-button chip-blue toggle-effect" [routerLink]="['/jobs', 'form']" *ngIf="user && user.type === 'employer'">{{ 'POST_JOB' | t }}</button>
+      <ng-container *ngIf="user">
+        <span class="pointer" [matMenuTriggerFor]="userMenu">
+          <span>{{ 'MY_ACCOUNT' | t }}</span>
+          <i class="fa fa-chevron-down ml-1"></i>
+        </span>
+        <mat-menu #userMenu="matMenu">
+          <a mat-menu-item routerLink="/profile">{{ 'MY_PROFILE' | t }}</a>
+          <a mat-menu-item routerLink="/settings">{{ 'SETTINGS' | t }}</a>
+          <a mat-menu-item *ngIf="user.type === 'employer'">{{ 'SUBSCRIPTION' | t }}</a>
+          <a mat-menu-item>{{ 'HELP' | t }}</a>
+          <a mat-menu-item (click)="logout()">{{ 'LOGOUT' | t }}</a>
+        </mat-menu>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div id="mobileHeader" *ngIf="pageWidth < 768">
+  <div>
+    <img src="/assets/img/icons/mobile-menu.svg" (click)="mobileMenuState = 'shown'">
+  </div>
+  <div class="logo-container">
+    <img class="logo" src="/assets/img/logo.svg">
+  </div>
+  <a routerLink="/m/chats" *ngIf="user">
+    <img src="/assets/img/icons/chat.svg">
+  </a>
+</div>
+<div id="mobileMenu" class="pt-5" [@slideToggle]="mobileMenuState">
+  <img id="hideMobileMenu" class="image-sm" src="/assets/img/icons/mobile-menu.svg" (click)="mobileMenuState = 'hidden'">
+  <ul class="mt-4" *ngIf="!user">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="/" (click)="mobileMenuState = 'hidden'">{{ 'HOME' | t }}</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/login" (click)="mobileMenuState = 'hidden'">{{ 'LOGIN' | t }} /</a>
+      <a routerLink="/register" (click)="mobileMenuState = 'hidden'">{{ 'REGISTER' | t }}</a>
+    </li>
+  </ul>
+  <ng-container *ngIf="user">
+    <div class="ml-5">
+      <div class="ml-3 image-sm">
+        <img [src]="user.image ? user.image : '/assets/img/user-placeholder.svg'" class="img-fluid circle-image">
+      </div>
+      <p class="h4 text-white mt-2">{{ user.username }}</p>
+      <p class="h5 text-white">{{ user.email }}</p>
+    </div>
+    <ul class="mt-4">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/" (click)="mobileMenuState = 'hidden'">Home</a>
+      </li>
+      <li *ngFor="let link of activeMenuLinks" routerLinkActive="active">
+        <a [routerLink]="['/' + user.type, link]" *ngIf="!link.url" (click)="mobileMenuState = 'hidden'">{{ link | uppercase | t }}</a>
+        <a [routerLink]="['/' + user.type, link.url]" *ngIf="link.url" (click)="mobileMenuState = 'hidden'">{{ link.translate === false ? link.label : (link.label | uppercase | t) }}</a>
+      </li>
+      <li>
+        <a (click)="logout()">{{ 'SIGN_OUT' | t }}</a>
+      </li>
+    </ul>
+  </ng-container>
+</div>
+<div class="shadow-gradient" *ngIf="mobileMenuState === 'shown'"></div>
+<div id="pageTitle" *ngIf="pageWidth >= 768">
+  <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home' && pageTitle !== 'search'">{{ translatePageTitle ? (pageTitle | uppercase | t) : pageTitle }}</h1>
+  <div id="jobSearchContainer" [class]="pageTitle" *ngIf="pageWidth >= 768 && (pageTitle === 'home' || pageTitle === 'search')">
+    <ng-container *ngIf="pageTitle === 'home'">
+      <h1 class="mb-3">{{ 'EASIEST_WAY_S' | t }}</h1>
+      <h2 class="mb-5">{{ 'WE_OFFER' | t }} 12000 {{ 'JOBS_VACATION_S' | t }}</h2>
+    </ng-container>
+    <div id="mainSearchContainer">
+      <div class="main-search-container-input">
+        <i class="fa fa-search"></i>
+        <input (keyup)="search($event.keyCode)" [placeholder]="'JOB_KEYWORD' | t" [(ngModel)]="searchCriteria.q">
+      </div>
+      <div class="main-search-container-input d-flex align-items-center">
+        <i class="fa fa-globe"></i>
+        <mat-select [placeholder]="'LOCATION' | t" [(ngModel)]="searchCriteria.location">
+          <mat-option>a</mat-option>
+          <mat-option>b</mat-option>
+          <mat-option>c</mat-option>
+        </mat-select>
+      </div>
+      <button (click)="search()">{{ 'SEARCH' | t }}</button>
+    </div>
+  </div>
+  <div class="input-container" *ngIf="pageWidth < 768 && pageTitle === 'home'">
+    <input (keyup)="search($event.keyCode)" [(ngModel)]="searchCriteria.q">
+    <i class="fa fa-search" (click)="search()"></i>
+  </div>
+</div>

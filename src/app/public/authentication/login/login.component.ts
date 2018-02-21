@@ -34,7 +34,8 @@ export class LoginComponent {
   private handleResponse(response: any): void {
     if (response) {
       this.user.accessToken = response['token'];
-      this.user.role = response['role'];
+      this.user.type = response['type'];
+      this.user.image = response['image'];
       this.userSession.login(this.user, this.rememberMe);
 
       this.router.navigate(['/']);

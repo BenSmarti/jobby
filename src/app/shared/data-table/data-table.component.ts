@@ -47,6 +47,9 @@ export class DataTableComponent implements OnInit {
   }
 
   setItems(items: any[]): void {
+    if (!items) {
+      items = [];
+    }
 
     this.isSearching = false;
 

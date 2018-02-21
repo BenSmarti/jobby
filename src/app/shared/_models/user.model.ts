@@ -3,5 +3,6 @@ export class User {
   email: string;
   password: string;
   accessToken: string;
-  role: 'employer' | 'seeker';
+  type: 'employer' | 'seeker';
+  image: string;
 }

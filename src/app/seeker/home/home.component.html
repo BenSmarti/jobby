@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <p class="h3">{{ 'RECOMMENDED_JOBS' | t }}</p>
+  <p>{{ 'RECOMMENDED_JOBS_S' | t }}</p>
+  <div *ngFor="let job of recommendedJobs" class="mt-3">
+    <app-job-list-item [job]="job">
+      <ng-container jobActions>
+        <img src="/assets/img/decline.svg" class="mr-5 decline-icon">
+        <img src="/assets/img/accept.svg" class="accept-icon">
+      </ng-container>
+    </app-job-list-item>
+  </div>
+</div>
