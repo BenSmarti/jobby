@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-preferences',
   templateUrl: './preferences.component.html',
-  styleUrls: ['./preferences.component.css']
+  styleUrls: ['../shared/settings.css']
 })
 export class PreferencesComponent implements OnInit {
 
@@ -11,5 +11,4 @@ export class PreferencesComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

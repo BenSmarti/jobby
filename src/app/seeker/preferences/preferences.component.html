@@ -1,3 +1,28 @@
-<p>
-  preferences works!
-</p>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <span>{{ 'JOB_DISTANCE' | t }}</span>
+    <mat-slider></mat-slider>
+  </div>
+  <div class="d-flex justify-content-between">
+    <span>{{ 'JOB_FIELD' | t }}</span>
+    <select class="">
+      <option>Sales</option>
+    </select>
+  </div>
+  <div class="d-flex justify-content-between">
+    <span>{{ 'JOB_POSITION' | t }}</span>
+    <select class="">
+      <option>Service Associate</option>
+    </select>
+  </div>
+  <div class="d-flex justify-content-between">
+    <span>{{ 'JOB_TYPE' | t }}</span>
+    <select class=" ">
+      <option>Full Time</option>
+    </select>
+  </div>
+  <div class="d-flex justify-content-between">
+    <span>{{ 'SALARY' | t }}</span>
+    <mat-slider></mat-slider>
+  </div>
+</div>

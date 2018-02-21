@@ -5,7 +5,7 @@ import { BaseHttpService } from './base-http.service';
 import { UserSessionService } from '../user-session.service';
 
 import { Job } from '../../_models/job.model';
-import { JoBSearchCriteria } from '../../_generic/job-search-criteria';
+import { JobSearchCriteria } from '../../_generic/job-search-criteria';
 import { Select2OptionData } from 'ng2-select2';
 
 @Injectable()
@@ -17,8 +17,13 @@ export class JobService extends BaseHttpService {
     super(userSession);
   }
 
-  getJobs(params: JoBSearchCriteria): Promise<Job[]> {
-    return this.http.get(this.endPoint, { params: params })
+  getJobs(params?: JobSearchCriteria): Promise<Job[]> {
+    const options = {};
+    if (params) {
+      options['params'] = params;
+    }
+
+    return this.http.get(this.endPoint, options)
     .toPromise()
     .then(response => response as Job[])
     .catch(() => null);
