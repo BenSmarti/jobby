@@ -1,5 +1,8 @@
 <div id="profileHeader" class="text-center mb-3">
-  <img id="seekerImage" [src]="seeker.image ? seeker.image : '/assets/img/user-placeholder.svg'" class="circle">
+  <label>
+    <img id="seekerImage" [src]="seeker.image ? seeker.image : '/assets/img/user-placeholder.svg'" class="circle">
+    <input type="file" (change)="uploadImage($event.target.files[0])">
+  </label>
   <p id="seekerName" class="h4 logo-black-text">{{ seeker.firstName }} {{ seeker.lastName }}</p>
   <p class="h5 grey-text">{{ seeker.email }}</p>
 </div>

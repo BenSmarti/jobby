@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   seeker = new Seeker;
   countries: Country[] = [];
 
+  image: File;
+
   constructor(private seekerService: SeekerService, private miscService: MiscService) {}
 
   ngOnInit() {
@@ -32,6 +34,20 @@ export class ProfileComponent implements OnInit {
     });
 
     this.miscService.getCountries().then(response => this.countries = response);
+  }
+
+  uploadImage(image: File): void {
+
+    const imageName = image.name.substr(image.name.indexOf('.') + 1);
+    if (['jpg', 'jpeg', 'png', 'gif', 'svg'].indexOf(imageName) === -1) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = ((event: ProgressEvent) => this.seeker.image = event.target['result']);
+
+    reader.readAsDataURL(image);
+    this.image = image;
   }
 
   addExperience(): void {
