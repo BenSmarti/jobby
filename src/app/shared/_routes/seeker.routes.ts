@@ -13,9 +13,9 @@ import { JobResolve}  from '../_resolves/job.resolve';
 export const SEEKER_ROUTES: Routes = [
   { path: '', component: HomeComponent, data: { title: 'home'} },
   { path: 'job/:id', component: JobDetailsComponent, data: { title: 'job_details'}, resolve: { job: JobResolve } },
-  { path: 'myJobby', component: MyJobbyComponent, data: { title: 'My Jobby', translate: false } },
+  { path: 'myJobby', component: MyJobbyComponent, data: { title: 'My Jobby', translateTitle: false } },
   { path: 'interviews', component: InterviewComponent, data: { title: 'interviews'} },
-  { path: 'profile', component: ProfileComponent, data: { title: 'my_profile'}},
+  { path: 'profile', component: ProfileComponent, data: { title: 'my_profile', paddedTitle: true }},
   { path: 'preferences', component: PreferencesComponent, data: { title: 'preferences'}},
   { path: 'settings', component: SettingsComponent, data: { title: 'settings'}}
 ];

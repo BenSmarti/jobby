@@ -1,3 +1,8 @@
+<div id="profileHeader" class="text-center mb-3">
+  <img id="seekerImage" [src]="seeker.image ? seeker.image : '/assets/img/user-placeholder.svg'" class="circle">
+  <p id="seekerName" class="h4 logo-black-text">{{ seeker.firstName }} {{ seeker.lastName }}</p>
+  <p class="h5 grey-text">{{ seeker.email }}</p>
+</div>
 <div class="container">
   <div class="d-flex mb-3">
     <div class="tab bold" [ngClass]="{ 'active': activeTab === 'contactInfo' }" (click)="activeTab = 'contactInfo'">{{ 'CONTACT_INFO' | t }}</div>
@@ -5,33 +10,33 @@
   </div>
   <form #f="ngForm" class="data-form" (ngSubmit)="submit(f.valid)" *ngIf="activeTab === 'contactInfo'">
     <div class="row mb-3">
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="firstName">{{ 'FIRST_NAME' | t }}</label>
         <input id="firstName" class="form-control" name="firstName" type="text" [(ngModel)]="seeker.firstName" #firstName="ngModel" required>
         <p class="alert alert-danger" *ngIf="firstName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="lastName">{{ 'LAST_NAME' | t }}</label>
         <input id="lastName" class="form-control" name="lastName" type="text" [(ngModel)]="seeker.lastName" #lastName="ngModel" required>
         <p class="alert alert-danger" *ngIf="lastName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="idNumber">{{ 'ID_NUMBER' | t }}</label>
         <input id="idNumber" class="form-control" name="idNumber" type="text" [(ngModel)]="seeker.idNumber" #idNumber="ngModel" required>
         <p class="alert alert-danger" *ngIf="idNumber.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="birthday">{{ 'BIRTHDAY' | t }}</label>
         <input id="birthday" class="form-control" name="birthday" type="date" [(ngModel)]="seeker.birthday">
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="email">{{ 'EMAIL' | t }}</label>
         <input id="email" class="form-control" name="email" type="email" [(ngModel)]="seeker.email" #email="ngModel" email required>
         <p class="alert alert-danger" *ngIf="email.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="password">{{ 'PASSWORD' | t }}</label>
         <input id="password" class="form-control" name="password" type="password" [(ngModel)]="seeker.user.password" #password="ngModel" required>
         <p class="alert alert-danger" *ngIf="password.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
@@ -39,15 +44,15 @@
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="address">{{ 'ADDRESS' | t }}</label>
         <input id="address" class="form-control" name="address" type="text" [(ngModel)]="seeker.address">
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="city">{{ 'CITY' | t }}</label>
         <input id="city" class="form-control" name="city" type="text" [(ngModel)]="seeker.city">
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="country">{{ 'COUNTRY' | t }}</label>
         <select id="country" class="form-control" name="idNumber" [(ngModel)]="seeker.country.id">
           <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
@@ -55,18 +60,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="zipcode">{{ 'ZIPCODE' | t }}</label>
         <input id="zipcode" class="form-control" name="zipcode" type="text" [(ngModel)]="seeker.zipcode">
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="gender">{{ 'GENDER' | t }}</label>
         <select id="gender" class="form-control" name="gender" [(ngModel)]="seeker.gender">
           <option value="male">{{ 'MALE' | t }}</option>
           <option value="female">{{ 'FEMALE' | t }}</option>
         </select>
       </div>
-      <div class="col-6 col-md form-group">
+      <div class="col-12 col-sm-6 col-md form-group">
         <label for="relationshipStatus">{{ 'RELATIONSHIP_STATUS' | t }}</label>
         <select id="relationshipStatus" class="form-control" name="relationshipStatus" [(ngModel)]="seeker.relationshipStatus">
           <option value="single">{{ 'SINGLE' | t }}</option>
@@ -81,7 +86,58 @@
       <button type="submit" class="chip-button chip-blue toggle-effect">{{ 'UPDATE' | t }}</button>
     </div>
   </form>
-  <div *ngIf="activeTab === 'resume'">
-    resume
+  <div *ngIf="activeTab === 'resume'" class="data-form">
+    <section>
+      <div class="form-section-title">{{ 'JOB_EXPERIENCE' | t }}</div>
+      <div class="row align-items-center" *ngFor="let experience of seeker.experience; let experienceIndex = index">
+        <div class="col-10 col-md-11 row mb-3">
+          <div class="col-12 col-md form-group">
+            <label for="experienceIndustry{{ experienceIndex }}">{{ 'INDUSTRY' | t }}</label>
+            <select id="experienceIndustry{{ experienceIndex }}" class="form-control" [(ngModel)]="experience.industry">
+              <option>Sales Manager</option>
+            </select>
+          </div>
+          <div class="col-12 col-md form-group">
+            <label for="experiencePosition{{ experienceIndex }}">{{ 'POSITION' | t }}</label>
+            <select id="experiencePosition{{ experienceIndex }}" class="form-control" [(ngModel)]="experience.position">
+              <option>Sales Manager</option>
+            </select>
+          </div>
+          <div class="col-12 col-md form-group">
+            <label for="experienceLevel{{ experienceIndex }}">{{ 'EXPERIENCE_LEVEL' | t }}</label>
+            <select id="experienceLevel{{ experienceIndex }}" class="form-control" [(ngModel)]="experience.level">
+              <option>0-2 years</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-2 col-md-1 text-center">
+          <img src="/assets/img/icons/cancel.svg" class="icon pointer" (click)="removeExperience(experienceIndex)">
+        </div>
+      </div>
+      <button (click)="addExperience()" class="chip-button chip-blue toggle-effect">{{ 'ADD_JOB' | t }}</button>
+    </section>
+    <section class="mt-4">
+      <div class="form-section-title">{{ 'EDUCATION' | t }}</div>
+      <div class="row align-items-center" *ngFor="let education of seeker.education; let educationIndex = index">
+        <div class="col-10 col-md-11 row mb-3">
+          <div class="col-12 col-md-4 form-group">
+            <label for="educationLevel{{ educationIndex }}">{{ 'EDUCATION_LEVEL' | t }}</label>
+            <select id="educationLevel{{ educationIndex }}" class="form-control" [(ngModel)]="education.level">
+              <option>Sales Manager</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-4 form-group">
+            <label for="educationAcademy{{ educationIndex }}">{{ 'ACADEMY' | t }}</label>
+            <select id="educationAcademy{{ educationIndex }}" class="form-control" [(ngModel)]="education.academy">
+              <option>Sales Manager</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-2 col-md-1 text-center">
+          <img src="/assets/img/icons/cancel.svg" class="icon pointer" (click)="removeEducation(educationIndex)">
+        </div>
+      </div>
+      <button (click)="addEducation()" class="chip-button chip-blue toggle-effect">{{ 'ADD_EDUCATION' | t }}</button>
+    </section>
   </div>
 </div>

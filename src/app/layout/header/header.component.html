@@ -100,7 +100,7 @@
   </ng-container>
 </div>
 <div class="shadow-gradient" *ngIf="mobileMenuState === 'shown'"></div>
-<div id="pageTitle" *ngIf="pageWidth >= 768">
+<div id="pageTitle" *ngIf="pageWidth >= 768" [ngClass]="{ 'padded': pageTitlePadded }">
   <h1 id="pageTitleHeading" *ngIf="pageTitle !== 'home' && pageTitle !== 'search'">{{ translatePageTitle ? (pageTitle | uppercase | t) : pageTitle }}</h1>
   <div id="jobSearchContainer" [class]="pageTitle" *ngIf="pageWidth >= 768 && (pageTitle === 'home' || pageTitle === 'search')">
     <ng-container *ngIf="pageTitle === 'home'">

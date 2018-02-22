@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
   seekerMenuLinks = [{ label: 'My Jobby', url: 'myJobby', translate: false }, 'interviews'];
 
   pageTitle: string;
+  pageTitlePadded = false;
   translatePageTitle = true;
 
   mobileMenuState = 'hidden';
@@ -73,8 +74,8 @@ export class HeaderComponent implements OnInit {
     }
 
     this.pageTitle = activeRoute.snapshot.data.title;
-
-    this.translatePageTitle = activeRoute.snapshot.data.translate !== false;
+    this.translatePageTitle = (activeRoute.snapshot.data.translateTitle !== false);
+    this.pageTitlePadded = activeRoute.snapshot.data.paddedTitle;
 
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
@@ -88,7 +89,11 @@ export class HeaderComponent implements OnInit {
       })
       .filter((route) => route.outlet === 'primary')
       .mergeMap((route) => route.data)
-      .subscribe((event) => this.pageTitle = event.title);
+      .subscribe((event) => {
+        this.pageTitle = event.title;
+        this.translatePageTitle = (event.translateTitle !== false);
+        this.pageTitlePadded = !event.paddedTitle;
+      });
   }
 
   changeLang(): void {

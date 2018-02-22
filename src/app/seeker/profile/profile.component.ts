@@ -6,6 +6,9 @@ import { MiscService } from '../../shared/_services/http/misc.service';
 import { Seeker } from '../../shared/_models/seeker.model';
 import { Country } from '../../shared/_models/country.model';
 
+import { JobExperience } from '../../shared/_models/job-experience.model';
+import { Education } from '../../shared/_models/education.model';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,4 +34,19 @@ export class ProfileComponent implements OnInit {
     this.miscService.getCountries().then(response => this.countries = response);
   }
 
+  addExperience(): void {
+    this.seeker.experience.push(new JobExperience);
+  }
+
+  addEducation(): void {
+    this.seeker.education.push(new Education);
+  }
+
+  removeExperience(index: number): void {
+    this.seeker.experience.splice(index, 1);
+  }
+
+  removeEducation(index: number): void {
+    this.seeker.education.splice(index, 1);
+  }
 }

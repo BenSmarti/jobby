@@ -1,0 +1,36 @@
+#profileHeader {
+  position: relative;
+}
+
+#seekerName {
+  height: 30px;
+  margin: 20px 0 0 0;
+}
+
+#seekerImage {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  width: 100px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  #profileHeader {
+    padding: 10px 0 20px 0;
+    background-color: #4d64a3;
+  }
+
+  #profileHeader > p {
+    color: #fff;
+  }
+
+  #seekerImage {
+    position: static;
+    transform: none;
+    margin: 0;
+  }
+}
