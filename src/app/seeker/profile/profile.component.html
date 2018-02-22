@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="d-flex mb-3">
+    <div class="tab bold" [ngClass]="{ 'active': activeTab === 'contactInfo' }" (click)="activeTab = 'contactInfo'">{{ 'CONTACT_INFO' | t }}</div>
+    <div class="tab bold" [ngClass]="{ 'active': activeTab === 'resume' }" (click)="activeTab = 'resume'">{{ 'RESUME' | t }}</div>
+  </div>
+  <form #f="ngForm" class="data-form" (ngSubmit)="submit(f.valid)" *ngIf="activeTab === 'contactInfo'">
+    <div class="row mb-3">
+      <div class="col-6 col-md form-group">
+        <label for="firstName">{{ 'FIRST_NAME' | t }}</label>
+        <input id="firstName" class="form-control" name="firstName" type="text" [(ngModel)]="seeker.firstName" #firstName="ngModel" required>
+        <p class="alert alert-danger" *ngIf="firstName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="lastName">{{ 'LAST_NAME' | t }}</label>
+        <input id="lastName" class="form-control" name="lastName" type="text" [(ngModel)]="seeker.lastName" #lastName="ngModel" required>
+        <p class="alert alert-danger" *ngIf="lastName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="idNumber">{{ 'ID_NUMBER' | t }}</label>
+        <input id="idNumber" class="form-control" name="idNumber" type="text" [(ngModel)]="seeker.idNumber" #idNumber="ngModel" required>
+        <p class="alert alert-danger" *ngIf="idNumber.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-6 col-md form-group">
+        <label for="birthday">{{ 'BIRTHDAY' | t }}</label>
+        <input id="birthday" class="form-control" name="birthday" type="date" [(ngModel)]="seeker.birthday">
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="email">{{ 'EMAIL' | t }}</label>
+        <input id="email" class="form-control" name="email" type="email" [(ngModel)]="seeker.email" #email="ngModel" email required>
+        <p class="alert alert-danger" *ngIf="email.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="password">{{ 'PASSWORD' | t }}</label>
+        <input id="password" class="form-control" name="password" type="password" [(ngModel)]="seeker.user.password" #password="ngModel" required>
+        <p class="alert alert-danger" *ngIf="password.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
+        <p class="f-12 blue-text">{{ 'CHANGE_PASSWORD' | t}}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-6 col-md form-group">
+        <label for="address">{{ 'ADDRESS' | t }}</label>
+        <input id="address" class="form-control" name="address" type="text" [(ngModel)]="seeker.address">
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="city">{{ 'CITY' | t }}</label>
+        <input id="city" class="form-control" name="city" type="text" [(ngModel)]="seeker.city">
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="country">{{ 'COUNTRY' | t }}</label>
+        <select id="country" class="form-control" name="idNumber" [(ngModel)]="seeker.country.id">
+          <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 col-md form-group">
+        <label for="zipcode">{{ 'ZIPCODE' | t }}</label>
+        <input id="zipcode" class="form-control" name="zipcode" type="text" [(ngModel)]="seeker.zipcode">
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="gender">{{ 'GENDER' | t }}</label>
+        <select id="gender" class="form-control" name="gender" [(ngModel)]="seeker.gender">
+          <option value="male">{{ 'MALE' | t }}</option>
+          <option value="female">{{ 'FEMALE' | t }}</option>
+        </select>
+      </div>
+      <div class="col-6 col-md form-group">
+        <label for="relationshipStatus">{{ 'RELATIONSHIP_STATUS' | t }}</label>
+        <select id="relationshipStatus" class="form-control" name="relationshipStatus" [(ngModel)]="seeker.relationshipStatus">
+          <option value="single">{{ 'SINGLE' | t }}</option>
+          <option value="married">{{ 'MARRIED' | t }}</option>
+          <option value="divorced">{{ 'DIVORCED' | t }}</option>
+          <option value="separated">{{ 'SEPARATED' | t }}</option>
+          <option value="widowed">{{ 'WIDOWED' | t }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button type="submit" class="chip-button chip-blue toggle-effect">{{ 'UPDATE' | t }}</button>
+    </div>
+  </form>
+  <div *ngIf="activeTab === 'resume'">
+    resume
+  </div>
+</div>

@@ -454,7 +454,11 @@ input[type=file] {
 /*--- Data Form ---*/
 
 .data-form label {
-  font-family: HeeboBold !important;
+  color: #c6c6c6;
+}
+
+.data-form input, .data-form select {
+  background-color: #f4f4f4;
 }
 
 .data-form textarea {
@@ -472,7 +476,7 @@ input[type=file] {
   box-shadow: 0px 4px 6px 0px #999;
 }
 
-.data-form .card-footer {
+.data-form .card-footer, .data-form .form-footer {
   padding: 15px 0;
   border-top: 1px solid #e9ebea;
 }

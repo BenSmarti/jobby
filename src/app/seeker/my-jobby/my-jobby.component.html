@@ -6,11 +6,10 @@
     <input type="search" [(ngModel)]="searchCriteria['q']" class="input-group-lg" (keyup)="search($event.keyCode)" [placeholder]="'SEARCH' | t">
     <i class="fa fa-search" (click)="search()"></i>
   </div>
-  <div *ngFor="let job of jobs" class="mb-3">
+  <div *ngFor="let job of paginatedItems" class="mb-3">
     <app-job-list-item [job]="job">
       <ng-container jobActions>
-        {{ job['isLiked'] }}
-        <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [numOfStars]="1" [rating]="abc ? 1 : 0" (onRatingChange)="setCandidateLike(job)"></star-rating-comp>
+        <!--<star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [numOfStars]="1" [rating]="abc ? 1 : 0" (onRatingChange)="setCandidateLike(job)"></star-rating-comp>-->
         <img src="/assets/img/icons/chat.svg" class="align-middle job-action">
       </ng-container>
     </app-job-list-item>

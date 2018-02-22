@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { DataTableComponent } from '../../shared/data-table/data-table.component';
 
-import { Job } from '../../shared/_models/job.model';
+import { JobService } from '../../shared/_services/http/job.service';
 
 @Component({
   selector: 'app-my-jobby',
@@ -11,8 +11,6 @@ import { Job } from '../../shared/_models/job.model';
   styleUrls: ['./my-jobby.component.css', '../../shared/data-table/data-table.component.css'],
 })
 export class MyJobbyComponent extends DataTableComponent implements OnInit {
-
-  abc = false;
 
   readonly tabs = [
     { label: 'LIKED', criterion: 'candidateLike' }, { label: 'LIKED_ME', criterion: 'employerLike' },
@@ -25,19 +23,16 @@ export class MyJobbyComponent extends DataTableComponent implements OnInit {
     { column: 'phone', label: 'COMPANY_PHONE' }
   ];
 
-  jobs = [1,2,3];
-
-  constructor(route: ActivatedRoute) {
+  constructor(route: ActivatedRoute, private jobService: JobService) {
     super(route);
   }
 
   ngOnInit() {
     this.activeTab = this.tabs[0];
+    super.ngOnInit();
   }
 
-  fetchItems(): void {}
-
-  setCandidateLike(job: Job): void {
-    this.abc = !this.abc;
+  fetchItems(): void {
+    this.jobService.getJobs().then(response => this.setItems(response));
   }
 }
