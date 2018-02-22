@@ -425,6 +425,32 @@ input[type=file] {
   flex-grow: 1;
 }
 
+.select-styled {
+  width: 300px;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+}
+
+.slider-container {
+  width: 400px;
+}
+
+.slider-container > * {
+  width: 100%;
+}
+
+.slider-container .slider-labels {
+  display: flex;
+}
+
+.slider-container .slider-label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 12px;
+  flex-grow: 1;
+}
+
 /*--- Data Form ---*/
 
 .data-form label {

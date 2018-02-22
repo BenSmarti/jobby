@@ -1,28 +1,48 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <span>{{ 'JOB_DISTANCE' | t }}</span>
-    <mat-slider></mat-slider>
+  <div class="d-md-flex justify-content-between align-items-center mb-4 mb-md-55">
+    <p class="bold">{{ 'JOB_DISTANCE' | t }}</p>
+    <div class="slider-container">
+      <mat-slider color="primary"></mat-slider>
+      <ul class="slider-labels">
+        <li class="slider-label">0 {{ 'KM' | t }}</li>
+        <li class="slider-label">10 {{ 'KM' | t }}</li>
+        <li class="slider-label">20 {{ 'KM' | t }}</li>
+        <li class="slider-label">30 {{ 'KM' | t }}</li>
+        <li class="slider-label">40 {{ 'KM' | t }}</li>
+        <li class="slider-label">{{ 'ANY' | t }}</li>
+      </ul>
+    </div>
   </div>
-  <div class="d-flex justify-content-between">
-    <span>{{ 'JOB_FIELD' | t }}</span>
-    <select class="">
+  <div class="d-md-flex justify-content-between align-items-center mb-4 mb-md-5">
+    <p class="bold">{{ 'JOB_FIELD' | t }}</p>
+    <select class="select-styled">
       <option>Sales</option>
     </select>
   </div>
-  <div class="d-flex justify-content-between">
-    <span>{{ 'JOB_POSITION' | t }}</span>
-    <select class="">
+  <div class="d-md-flex justify-content-between align-items-center mb-4 mb-md-5">
+    <p class="bold">{{ 'JOB_POSITION' | t }}</p>
+    <select class="select-styled">
       <option>Service Associate</option>
     </select>
   </div>
-  <div class="d-flex justify-content-between">
-    <span>{{ 'JOB_TYPE' | t }}</span>
-    <select class=" ">
+  <div class="d-md-flex justify-content-between align-items-center mb-4 mb-md-5">
+    <p class="bold">{{ 'JOB_TYPE' | t }}</p>
+    <select class="select-styled">
       <option>Full Time</option>
     </select>
   </div>
-  <div class="d-flex justify-content-between">
-    <span>{{ 'SALARY' | t }}</span>
-    <mat-slider></mat-slider>
+  <div class="d-md-flex justify-content-between align-items-center">
+    <p class="bold">{{ 'SALARY' | t }}</p>
+    <div class="slider-container">
+      <mat-slider color="primary"></mat-slider>
+      <ul class="slider-labels">
+        <li class="slider-label">0 {{ 'KM' | t }}</li>
+        <li class="slider-label">10 {{ 'KM' | t }}</li>
+        <li class="slider-label">20 {{ 'KM' | t }}</li>
+        <li class="slider-label">30 {{ 'KM' | t }}</li>
+        <li class="slider-label">40 {{ 'KM' | t }}</li>
+        <li class="slider-label">{{ 'ANY' | t }}</li>
+      </ul>
+    </div>
   </div>
 </div>
