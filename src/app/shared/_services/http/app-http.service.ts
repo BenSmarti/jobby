@@ -15,16 +15,40 @@ export class AppHttpService extends BaseHttpService {
   }
 
   login(username: string, password: string): Promise<any> {
-    return this.http.post(this.apiUrl + '/login', { username: username, password: password })
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+
+    return this.http.post(this.apiUrl + '/login', formData)
     .toPromise()
-    .catch(() => false)
-    .then(response => response);
+    .then(() => true)
+    .catch(() => null);
   }
 
-  register(user: User, object: Employer | Seeker): Promise<any> {
-    return this.http.post(this.apiUrl + '/register', { user: user, object: object })
+  registerSeeker(seeker: Seeker): Promise<any> {
+    const formData = new FormData();
+
+    for (const value in seeker) {
+      formData.append(value, seeker[value]);
+    }
+
+    return this.http.post(this.apiUrl + '/Account/RegisterSeeker', formData)
     .toPromise()
-    .then(response => response)
-    .catch(response => console.log(response.code));
+    .then(() => true)
+    .catch(() => null);
+  }
+
+  registerEmployer(employer: Employer): Promise<any> {
+    const formData = new FormData();
+
+    for (const value in employer) {
+      formData.append(value, employer[value]);
+    }
+
+    return this.http.post(this.apiUrl + '/Account/RegisterEmployer', formData)
+    .toPromise()
+    .then(() => true)
+    .catch(() => null);
   }
 }

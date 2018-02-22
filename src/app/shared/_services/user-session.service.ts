@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
-import { User } from '../_models/user.model';
 
 @Injectable()
 export class UserSessionService {
@@ -29,8 +28,8 @@ export class UserSessionService {
     return !!this.getUser();
   }
 
-  login(user: User, rememberMe?: boolean): void {
-    const userObj = { username: user.username, accessToken: user.accessToken, type: user.type, image: user.image };
+  login(user: Object, rememberMe?: boolean): void {
+    const userObj = { username: user['email'], accessToken: user['token'], type: user['type'], image: user['image'] };
 
     if (rememberMe) {
       localStorage.setItem('user', JSON.stringify(userObj));

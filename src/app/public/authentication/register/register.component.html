@@ -8,23 +8,17 @@
       <div class="tab-content" *ngIf="activeTab === 'seeker'">
         <div class="form-group">
           <input type="text" name="firstName" class="form-control py-2 rounded-border"
-                 [placeholder]="'FIRST_NAME' | t" [(ngModel)]="seeker.firstName" #firstName="ngModel" required>
+                 [placeholder]="'FIRST_NAME' | t" [(ngModel)]="seeker.FirstName" #firstName="ngModel" required>
           <p class="alert alert-danger" *ngIf="firstName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
           <input type="text" name="lastName" class="form-control py-2 rounded-border"
-                 [placeholder]="'LAST_NAME' | t" [(ngModel)]="seeker.lastName" #lastName="ngModel" required>
+                 [placeholder]="'LAST_NAME' | t" [(ngModel)]="seeker.LastName" #lastName="ngModel" required>
           <p class="alert alert-danger" *ngIf="lastName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
-          <input type="text" name="username" class="form-control py-2 rounded-border"
-                 [placeholder]="'USERNAME' | t" [(ngModel)]="seeker.user.username"
-                 #username="ngModel" required>
-          <p class="alert alert-danger" *ngIf="username.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
-        </div>
-        <div class="form-group">
           <input type="text" name="email" class="form-control py-2 rounded-border"
-           [placeholder]="'EMAIL' | t" [(ngModel)]="seeker.user.email"
+           [placeholder]="'EMAIL' | t" [(ngModel)]="seeker.Email"
            #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
           <ng-container *ngIf="email.errors && f.submitted">
             <p class="alert alert-danger" *ngIf="email.errors.required">{{ 'REQUIRED_FIELD' | t }}.</p>
@@ -33,7 +27,7 @@
         </div>
         <div class="form-group">
           <input type="password" name="password" class="form-control py-2 rounded-border"
-           [placeholder]="'PASSWORD' | t" [(ngModel)]="seeker.user.password" #password="ngModel" required>
+           [placeholder]="'PASSWORD' | t" [(ngModel)]="seeker.Password" #password="ngModel" required>
           <p class="alert alert-danger" *ngIf="password.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}</p>
         </div>
         <div class="form-group">
@@ -42,7 +36,7 @@
           <p class="alert alert-danger" *ngIf="repeatPasswordInput.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
-          <select class="form-control rounded-border" name="gender" [(ngModel)]="seeker.gender">
+          <select class="form-control rounded-border" name="gender" [(ngModel)]="seeker.Gender">
             <option disabled [value]="undefined">{{ 'SELECT_GENDER' | t }}</option>
             <option value="male">{{ 'MALE' | t }}</option>
             <option value="female">{{ 'FEMALE' | t }}</option>
@@ -52,17 +46,17 @@
       <div class="tab-content" *ngIf="activeTab === 'employer'">
         <div class="form-group">
           <input type="text" name="companyName" class="form-control py-2 rounded-border"
-           [placeholder]="'COMPANY_NAME' | t" [(ngModel)]="employer.name" #companyName="ngModel" required>
+           [placeholder]="'COMPANY_NAME' | t" [(ngModel)]="employer.Name" #companyName="ngModel" required>
           <p class="alert alert-danger" *ngIf="companyName.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
           <input type="text" name="username" class="form-control py-2 rounded-border"
-           [placeholder]="'USERNAME' | t" [(ngModel)]="employer.user.username" #username="ngModel" required>
+           [placeholder]="'USERNAME' | t" [(ngModel)]="employer.Username" #username="ngModel" required>
           <p class="alert alert-danger" *ngIf="username.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
           <input type="text" name="email" class="form-control py-2 rounded-border"
-           [placeholder]="'EMAIL' | t" [(ngModel)]="employer.user.email"
+           [placeholder]="'EMAIL' | t" [(ngModel)]="employer.Email"
            #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
           <ng-container *ngIf="email.errors && f.submitted">
             <p class="alert alert-danger" *ngIf="email.errors.required">{{ 'REQUIRED_FIELD' | t }}.</p>
@@ -71,7 +65,7 @@
         </div>
         <div class="form-group">
           <input type="password" name="password" class="form-control py=2 rounded-border"
-            [placeholder]="'PASSWORD' | t" [(ngModel)]="employer.user.password" #password="ngModel" required>
+            [placeholder]="'PASSWORD' | t" [(ngModel)]="employer.Password" #password="ngModel" required>
           <p class="alert alert-danger" *ngIf="password.errors && f.submitted">{{ 'REQUIRED_FIELD' | t }}.</p>
         </div>
         <div class="form-group">
@@ -81,6 +75,7 @@
         </div>
       </div>
       <mat-spinner class="mx-auto mb-3" *ngIf="isSubmitting"></mat-spinner>
+      <p class="alert alert-danger" *ngIf="isRegisterFailed">{{ 'REGISTER_ERROR_S' | t }}</p>
       <p class="alert alert-danger" *ngIf="isLoginFailed">
         <i class="fa fa-exclamation-circle p-icon"></i>
         <span>{{ 'LOGIN_ERROR' | t }}.</span>

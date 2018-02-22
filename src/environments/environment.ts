@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/api', //'http://joby.ori-pc.com'
-  uploadsPath: 'http://localhost:8000/uploads'
+
+  apiUrl: 'http://192.168.1.102:8020', //'http://joby.ori-pc.com',
+  uploadsPath: 'http://joby.ori-pc.com/uploads'
 };

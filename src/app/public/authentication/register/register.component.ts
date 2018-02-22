@@ -23,14 +23,41 @@ export class RegisterComponent {
 
   isRegisterFailed: boolean;
   isSubmitting = false;
+  registerError = false;
 
   constructor(private router: Router, private userSession: UserSessionService, private appHttp: AppHttpService) {}
 
   submit(isValid: boolean) {
+    if (!isValid) {
+      return;
+    }
 
-    if (isValid) {
-      this.isRegisterFailed = false;
-      this.isSubmitting = true;
+    this.isRegisterFailed = false;
+    this.isSubmitting = true;
+
+    if (this.activeTab === 'employer') {
+      this.appHttp.registerEmployer(this.employer).then(response => this.handleResponse(response))
+    } else {
+      this.appHttp.registerSeeker(this.seeker).then(response => this.handleResponse(response));
+    }
+  }
+
+  handleResponse(response): void {
+    if (response) {
+      const user = { token: response };
+      if (this.activeTab === 'employer') {
+        user['username'] = this.employer.Email;
+        user['type'] = 'employer';
+      } else {
+        user['username'] = this.seeker.Email;
+        user['type'] = 'seeker';
+      }
+
+      this.userSession.login(user);
+      this.router.navigate(['/' + this.activeTab]);
+    } else {
+      this.registerError = true;
+      this.isSubmitting = false;
     }
   }
 }
