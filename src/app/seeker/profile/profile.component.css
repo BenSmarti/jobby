@@ -34,4 +34,19 @@
     transform: none;
     margin: 0;
   }
+
+  .seeker-experience, .seeker-education {
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e9ebea;
+  }
+
+  .form-section-title {
+    margin: 0;
+  }
+
+  .seeker-experience .form-group:last-child, .seeker-education .form-group:last-child {
+    margin: 0;
+  }
 }

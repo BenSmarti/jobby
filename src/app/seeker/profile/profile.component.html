@@ -92,8 +92,8 @@
   <div *ngIf="activeTab === 'resume'" class="data-form">
     <section>
       <div class="form-section-title">{{ 'JOB_EXPERIENCE' | t }}</div>
-      <div class="row align-items-center" *ngFor="let experience of seeker.experience; let experienceIndex = index">
-        <div class="col-10 col-md-11 row mb-3">
+      <div class="row align-items-center seeker-experience" *ngFor="let experience of seeker.experience; let experienceIndex = index">
+        <div class="col-10 col-md-11 row mb-md-3">
           <div class="col-12 col-md form-group">
             <label for="experienceIndustry{{ experienceIndex }}">{{ 'INDUSTRY' | t }}</label>
             <select id="experienceIndustry{{ experienceIndex }}" class="form-control" [(ngModel)]="experience.industry">
@@ -122,7 +122,7 @@
     <section class="mt-4">
       <div class="form-section-title">{{ 'EDUCATION' | t }}</div>
       <div class="row align-items-center" *ngFor="let education of seeker.education; let educationIndex = index">
-        <div class="col-10 col-md-11 row mb-3">
+        <div class="col-10 col-md-11 row mb-md-3 seeker-education">
           <div class="col-12 col-md-4 form-group">
             <label for="educationLevel{{ educationIndex }}">{{ 'EDUCATION_LEVEL' | t }}</label>
             <select id="educationLevel{{ educationIndex }}" class="form-control" [(ngModel)]="education.level">
